@@ -1,0 +1,27 @@
+.input {
+  display: block;
+  text-align: left; }
+
+.input span {
+  position: relative;
+  height: 0;
+  display: block;
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+  top: 0.3em;
+  left: 0.4em;
+  color: #999;
+  font-style: italic;
+  z-index: 1;
+  cursor: text;
+  float: none; }
+
+.input input, .input textarea, .input select {
+  z-index: 0;
+  margin: 0;
+  font: inherit;
+  float: none; }
+
+.input textarea, .input select {
+  padding: 6px; }

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+  <!-- The RebarConfigsToInclude is currently ignored and reserved for future use -->
+  <RebarConfigsToInclude Condition="'$(RebarConfigsToInclude)' == ''">**\Web.config</RebarConfigsToInclude>
+  
+  <!-- Currently all *.config files that are in the Content or None item groups of the project
+       are included for transformation.  If you would like to exclude some specific
+       configurations you can add them to this property.
+       Separate each exclusion with a semicolon.
+    -->
+  <RebarConfigsToExclude Condition="'$(RebarConfigsToExclude)' == ''">**\packages.config</RebarConfigsToExclude>
+  <!-- Disable Parameterization of Connection strings since the transforms
+       will handle this directly
+  -->
+  <AutoParameterizationWebConfigConnectionStrings>False</AutoParameterizationWebConfigConnectionStrings>
+</PropertyGroup>
+
+<ItemGroup>
+  <!-- 
+    Define your environment and transformations here
+    If an environment is not defined it will not be transformed
+    in the final web deploy package and a deploy command file will
+    not be generated.
+
+    So if you have a transform Web.PT.config defined, but no
+    <DeploymentEnvironment Include="PT" /> The configuration
+    will not get transformed and no PT.Local.cmd file
+    will get created.
+   -->
+  <DeploymentEnvironment Include="CI">
+    <Environment>CI</Environment>
+    <IISAppPath>0000_MyServices/ci</IISAppPath>
+  </DeploymentEnvironment>
+
+  <DeploymentEnvironment Include="DEV">
+    <Environment>DEV</Environment>
+    <IISAppPath>0000_MyServices/dev</IISAppPath>
+  </DeploymentEnvironment>
+
+  <DeploymentEnvironment Include="STAGE">
+    <Environment>Stage</Environment>
+    <IISAppPath>0000_MyServices/</IISAppPath>
+  </DeploymentEnvironment>
+  
+  <DeploymentEnvironment Include="PROD">
+    <Environment>Prod</Environment>
+    <IISAppPath>0000_MyServices/</IISAppPath>
+  </DeploymentEnvironment>
+
+  <DeploymentEnvironment Include="stage_mashery">
+    <Environment>stage_mashery</Environment>
+    <IISAppPath>0000_MyServices/mashery/</IISAppPath>
+  </DeploymentEnvironment>
+  <DeploymentEnvironment Include="stage_perf">
+    <Environment>stage_perf</Environment>
+    <IISAppPath>0000_MyServices/perf/</IISAppPath>
+  </DeploymentEnvironment>
+  <DeploymentEnvironment Include="stage_test">
+    <Environment>stage_test</Environment>
+    <IISAppPath>0000_MyServices/test/</IISAppPath>
+  </DeploymentEnvironment>
+  <DeploymentEnvironment Include="stage_private">
+    <Environment>stage_private</Environment>
+    <IISAppPath>0000_MyServices/private/</IISAppPath>
+  </DeploymentEnvironment>
+  
+  <!--
+    Define the remote nodes to generate deployment files for
+    The Idenity (ItemSpec) of the Item should be the server name
+    without the full domain.
+    This part is completely optional and will only
+    generate remote deployment files instead of the typical
+    Local deployment files that can be run directly on the server.
+  -->
+  <DeploymentTarget Include="vrtvw0001;vrtvw0002">
+    <!-- All Targets must be tagged with an environment
+      matching an envionment name from the DeploymentEnvironment itemgroup
+      the same nodes can be used for multiple environments if needed.
+    -->
+    <Environment>DEV</Environment>
+    <!--
+    <WebPublishMethod>MSDeploy</WebPublishMethod>
+    
+      Setting the MSDeployPublishMethod will enable certain
+      defaults for the type of method.
+      Values are WMSVC, RemoteAgent
+    
+    <MSDeployPublishMethod>WMSVC</MSDeployPublishMethod>
+    <PerformAppOffline>True</PerformAppOffline>
+    <PerformBackup>True</PerformBackup>
+    -->
+
+    <!--
+      Setting this option will concatenate the ItemSpec of the Item
+      with this value to create the full ComputerName for web deploy
+    -->
+    <MSDeployBaseDomain>ds.dev.accenture.com</MSDeployBaseDomain>
+    <UseChecksum>True</UseChecksum>
+    <!--
+      When using MSDeploy you can set the port it is listening
+      on, by default this is 443 for accenture.
+      webdeploy defaults 8172 for wmsvc and 80 for remote agent
+    <MSDeployPort>443</MSDeployPort>
+    -->
+    <!--
+      When using MSDeploy you can change the webdeploy
+      service path, by default it is MSDeploy.axd for wmsvc
+      and MsDeployAgentService when not using wmsvc
+    <MSDeployPath>mSDeploy.axd</MSDeployPath>
+    -->
+    <!--
+      Accepts untrusted server ssl certificates, the default is true
+      since none of accentures servers have trusted certificates
+    <AllowUntrusted>True</AllowUntrusted>
+    -->
+
+    <!-- This can be NTLM or Basic, defaults to NTLM
+      if its basic you must specify username and password metadata
+      use a msbuild property so it can specified in the msbuild arguments
+      when running a build using the /p:DeployUser=DS\Foo /p:DeployPassword=bar parameters
+    <AuthType>Basic</AuthType>
+    <UserName>$(DeployUser)</UserName>
+    <Password>$(DeployPassword)</Password>
+    -->
+    <!--
+      Specifying a MSDeployServiceUrl will override the automatic building
+      of the service uri
+    <MSDeployServiceUrl>https://vrtvw0001.ds.dev.accenture.com/MSDeploy.axd</MSDeployServiceUrl>
+    -->
+  </DeploymentTarget>
+
+  <!-- A more concise way to specify deployment targets -->
+  <DeploymentTarget Include="vrtvw0001;vrtvw0002">
+    <Environment>CI</Environment>
+    <MSDeployBaseDomain>ds.dev.accenture.com</MSDeployBaseDomain>
+    <UseChecksum>True</UseChecksum>
+  </DeploymentTarget>
+
+
+  <DeploymentTarget Include="vrtvw0003">
+    <Environment>stage_private</Environment>
+    <ComputerName>10.69.32.124</ComputerName>
+  </DeploymentTarget>
+  <DeploymentTarget Include="vrtvw0004">
+    <Environment>stage_private</Environment>
+    <ComputerName>10.69.32.164</ComputerName>
+  </DeploymentTarget>
+
+  <DeploymentTarget Include="vrtvw0003">
+    <Environment>stage_perf</Environment>
+    <ComputerName>10.69.32.124</ComputerName>
+  </DeploymentTarget>
+  <DeploymentTarget Include="vrtvw0004">
+    <Environment>stage_perf</Environment>
+    <ComputerName>10.69.32.164</ComputerName>
+  </DeploymentTarget>
+
+  <DeploymentTarget Include="vrtvw0003">
+    <Environment>stage_test</Environment>
+    <ComputerName>10.69.32.124</ComputerName>
+  </DeploymentTarget>
+  <DeploymentTarget Include="vrtvw0004">
+    <Environment>stage_test</Environment>
+    <ComputerName>10.69.32.164</ComputerName>
+  </DeploymentTarget>
+
+  <DeploymentTarget Include="vrtvw0003">
+    <Environment>stage_mashery</Environment>
+    <ComputerName>10.69.32.124</ComputerName>
+  </DeploymentTarget>
+  <DeploymentTarget Include="vrtvw0004">
+    <Environment>stage_mashery</Environment>
+    <ComputerName>10.69.32.164</ComputerName>
+  </DeploymentTarget>
+</ItemGroup>
+</Project>

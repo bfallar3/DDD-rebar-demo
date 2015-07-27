@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<h2>SchoolFront</h2>
+    <div>
+        Welcome to SchoolFront. This is the home controller... everyone can reach this page.
+    </div>
+<p>
+    Click on the Admin page link below to see an example of a restricted page. If not previously authenticated, you will be redirected to the authentication server.
+</p>
+<p>
+    @Html.RouteLink("Admin page", new { area = "Admin", controller = "Default", action = "Index" })
+</p>

@@ -1,0 +1,105 @@
+<instrumentationManifest xmlns="http://schemas.microsoft.com/win/2004/08/events">
+ <instrumentation xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events">
+  <events xmlns="http://schemas.microsoft.com/win/2004/08/events">
+<provider name="Accenture-Rebar-EventSource" guid="{b2aec20e-3cb2-516f-18c0-75305f8fe679}" resourceFileName="C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\SchoolFront\SchoolFront.Web.ETW\bin\Debug\SchoolFront.Web.ETW.Accenture-Rebar-EventSource.etwManifest.dll" messageFileName="C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\SchoolFront\SchoolFront.Web.ETW\bin\Debug\SchoolFront.Web.ETW.Accenture-Rebar-EventSource.etwManifest.dll" symbol="AccentureRebarEventSource">
+ <channels>
+  <channel chid="Admin" name="Accenture-Rebar-EventSource/Admin" value="16" type="Admin" enabled="true"/>
+ </channels>
+ <tasks>
+  <task name="DbCommandTelemetry" message="$(string.task_DbCommandTelemetry)" value="65529"/>
+  <task name="ServerRequestTelemetry" message="$(string.task_ServerRequestTelemetry)" value="65530"/>
+  <task name="Failure" message="$(string.task_Failure)" value="65531"/>
+  <task name="ArchTraceLog" message="$(string.task_ArchTraceLog)" value="65532"/>
+  <task name="ServiceRequestTrace" message="$(string.task_ServiceRequestTrace)" value="65533"/>
+ </tasks>
+ <opcodes>
+ </opcodes>
+ <keywords>
+  <keyword name="_trace" message="$(string.keyword__trace)" mask="0x1"/>
+  <keyword name="_failure" message="$(string.keyword__failure)" mask="0x2"/>
+  <keyword name="_archTrace" message="$(string.keyword__archTrace)" mask="0x4"/>
+  <keyword name="_server_requestTelemetry" message="$(string.keyword__server_requestTelemetry)" mask="0x8"/>
+  <keyword name="_db_CommandTelemetry" message="$(string.keyword__db_CommandTelemetry)" mask="0x10"/>
+  <keyword name="Session3" message="$(string.keyword_Session3)" mask="0x100000000000"/>
+  <keyword name="Session2" message="$(string.keyword_Session2)" mask="0x200000000000"/>
+  <keyword name="Session1" message="$(string.keyword_Session1)" mask="0x400000000000"/>
+  <keyword name="Session0" message="$(string.keyword_Session0)" mask="0x800000000000"/>
+ </keywords>
+ <events>
+  <event value="4" version="1" level="win:Informational" symbol="ServerRequestTelemetry" keywords="_server_requestTelemetry" task="ServerRequestTelemetry" template="ServerRequestTelemetryArgs"/>
+  <event value="5" version="1" level="win:Informational" symbol="DbCommandTelemetry" keywords="_db_CommandTelemetry" task="DbCommandTelemetry" template="DbCommandTelemetryArgs"/>
+  <event value="1" version="1" level="win:Informational" symbol="ServiceRequestTrace" keywords="_trace" task="ServiceRequestTrace" template="ServiceRequestTraceArgs"/>
+  <event value="3" version="1" level="win:Error" symbol="Failure" message="$(string.event_Failure)" keywords="_failure" task="Failure" channel="Admin" template="FailureArgs"/>
+  <event value="2" version="1" level="win:Informational" symbol="ArchTraceLog" keywords="_archTrace" task="ArchTraceLog" template="ArchTraceLogArgs"/>
+ </events>
+ <templates>
+  <template tid="ServerRequestTelemetryArgs">
+   <data name="request_url" inType="win:UnicodeString"/>
+   <data name="client_id" inType="win:UnicodeString"/>
+   <data name="start_time" inType="win:FILETIME"/>
+   <data name="result" inType="win:UnicodeString"/>
+   <data name="duration" inType="win:UnicodeString"/>
+   <data name="end_time" inType="win:FILETIME"/>
+  </template>
+  <template tid="DbCommandTelemetryArgs">
+   <data name="request_url" inType="win:UnicodeString"/>
+   <data name="client_id" inType="win:UnicodeString"/>
+   <data name="start_time" inType="win:FILETIME"/>
+   <data name="db_statement_id" inType="win:UnicodeString"/>
+   <data name="db_statement_type" inType="win:UnicodeString"/>
+   <data name="result" inType="win:UnicodeString"/>
+   <data name="duration" inType="win:UnicodeString"/>
+   <data name="end_time" inType="win:FILETIME"/>
+   <data name="db_record_count" inType="win:Int32"/>
+  </template>
+  <template tid="ServiceRequestTraceArgs">
+   <data name="category" inType="win:UnicodeString"/>
+   <data name="level" inType="win:UnicodeString"/>
+   <data name="message" inType="win:UnicodeString"/>
+   <data name="operation" inType="win:UnicodeString"/>
+   <data name="Operator" inType="win:UnicodeString"/>
+   <data name="request" inType="win:UnicodeString"/>
+   <data name="requestMethod" inType="win:UnicodeString"/>
+   <data name="requestUri" inType="win:UnicodeString"/>
+   <data name="kind" inType="win:UnicodeString"/>
+   <data name="exception" inType="win:UnicodeString"/>
+   <data name="severity" inType="win:UnicodeString"/>
+  </template>
+  <template tid="FailureArgs">
+   <data name="HelpLink" inType="win:UnicodeString"/>
+   <data name="HResult" inType="win:Int32"/>
+   <data name="InnerException" inType="win:UnicodeString"/>
+   <data name="Message" inType="win:UnicodeString"/>
+   <data name="Source" inType="win:UnicodeString"/>
+   <data name="StackTrace" inType="win:UnicodeString"/>
+   <data name="TargetSite" inType="win:UnicodeString"/>
+  </template>
+  <template tid="ArchTraceLogArgs">
+   <data name="message" inType="win:UnicodeString"/>
+  </template>
+ </templates>
+</provider>
+</events>
+</instrumentation>
+<localization>
+ <resources culture="en-US">
+  <stringTable>
+   <string id="event_Failure" value="Failure Message: %4"/>
+   <string id="keyword__archTrace" value="_archTrace"/>
+   <string id="keyword__db_CommandTelemetry" value="_db_CommandTelemetry"/>
+   <string id="keyword__failure" value="_failure"/>
+   <string id="keyword__server_requestTelemetry" value="_server_requestTelemetry"/>
+   <string id="keyword__trace" value="_trace"/>
+   <string id="keyword_Session0" value="Session0"/>
+   <string id="keyword_Session1" value="Session1"/>
+   <string id="keyword_Session2" value="Session2"/>
+   <string id="keyword_Session3" value="Session3"/>
+   <string id="task_ArchTraceLog" value="ArchTraceLog"/>
+   <string id="task_DbCommandTelemetry" value="DbCommandTelemetry"/>
+   <string id="task_Failure" value="Failure"/>
+   <string id="task_ServerRequestTelemetry" value="ServerRequestTelemetry"/>
+   <string id="task_ServiceRequestTrace" value="ServiceRequestTrace"/>
+  </stringTable>
+ </resources>
+</localization>
+</instrumentationManifest>

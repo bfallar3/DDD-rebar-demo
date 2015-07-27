@@ -1,0 +1,150 @@
+<!--?xml version="1.0" encoding="utf-8"?-->
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="MSBuild.ExtensionPack.tasks" />
+  
+  <Target Name="PrepareToVersion" BeforeTargets="Build;Rebuild">
+    <Message Text="Calling Version..." /> 
+    <CallTarget Targets="Version"/> 
+  </Target>
+    
+  <UsingTask
+    TaskName="ParseAssemblyVersion"
+    TaskFactory="CodeTaskFactory"
+    AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll" >
+    <ParameterGroup>
+      <_Major ParameterType="System.String" Output="true" />
+    </ParameterGroup>
+
+    <!-- This would have worked great, except I couldn't get the values to be seen outside of the task... -->
+    <Task>
+      <Using Namespace="System"/>
+      <Using Namespace="System.IO"/>
+      <Using Namespace="System.Text.RegularExpressions" />
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+          var VersionString = File.ReadAllText(@"$(MSBuildProjectDirectory)\Properties\AssemblyInfo.cs");
+          var match = Regex.Match(VersionString, @"\[assembly: AssemblyVersion\(.(?<major>\d+)\.(?<minor>\d+)\.(?<build>\d+).(?<revision>\d+)");
+          // string _Major, _Minor, _Build, _Revision;
+          _Major = match.Groups["major"].Value;
+          /* Int32.TryParse(match.Groups["minor"].Value, out _Minor);
+          Int32.TryParse(match.Groups["build"].Value, out _Build);
+          Int32.TryParse(match.Groups["revision"].Value, out _Revision); */
+          Console.WriteLine("Major is " + _Major);
+        ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+
+  <PropertyGroup>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">$(MSBuildProjectDirectory)..\</SolutionDir>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Uncomment for local testing of variables supplied by TFS -->
+    <!--<BuildNumber>15</BuildNumber>-->
+    <!--<Changeset>C252695</Changeset>-->
+    
+    <TfsBuildId>$(BuildNumber)</TfsBuildId>
+    <TfsBuildId Condition="$(BuildNumber) == '' Or $(BuildNumber) == '*Undefined*'">0</TfsBuildId>
+    
+    <TfsChangeset>$(Changeset.Replace("C", ""))</TfsChangeset>
+    <TfsChangeset Condition="$(Changeset) == '' Or $(Changeset) == '*Undefined*'">00000001</TfsChangeset>
+    
+    <DayOfYear>$([System.DateTime]::Now.DayOfYear.ToString("000"))</DayOfYear>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(BuildConfiguration)' == '' ">
+    <BuildConfiguration>Release</BuildConfiguration>
+  </PropertyGroup>
+
+<Target Name="GetFilesToVersion">
+    <ItemGroup>
+      <AssemblyInfoFiles Include="$(MSBuildProjectDirectory)\**\*AssemblyInfo.cs" Exclude="$(MSBuildProjectDirectory)\**\.git\**"/>
+    </ItemGroup>
+
+  <MSBuild.ExtensionPack.FileSystem.File TaskAction="FilterByContent" RegexPattern="\[assembly: AssemblyVersion" Files="@(AssemblyInfoFiles)" >
+    <Output TaskParameter="IncludedFiles" ItemName="FilesToUpdate" />
+  </MSBuild.ExtensionPack.FileSystem.File>
+</Target>
+
+  <Target Name="Version" DependsOnTargets="GetFilesToVersion" Outputs="%(FilesToUpdate.Identity)">
+    
+    <ReadLinesFromFile File="%(FilesToUpdate.Identity)">
+      <Output TaskParameter="Lines"
+              ItemName="ItemsFromFile"/>
+    </ReadLinesFromFile>
+      <Message Text="Versioning: %(FilesToUpdate.Identity)" />  
+      <!-- <Message Text="AssemblyInfo content: @(ItemsFromFile)" Importance="High" /> -->
+
+    <!-- Get the year -->
+    <MSBuild.ExtensionPack.Framework.DynamicExecute TaskAction="Run"
+                                                        Inputs="string format"
+                                                        Outputs="string result"
+                                                        Input1="yyyy"
+                                                        Code="result = DateTime.Now.ToString(format);"
+                                                        >
+      <Output TaskParameter="Output1" PropertyName="Year"/>
+    </MSBuild.ExtensionPack.Framework.DynamicExecute>
+
+    <!-- Get the year in yy format -->
+    <MSBuild.ExtensionPack.Framework.DynamicExecute TaskAction="Run"
+                                                        Inputs="string format"
+                                                        Outputs="string result"
+                                                        Input1="yy"
+                                                        Code="result = DateTime.Now.ToString(format);"
+                                                        >
+      <Output TaskParameter="Output1" PropertyName="Yr"/>
+    </MSBuild.ExtensionPack.Framework.DynamicExecute>
+	  
+    <PropertyGroup>
+      <Pattern>\[assembly: AssemblyVersion\(.(?&lt;major&gt;\d+)\.(?&lt;minor&gt;\d+)\.(\d+).(\d+)</Pattern>
+      <In>@(ItemsFromFile)</In>
+      <Out>$([System.Text.RegularExpressions.Regex]::Match($(In), $(Pattern)))</Out>
+       <_Major Condition="'$(Out)' != ''">$(Out.Split('"')[1].Split('.')[0])</_Major>
+       <_Minor Condition="'$(Out)' != ''">$(Out.Split('"')[1].Split('.')[1])</_Minor>
+
+       <!-- set defaults if not found -->
+       <_Major Condition="'$(_Major)' == ''">111</_Major>
+       <_Minor Condition="'$(_Minor)' == ''">000</_Minor>
+      <AssemblyInformationalVersionLine>[assembly: AssemblyInformationalVersion("$(_Major).$(_Minor).$(TfsChangeset).$(Yr)$(DayOfYear).$(TfsBuildId)")]</AssemblyInformationalVersionLine>
+    </PropertyGroup>
+
+     <!-- Look for the AssemblyInformationalVersion line... it isn't included in the default AssemblyInfo.cs -->
+      <MSBuild.ExtensionPack.FileSystem.File TaskAction="FilterByContent" RegexPattern="\[assembly: AssemblyInformationalVersion" Files="%(FilesToUpdate.Identity)" >
+        <Output TaskParameter="IncludedFileCount" PropertyName="out"/>
+      </MSBuild.ExtensionPack.FileSystem.File>
+      <!--<Message Text="Found:$(out)" />-->
+
+      <!-- Add the line to the file if it's not present -->
+      <WriteLinesToFile Condition="$(out) == 0"
+            File="%(FilesToUpdate.Identity)"
+            Lines="$(AssemblyInformationalVersionLine)"
+            Overwrite="false" />
+
+<!--
+    <Message Text="_Major: $(_Major)" />
+    <Message Text="_Minor: $(_Minor)" />
+    <Message Text="TfsBuildId: $(TfsBuildId)" />
+    <Message Text="TfsChangeset: $(TfsChangeset)" />
+-->
+
+    <MSBuild.ExtensionPack.Framework.AssemblyInfo 
+                      AssemblyInfoFiles="%(FilesToUpdate.Identity)"
+                      UpdateAssemblyInformationalVersion="true"
+                      AssemblyInformationalVersion="$(_Major).$(_Minor).$(TfsChangeset).$(Yr)$(DayOfYear).$(TfsBuildId)"
+                      AssemblyConfiguration="$(BuildConfiguration)"
+                      AssemblyCopyright="Copyright © $(Year) Accenture. All rights reserved."
+                      AssemblyFileMajorVersion="$(_Major)"
+                      AssemblyFileMinorVersion="$(_Minor)"
+                      AssemblyFileBuildNumberType="Julian"
+                      AssemblyFileRevision="$(TfsBuildId)"
+                      AssemblyFileRevisionType="NoIncrement"
+                      AssemblyMajorVersion= "$(_Major)"
+                      AssemblyMinorVersion="$(_Minor)"
+                      AssemblyBuildNumberType="NoIncrement"
+                      AssemblyRevision="$(TfsBuildId)"
+                      AssemblyRevisionType="NoIncrement"
+                      SkipVersioning="false" />
+  </Target>
+
+</Project>

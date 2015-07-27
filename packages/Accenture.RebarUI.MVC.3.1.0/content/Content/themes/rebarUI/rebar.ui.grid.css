@@ -1,0 +1,86 @@
+/* infragistics grid classes*/
+.ui-iggrid {
+  /*header */
+  /*footer */
+  /*pager*/
+  /* content/rows */ }
+  .ui-iggrid .ui-widget-header {
+    border: none; }
+  .ui-iggrid .ui-iggrid-headertable .ui-iggrid-headertext {
+    border: 0 none;
+    width: 100%;
+    text-shadow: none; }
+  .ui-iggrid .ui-iggrid-headertable .ui-text-right {
+    text-align: right; }
+  .ui-iggrid .ui-iggrid-footer {
+    height: 22px;
+    padding: 8px; }
+    .ui-iggrid .ui-iggrid-footer .ui-state-default a {
+      position: relative;
+      float: left;
+      text-decoration: underline;
+      font-weight: normal; }
+  .ui-iggrid .ui-iggrid-paging {
+    margin-top: 3px;
+    float: left;
+    /* end of pager*/ }
+    .ui-iggrid .ui-iggrid-paging .ui-iggrid-firstpage, .ui-iggrid .ui-iggrid-paging .ui-iggrid-prevpage, .ui-iggrid .ui-iggrid-paging .ui-iggrid-nextpage, .ui-iggrid .ui-iggrid-paging .ui-iggrid-lastpage {
+      float: left;
+      padding-left: 0;
+      padding-right: 0;
+      width: 16px; }
+    .ui-iggrid .ui-iggrid-paging .ui-iggrid-nextpage, .ui-iggrid .ui-iggrid-paging .ui-iggrid-lastpage {
+      padding-right: 4px; }
+    .ui-iggrid .ui-iggrid-paging .ui-iggrid-paging-item span.ui-icon {
+      top: 0;
+      margin-top: 0;
+      position: relative;
+      margin-left: 0px; }
+    .ui-iggrid .ui-iggrid-paging a.ui-iggrid-pagelink :hover, .ui-iggrid .ui-iggrid-paging a.ui-iggrid-pagelinkcurrent :hover {
+      text-shadow: none;
+      text-decoration: none;
+      font-family: Arial;
+      vertical-align: top;
+      height: 20px;
+      color: Black;
+      line-height: 1.7em; }
+    .ui-iggrid .ui-iggrid-paging .ui-iggrid-firstpageimgdisabled, .ui-iggrid .ui-iggrid-paging .ui-iggrid-firstpageimg {
+      background-image: url("images/rui-sprite.png") -90px -120px; }
+    .ui-iggrid .ui-iggrid-paging .ui-iggrid-lastpageimg, .ui-iggrid .ui-iggrid-paging .ui-iggrid-lastpageimgdisabled {
+      background-image: url("images/rui-sprite.png") -30px -120px; }
+    .ui-iggrid .ui-iggrid-paging .ui-iggrid-prevpageimgdisabled, .ui-iggrid .ui-iggrid-paging .ui-iggrid-prevpageimg {
+      background-image: url("images/rui-sprite.png") -150px -120px; }
+    .ui-iggrid .ui-iggrid-paging .ui-iggrid-nextpageimg, .ui-iggrid .ui-iggrid-paging .ui-iggrid-nextpageimgdisabled {
+      background-image: url("images/rui-sprite.png") -120px -120px; }
+    .ui-iggrid .ui-iggrid-paging .ui-iggrid-nextpagelabeldisabled, .ui-iggrid .ui-iggrid-paging .ui-iggrid-nextpagelabel, .ui-iggrid .ui-iggrid-paging .ui-iggrid-prevpagelabeldisabled, .ui-iggrid .ui-iggrid-paging .ui-iggrid-prevpagelabel {
+      visibility: hidden;
+      display: none; }
+    .ui-iggrid .ui-iggrid-paging .ui-iggrid-pagelist {
+      padding: 0px 4px 0px 4px; }
+      .ui-iggrid .ui-iggrid-paging .ui-iggrid-pagelist li {
+        text-align: none;
+        padding-left: 2px;
+        padding-right: 2px; }
+  .ui-iggrid .ui-widget-content {
+    border: 1px solid #d9d9d9;
+    overflow: hidden; }
+  .ui-iggrid table.ui-widget-content {
+    /*webkit browsers neet 2px gray border to render*/
+    border-bottom-width: 2px; }
+  .ui-iggrid .ui-ig-record tr td, .ui-iggrid .ui-ig-record tr td.grid-readonly, .ui-iggrid .ui-ig-record tr td.grid-readonly, .ui-iggrid .ui-ig-record tr.ui-ig-altrecord td, .ui-iggrid .ui-ig-record tr.ui-ig-altrecord td.grid-readonly, .ui-iggrid .ui-ig-record tr.ui-ig-altrecord td.grid-readonly, .ui-iggrid .ui-ig-record tr td, .ui-iggrid .ui-ig-record tr td.grid-readonly, .ui-iggrid .ui-ig-record tr td.grid-readonly, .ui-iggrid .ui-ig-record tr.ui-ig-altrecord td, .ui-iggrid .ui-ig-record tr.ui-ig-altrecord td.grid-readonly, .ui-iggrid .ui-ig-record tr.ui-ig-altrecord td.grid-readonly {
+    font-family: Arial;
+    color: Black;
+    padding: 4px; }
+  .ui-iggrid .ui-igedit input {
+    padding-left: 0;
+    padding-right: 0;
+    height: 20px;
+    width: 100%; }
+  .ui-iggrid .ui-iggrid-tablebody td {
+    border: 1px none; }
+  .ui-iggrid .ui-iggrid-tablebody td {
+    border-left: 1px solid #d9d9d9; }
+  .ui-iggrid .ui-iggrid-buttoncontainer {
+    /* hiding commit/undo edit row buttons */
+    display: none;
+    visibility: hidden; }

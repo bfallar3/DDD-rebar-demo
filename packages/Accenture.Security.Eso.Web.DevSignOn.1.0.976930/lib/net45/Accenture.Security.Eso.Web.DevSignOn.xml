@@ -1,0 +1,1618 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Accenture.Security.Eso.Web.DevSignOn</name>
+    </assembly>
+    <members>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Adfs.AdfsController">
+            <summary>
+            AdfsController Class that inherits Controller.
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Adfs.AdfsController.Index(Accenture.Security.Eso.Web.DevSignOn.Adfs.TokenRequest)">
+            <summary>
+            Post page.
+            </summary>
+            <param name="request">The TokenRequest.</param>
+            <returns>The Response.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Adfs.AdfsController.Error(System.String)">
+            <summary>
+            Create error Response.
+            </summary>
+            <param name="error">The error</param>
+            <returns>The error Response.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Adfs.AdfsController.FindJwtClaimsToRemove(System.Collections.Generic.IEnumerable{System.Security.Claims.Claim})">
+            <summary>
+            Find Jwt Claims to remove.
+            </summary>
+            <param name="enumerable">The list of claims.</param>
+            <returns>The list of claims to remove.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Adfs.AdfsController.ProcessUserNameRequest(Accenture.Security.Eso.Web.DevSignOn.Adfs.TokenRequest)">
+            <summary>
+            Process UserName Request.
+            </summary>
+            <param name="request">The TokenRequest.</param>
+            <returns>The token Response.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Adfs.AdfsController.CreateTokenResponse(System.Security.Claims.ClaimsIdentity,System.String)">
+            <summary>
+            Create Token Response.
+            </summary>
+            <param name="subject">The claims identity</param>
+            <param name="audience">The audience.</param>
+            <returns>The token Response.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Adfs.AdfsController.ProcessJwtRequest(Accenture.Security.Eso.Web.DevSignOn.Adfs.TokenRequest)">
+            <summary>
+            Process JWT Request.
+            </summary>
+            <param name="request">The TokenRequest.</param>
+            <returns>The token Response.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Adfs.AdfsController.ProcessSamlRequest(Accenture.Security.Eso.Web.DevSignOn.Adfs.TokenRequest)">
+            <summary>
+            Process SAML Request.
+            </summary>
+            <param name="request">The TokenRequest.</param>
+            <returns>The token Response.</returns>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants">
+            <summary>
+            Class OAuth2Constants.
+            </summary>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.GrantTypes">
+            <summary>
+            Class GrantTypes.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.GrantTypes.Password">
+            <summary>
+            The Password.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.GrantTypes.AuthorizationCode">
+            <summary>
+            The AuthorizationCode.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.GrantTypes.ClientCredentials">
+            <summary>
+            The ClientCredentials.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.GrantTypes.RefreshToken">
+            <summary>
+            The RefreshToken.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.GrantTypes.Saml2">
+            <summary>
+            The Saml2.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.GrantTypes.JwtBearer">
+            <summary>
+            The JwtBearer.
+            </summary>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.ResponseTypes">
+            <summary>
+            Class ResponseTypes.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.ResponseTypes.Token">
+            <summary>
+            The Token.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.ResponseTypes.Code">
+            <summary>
+            The Code.
+            </summary>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.Errors">
+            <summary>
+            Class Errors.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.Errors.InvalidRequest">
+            <summary>
+            The InvalidRequest.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.Errors.InvalidClient">
+            <summary>
+            The InvalidClient.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.Errors.InvalidGrant">
+            <summary>
+            The InvalidGrant.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.Errors.UnauthorizedClient">
+            <summary>
+            The UnauthorizedClient.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.Errors.UnsupportedGrantType">
+            <summary>
+            The UnsupportedGrantType.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.Errors.UnsupportedResponseType">
+            <summary>
+            The UnsupportedResponseType.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.Errors.InvalidScope">
+            <summary>
+            The InvalidScope.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.Errors.AccessDenied">
+            <summary>
+            The AccessDenied.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuth2Constants.Errors.ServerError">
+            <summary>
+            The ServerError.
+            </summary>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuthResult">
+            <summary>
+            Class OAuthResult that inherits JsonResult.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuthResult.status">
+            <summary>
+            The <see cref="F:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuthResult.status"/>.
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuthResult.#ctor(System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuthResult"/> class.
+            </summary>
+            <param name="data">The data.</param>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuthResult.#ctor(System.Net.HttpStatusCode,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuthResult"/> class
+            </summary>
+            <param name="status">The http status code.</param>
+            <param name="data">The data.</param>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Adfs.OAuthResult.ExecuteResult(System.Web.Mvc.ControllerContext)">
+            <summary>
+            Execute result.
+            </summary>
+            <param name="context">The controller context.</param>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Adfs.TokenRequest">
+            <summary>
+            Class TokenRequest.
+            </summary>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Adfs.TokenRequest.Grant_Type">
+            <summary>
+            Gets or sets Grant_Type.
+            </summary>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Adfs.TokenRequest.Scope">
+            <summary>
+            Gets or sets Scope.
+            </summary>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Adfs.TokenRequest.UserName">
+            <summary>
+            Gets or sets UserName.
+            </summary>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Adfs.TokenRequest.Password">
+            <summary>
+            Gets or sets Password.
+            </summary>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Adfs.TokenRequest.Code">
+            <summary>
+            Gets or sets Code.
+            </summary>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Adfs.TokenRequest.Refresh_Token">
+            <summary>
+            Gets or sets Refresh_Token.
+            </summary>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Adfs.TokenRequest.Assertion">
+            <summary>
+            Gets or sets Assertion.
+            </summary>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Adfs.TokenResponse">
+            <summary>
+            Properties for Token responses.
+            </summary>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Adfs.TokenResponse.AccessToken">
+            <summary>
+            Gets or sets the access token.
+            </summary>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Adfs.TokenResponse.TokenType">
+            <summary>
+            Gets or sets the token type.
+            </summary>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Adfs.TokenResponse.ExpiresIn">
+            <summary>
+            Gets or sets the token expiration.
+            </summary>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Adfs.TokenResponse.RefreshToken">
+            <summary>
+            Gets or sets the refresh token.
+            </summary>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Assets.AssetManager">
+            <summary>
+            Class AssetManager.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Assets.AssetManager.Prefix">
+            <summary>
+            The Prefix.
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Assets.AssetManager.LoadString(System.String)">
+            <summary>
+            Get Load string
+            </summary>
+            <param name="file">the file</param>
+            <returns>load string.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Assets.AssetManager.LoadBytes(System.String)">
+            <summary>
+            Get string array
+            </summary>
+            <param name="file">the file</param>
+            <returns>String array.</returns>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.DisableUrlAuthorizationModule">
+            <summary>
+            An implementation of <see cref="T:System.Web.IHttpModule"/>.
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.DisableUrlAuthorizationModule.Configure">
+            <summary>
+            Registers the module into the ASP.Net pipeline.
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.DisableUrlAuthorizationModule.Init(System.Web.HttpApplication)">
+            <summary>
+            Initializes a module and prepares the module to handle requests.
+            </summary>
+            <param name="context">An <see cref="T:System.Web.HttpApplication"/> that provides access to the methods, properties, and events common to all application objects within an ASP.NET application</param>
+            <exception cref="T:System.ArgumentNullException">when <paramref name="context"/> is <see langword="null"/></exception>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.DisableUrlAuthorizationModule.AppBeginRequest(System.Object,System.EventArgs)">
+            <summary>
+            Handles the app_BeginRequest.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.DisableUrlAuthorizationModule.Dispose">
+            <summary>
+            Disposes of the resources (other than memory) used by the module that implements <see cref="T:System.Web.IHttpModule" />.
+            </summary>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Users.ClaimMapper">
+            <summary>
+            Class ClaimMapper
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Users.ClaimMapper.AccentureNamespace">
+            <summary>
+            The accenture namespace
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Users.ClaimMapper.ClaimsNamespace">
+            <summary>
+            The claims namespace
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Users.ClaimMapper.Claims2005Namespaces">
+            <summary>
+            The claims2005 namespaces
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Users.ClaimMapper.Mappings">
+            <summary>
+            The Mappings
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.ClaimMapper.MapClaim(System.String)">
+            <summary>
+            Maps the claim.
+            </summary>
+            <param name="shortName">The short name.</param>
+            <returns>All of the claims that map to the <paramref name="shortName"/>.</returns>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.ClaimsExtensions">
+            <summary>
+            Class ClaimsExtensions
+            </summary>
+            <remarks>These extensions also exist in ThinkTecture.IdentityModel, we are copying them here so we do not need the
+            dependency.</remarks>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.ClaimsExtensions.HasClaim(System.Security.Claims.ClaimsPrincipal,System.String)">
+            <summary>
+            Determines whether the specified user has claim.
+            </summary>
+            <param name="user">The user.</param>
+            <param name="claimType">The claimType.</param>
+            <returns><c> true </c> if the specified user has claim; otherwise, <c> false </c>.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.ClaimsExtensions.GetValue(System.Collections.Generic.IEnumerable{System.Security.Claims.Claim},System.String)">
+            <summary>
+            Gets the value.
+            </summary>
+            <param name="claims">The claims.</param>
+            <param name="claimType">The claimType.</param>
+            <returns>The claim or <c>null</c></returns>
+            <exception cref="T:System.InvalidOperationException">if more than one claim matches the <paramref name="claimType"/>.</exception>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.ClaimsExtensions.GetValues(System.Collections.Generic.IEnumerable{System.Security.Claims.Claim},System.String)">
+            <summary>
+            Gets the values.
+            </summary>
+            <param name="claims">The claims.</param>
+            <param name="claimType">Type of the claim.</param>
+            <returns>All the claim values matching the <paramref name="claimType" />.</returns>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConfiguration">
+            <summary>
+            Class EmbeddedSTSConfiguration
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConfiguration.Start">
+            <summary>
+            Start the STS Configuration.
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConfiguration.UseEmbeddedSTS">
+            <summary>
+            Determine if use embedded sts.
+            </summary>
+            <returns>The boolean.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConfiguration.ConfigureWIF">
+            <summary>
+            Configure WIF.
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConfiguration.ConfigureRoutes">
+            <summary>
+            Configure routes.
+            </summary>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConstants">
+            <summary>
+            Constants for EmbeddedSTS.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConstants.TokenIssuerName">
+            <summary>
+            The token issuer name.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConstants.SamlTokenLifetime">
+            <summary>
+            The SamlTokenLifetime.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConstants.JwtTokenLifetime">
+            <summary>
+            The JwtTokenLifetime.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConstants.SigningCertificateFile">
+            <summary>
+            The SigningCertificateFile.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConstants.SigningCertificatePassword">
+            <summary>
+            The SigningCertificatePassword.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConstants.SignInFile">
+            <summary>
+            The SignInFile.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConstants.SignOutFile">
+            <summary>
+            The SignOutFile.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConstants.PathPrefix">
+            <summary>
+            The WS-Fed path prefix.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConstants.WsFedPath">
+            <summary>
+            The WS-Fed path.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConstants.SessionSignInPath">
+            <summary>
+            The SessionSignInPath.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConstants.SessionSignOutPath">
+            <summary>
+            The SessionSignOutPath.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConstants.AdfsBridgePath">
+            <summary>
+            The AdfsBridgePath.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConstants.PwdFile">
+            <summary>
+            The PwdFile.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConstants.AccFile">
+            <summary>
+            The AccFile.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConstants.EsoTitle">
+            <summary>
+            The EsoTitle.
+            </summary>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.EmbeddedSTSConstants.SigningCertificate">
+            <summary>
+            Gets the signing certificate of the embedded sts.
+            </summary>
+            <returns>The signing Certificate.</returns>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader">
+            <summary>
+            Reads an XML file of users to build up custom enterprise identities for authentication.
+            <para>
+            The xml file can contain: Users with user names, passwords, and custom data,
+            Blocks of users to easily generate authentication information for large quantities
+            of users when needed for testing,
+            and Templates with simple string concatenation templates to easily re-use and build up
+            a user.
+            </para>
+            </summary>
+            <example lang="xml">
+              <![CDATA[
+              <?xml version="1.0" encoding="utf-8" ?>
+              <Security>
+              <Templates>
+              <!-- Defines a template, all templates are required to have a unique name attribute -->
+              <Template name="user">
+              <!-- Expression are just string replacement using syntax of ${ [field name] } -->
+              <!-- Defines an expression that sets the SapUserId field to the value of the PeopleKey field -->
+              <sapUserId>${peopleKey}</userId>
+              <!-- Defines an expression that sets the DisplayName field to the value -->
+              <displayName>${lastName}, ${firstName} ${middleInitial}</displayName>
+              <enterpriseId>${firstName}.${lastName}</enterpriseId>
+              <emailAddress>${firstName}.${lastName}@accenture.com</emailAddress>
+              <!-- Adds a value of MyApp.Users to the MultiValue groups key -->
+              <groups>
+              <group>MyApp.Users</group>
+              </groups>
+              </Template>
+              <!--
+            Defines a second template named admin, that mixes in the template definition from users.
+            Multiple templates can be mixed in, separate the template names with a semi-colon (;)
+            -->
+              <Template name="admin" templates="user">
+              <!-- Any users using this template will belong to both the MyApp.Users and MyApp.Admins groups -->
+              <groups>
+              <group>MyApp.Admins</group>
+              </groups>
+              </Template>
+              </Templates>
+              <UserBlocks>
+              <!-- User Blocks define large sets of users quickly, at run time the blocks will be expanded into unique
+            sets of users.  This is very useful for generating large quantities of users for load testing. -->
+              <UserBlock name="APT" id-start="1000" count="1000">
+              <!-- When expanding expression user blocks get a special value named 'id' which is incremented by 1 from id-start -->
+              <UserName>aptuser${id}</UserName> <!-- Expression will be expanded to create user names aptuser1000, aptuser1001, ... aptuser1999 -->
+              <Password>password${id}</Password> <!-- Expression will be expanded to create passwords password1000, password1001, ... password1999 -->
+              <Identity templates="user"> <!-- define the custom data, mixing in the default user template -->
+              <!-- Define some custom expression so when the 'user' template is mixed in, those expression will have valid values. -->
+              <firstName>User ${id}</firstName>
+              <lastName>APT</lastName>
+              <peopleKey>${id}</peopleKey>
+              </Identity>
+              </UserBlock>
+              </UserBlocks>
+              <Users>
+              <!-- The most convential way to define users for testing is to just create them individually -->
+              <!-- A user must have a name and password attribute with a constant value, they cannot be expressions -->
+              <User name="user1" password="password1">
+              <!-- The Identity element is where you put all your custom data, it takes an optional attribute named 'templates'
+            that is a semi-colon separated list of template names that can be mixed in -->
+              <Identity templates="user">
+              <firstName>John</firstName>
+              <lastName>Doe</lastName>
+              <middleInitial>J</middleInitial>
+              <peopleKey>1</peopleKey>
+              </Identity>
+              </User>
+              <User name="admin2" password="admin2">
+              <!-- The Identity element is where you put all your custom data, it takes an optional attribute named 'templates'
+            that is a semi-colon separated list of template names that can be mixed in -->
+              <Identity templates="admin">
+              <firstName>John</firstName>
+              <lastName>Admin</lastName>
+              <middleInitial>J</middleInitial>
+              <peopleKey>2</peopleKey>
+              </Identity>
+              </User>
+              </Users>
+              </Security>
+            ]]>
+            </example>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.file">
+            <summary>
+            The file
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.watcher">
+            <summary>
+            The watcher
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.users">
+            <summary>
+            The users
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.LoadUsers">
+            <summary>
+            Loads the users.
+            </summary>
+            <returns>The loaded users.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.LoadUsers(System.String)">
+            <summary>
+            Loads the users.
+            </summary>
+            <param name="userFileName">Name of the user file.</param>
+            <returns>The loaded users.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.ReadUsers(System.IO.Stream)">
+            <summary>
+            Reads the users.
+            </summary>
+            <param name="stream">The xml stream to read the users from.</param>
+            <returns>A dictionary of users.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.ReadUsers(System.String)">
+            <summary>
+            Reads the users.
+            </summary>
+            <param name="fileName">The file to read the users from.</param>
+            <returns>A dictionary of users</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.ReadUsers(System.Xml.Linq.XDocument)">
+            <summary>
+            Reads the users.
+            </summary>
+            <param name="xmlDocument">The XML document to read the users from.</param>
+            <returns>A dictionary of users.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.CreateFileWatcher(System.String)">
+            <summary>
+            Creates the file watcher.
+            </summary>
+            <param name="fileToWatch">The file to watch.</param>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.ExpandExpression(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Expands the expression.
+            </summary>
+            <param name="expression">The expression.</param>
+            <param name="values">The values.</param>
+            <param name="otherExpressions">The other expressions.</param>
+            <returns>The expanded expression.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.ReadSecurityTemplate(System.Xml.Linq.XElement,System.Collections.Generic.IDictionary{System.String,Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.SecurityTemplate})">
+            <summary>
+            Reads the security template.
+            </summary>
+            <param name="element">The element.</param>
+            <param name="templates">The templates.</param>
+            <returns>The <see cref="T:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.SecurityTemplate"/>.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.ReadSecurityTemplate(System.Xml.Linq.XElement)">
+            <summary>
+            Reads the security template.
+            </summary>
+            <param name="element">The element.</param>
+            <returns>The Security Template.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.ReadTemplates(System.Xml.Linq.XDocument)">
+            <summary>
+            Reads the templates.
+            </summary>
+            <param name="xdoc">The xml document.</param>
+            <returns>The security templates.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.ReadUserBlocks(System.Collections.Generic.Dictionary{System.String,Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.SecurityTemplate},System.Xml.Linq.XDocument)">
+            <summary>
+            Reads the user blocks.
+            </summary>
+            <param name="templates">The templates.</param>
+            <param name="xdoc">The xml document.</param>
+            <returns>The user block templates.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.ReadUserTemplates(System.Collections.Generic.Dictionary{System.String,Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.SecurityTemplate},System.Xml.Linq.XDocument)">
+            <summary>
+            Reads the user templates.
+            </summary>
+            <param name="templates">The templates.</param>
+            <param name="xdoc">The xml document.</param>
+            <returns>The user templates.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.ResolveDependencies(Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.SecurityTemplate,System.Collections.Generic.IDictionary{System.String,Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.SecurityTemplate})">
+            <summary>
+            Resolves the dependencies.
+            </summary>
+            <param name="template">The template.</param>
+            <param name="templates">The templates.</param>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.ExpandTemplate(Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity,Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.SecurityTemplate,System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean)">
+            <summary>
+            Expands the template.
+            </summary>
+            <param name="user">The user.</param>
+            <param name="template">The template.</param>
+            <param name="expressions">The expressions.</param>
+            <param name="expandExpressions">if set to <c>true</c> [expand expressions].</param>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.ExpandUser(Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.UserTemplate)">
+            <summary>
+            Expands the user.
+            </summary>
+            <param name="userTemplate">The user template.</param>
+            <returns>The enterprise identity.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.ExpandUserBlocks(System.Collections.Generic.Dictionary{System.String,Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity},System.Collections.Generic.IEnumerable{Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.UserBlockTemplate})">
+            <summary>
+            Expands the user blocks.
+            </summary>
+            <param name="userRepository">The users.</param>
+            <param name="userBlockTemplates">The user block templates.</param>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.ExpandUsers(System.Collections.Generic.Dictionary{System.String,Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity},System.Collections.Generic.IDictionary{System.String,Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.UserTemplate})">
+            <summary>
+            Expands the users.
+            </summary>
+            <param name="userRepository">The users.</param>
+            <param name="userTemplates">The user templates.</param>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.Users">
+            <summary>
+            Gets the users.
+            </summary>
+            <value>The users.</value>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.SecurityTemplate">
+            <summary>
+            Class SecurityTemplate
+            </summary>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.SecurityTemplate.Dependencies">
+            <summary>
+            Gets or sets the dependencies.
+            </summary>
+            <value>The dependencies.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.SecurityTemplate.Expressions">
+            <summary>
+            Gets or sets the expressions.
+            </summary>
+            <value>The expressions.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.SecurityTemplate.MultiValues">
+            <summary>
+            Gets or sets the multi values.
+            </summary>
+            <value>The multi values.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.SecurityTemplate.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.SecurityTemplate.Values">
+            <summary>
+            Gets or sets the values.
+            </summary>
+            <value>The values.</value>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.UserBlockTemplate">
+            <summary>
+            Class UserBlockTemplate
+            </summary>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.UserBlockTemplate.Count">
+            <summary>
+            Gets or sets the count.
+            </summary>
+            <value>The count.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.UserBlockTemplate.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.UserBlockTemplate.PasswordExpression">
+            <summary>
+            Gets or sets the password expression.
+            </summary>
+            <value>The password expression.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.UserBlockTemplate.SecurityTemplate">
+            <summary>
+            Gets or sets the security template.
+            </summary>
+            <value>The security template.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.UserBlockTemplate.Start">
+            <summary>
+            Gets or sets the start.
+            </summary>
+            <value>The start.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.UserBlockTemplate.UserNameExpression">
+            <summary>
+            Gets or sets the user name expression.
+            </summary>
+            <value>The user name expression.</value>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.UserTemplate">
+            <summary>
+            Class UserTemplate
+            </summary>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.UserTemplate.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+            <value>The password.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.UserTemplate.SecurityTemplate">
+            <summary>
+            Gets or sets the security template.
+            </summary>
+            <value>The security template.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseAuthenticationUserReader.UserTemplate.UserName">
+            <summary>
+            Gets or sets the name of the user.
+            </summary>
+            <value>The name of the user.</value>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseUserType">
+            <summary>
+            Specifies the type of user the identity belongs to
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseUserType.Unknown">
+            <summary>
+            The identity is unknown
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseUserType.Employee">
+            <summary>
+            The identity is an employee
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseUserType.Contractor">
+            <summary>
+            The identity is a contractor
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseUserType.Application">
+            <summary>
+            The identity is an application
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseUserType.Temporary">
+            <summary>
+            The identity is temporary
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseUserType.TestAccount">
+            <summary>
+            The identity is a test account
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseUserType.NameAlias">
+            <summary>
+            The identity is a name alias
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseUserType.RetiredPartner">
+            <summary>
+            The identity is a retired partner
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseUserType.Client">
+            <summary>
+            The identity is a client
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Users.EnterpriseUserType.RestrictedContractor">
+            <summary>
+            The identity is a restricted contractor
+            </summary>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity">
+            <summary>
+            An implementation of <see cref="T:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity"/> that uses dictionaries
+            of key value pairs to return custom data.
+            </summary>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity">
+            <summary>
+            An extended <see cref="T:System.Security.Principal.IIdentity"/> with custom Accenture claims.
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.GetGroups">
+            <summary>
+            Gets the groups.
+            </summary>
+            <returns>The Groups belonging to the <see cref="T:System.Security.Principal.IIdentity"/>.</returns>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.AllClaims">
+            <summary>
+            Gets all claims.
+            </summary>
+            <value>All the claims belonging to the <see cref="T:System.Security.Principal.IIdentity"/>.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.JobFamilyCode">
+            <summary>
+            Gets the job family code.
+            </summary>
+            <value>The job family code belonging to the <see cref="T:System.Security.Principal.IIdentity"/>.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.JobFamilyDescription">
+            <summary>
+            Gets the job family description.
+            </summary>
+            <value>The job family description.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.CompanyCode">
+            <summary>
+            Gets the company code.
+            </summary>
+            <value>The company code.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.CompanyDescription">
+            <summary>
+            Gets the company description.
+            </summary>
+            <value>The company description.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.CostCenterCode">
+            <summary>
+            Gets the cost center code.
+            </summary>
+            <value>The cost center code.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.CostCenterDescription">
+            <summary>
+            Gets the cost center description.
+            </summary>
+            <value>The cost center description.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.CountryCode">
+            <summary>
+            Gets the country code.
+            </summary>
+            <value>The country code.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.CountryDescription">
+            <summary>
+            Gets the country description.
+            </summary>
+            <value>The country description.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.DisplayName">
+            <summary>
+            Gets the display name.
+            </summary>
+            <value>The display name.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.EmailAddress">
+            <summary>
+            Gets the email address.
+            </summary>
+            <value>The email address.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.EnterpriseId">
+            <summary>
+            Gets the enterprise id.
+            </summary>
+            <value>The enterprise id.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.FirstName">
+            <summary>
+            Gets the first name.
+            </summary>
+            <value>The first name.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.GeographicUnit">
+            <summary>
+            Gets the geographic unit.
+            </summary>
+            <value>The geographic unit.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.GeographicUnitCode">
+            <summary>
+            Gets the geographic unit code.
+            </summary>
+            <value>The geographic unit code.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.InstantMessengerAddress">
+            <summary>
+            Gets the instant messenger address.
+            </summary>
+            <value>The instant messenger address.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.LastName">
+            <summary>
+            Gets the last name.
+            </summary>
+            <value>The last name.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.Location">
+            <summary>
+            Gets the location.
+            </summary>
+            <value>The location.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.LocationCode">
+            <summary>
+            Gets the location code.
+            </summary>
+            <value>The location code.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.LogOffAddress">
+            <summary>
+            Gets the log off address.
+            </summary>
+            <value>The log off address.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.MiddleInitial">
+            <summary>
+            Gets the middle initial.
+            </summary>
+            <value>The middle initial.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.NonAccentureNumber">
+            <summary>
+            Gets the non accenture number.
+            </summary>
+            <value>The non accenture number.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.OriginalIdentity">
+            <summary>
+            Gets the original identity.
+            </summary>
+            <value>The original identity.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.PeopleKey">
+            <summary>
+            Gets the people key.
+            </summary>
+            <value>The people key.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.PersonnelNumber">
+            <summary>
+            Gets the personnel number.
+            </summary>
+            <value>The personnel number.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.SapUserId">
+            <summary>
+            Gets the sap user id.
+            </summary>
+            <value>The sap user id.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.TelephoneNumber">
+            <summary>
+            Gets the telephone number.
+            </summary>
+            <value>The telephone number.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.UserPrincipalName">
+            <summary>
+            Gets the name of the user principal.
+            </summary>
+            <value>The name of the user principal.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.UserType">
+            <summary>
+            Gets the type of the user.
+            </summary>
+            <value>The type of the user.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.WorkforceCode">
+            <summary>
+            Gets the workforce code.
+            </summary>
+            <value>The workforce code.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.IEnterpriseIdentity.WorkforceDescription">
+            <summary>
+            Gets the workforce description.
+            </summary>
+            <value>The workforce description.</value>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity"/> class.
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.#ctor(Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity,System.Security.Principal.IPrincipal)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity"/> class.
+            </summary>
+            <param name="existingUser">The existing user to clone.</param>
+            <param name="originalPrincipal">The original principal.</param>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.GetGroups">
+            <summary>
+            Gets the groups.
+            </summary>
+            <returns>An array of group names.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.GetDefault(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Gets a default value for the given key..
+            </summary>
+            <param name="key">The key.</param>
+            <param name="defaultValue">The default value.</param>
+            <param name="values">The values.</param>
+            <returns>The value if found, otherwise the <paramref name="defaultValue" />.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.GetDefault``1(System.String,``0,System.Collections.Generic.IDictionary{System.String,``0})">
+            <summary>
+            Gets a default value for the given key from the given set of values.
+            </summary>
+            <typeparam name="T">The type of value to return</typeparam>
+            <param name="key">The key.</param>
+            <param name="defaultValue">The default value if not found.</param>
+            <param name="values">The values.</param>
+            <returns>The value if found, otherwise the <paramref name="defaultValue" />.</returns>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.AllClaims">
+            <summary>
+            Gets all claims.
+            </summary>
+            <value>All claims.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.AuthenticationType">
+            <summary>
+            Gets the type of authentication used.
+            </summary>
+            <value>The type of the authentication.</value>
+            <returns>The type of authentication used to identify the user.</returns>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.CareerLevelCode">
+            <summary>
+            Gets the career level code.
+            </summary>
+            <value>The career level code.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.CareerLevelDescription">
+            <summary>
+            Gets the career level description.
+            </summary>
+            <value>The career level description.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.CompanyCode">
+            <summary>
+            Gets the company code.
+            </summary>
+            <value>The company code.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.CompanyDescription">
+            <summary>
+            Gets the company description.
+            </summary>
+            <value>The company description.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.CostCenterCode">
+            <summary>
+            Gets the cost center code.
+            </summary>
+            <value>The cost center code.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.JobFamilyCode">
+            <summary>
+            Gets the job family code.
+            </summary>
+            <value>The job family code belonging to the <see cref="T:System.Security.Principal.IIdentity"/>.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.JobFamilyDescription">
+            <summary>
+            Gets the job family description.
+            </summary>
+            <value>The job family description.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.CostCenterDescription">
+            <summary>
+            Gets the cost center description.
+            </summary>
+            <value>The cost center description.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.CountryCode">
+            <summary>
+            Gets the country code.
+            </summary>
+            <value>The country code.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.CountryDescription">
+            <summary>
+            Gets the country description.
+            </summary>
+            <value>The country description.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.DisplayName">
+            <summary>
+            Gets the display name.
+            </summary>
+            <value>The display name.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.EmailAddress">
+            <summary>
+            Gets the email address.
+            </summary>
+            <value>The email address.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.EnterpriseId">
+            <summary>
+            Gets the enterprise id.
+            </summary>
+            <value>The enterprise id.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.FirstName">
+            <summary>
+            Gets the first name.
+            </summary>
+            <value>The first name.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.GeographicUnit">
+            <summary>
+            Gets the geographic unit.
+            </summary>
+            <value>The geographic unit.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.GeographicUnitCode">
+            <summary>
+            Gets the geographic unit code.
+            </summary>
+            <value>The geographic unit code.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.InnerPrincipal">
+            <summary>
+            Gets or sets the inner principal.
+            </summary>
+            <value>The inner principal.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.InstantMessengerAddress">
+            <summary>
+            Gets the instant messenger address.
+            </summary>
+            <value>The instant messenger address.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.IsAuthenticated">
+            <summary>
+            Gets a value indicating whether the user has been authenticated.
+            </summary>
+            <value><c>true</c> if this instance is authenticated; otherwise, <c>false</c>.</value>
+            <returns>true if the user was authenticated; otherwise, false.</returns>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.LastName">
+            <summary>
+            Gets the last name.
+            </summary>
+            <value>The last name.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.Location">
+            <summary>
+            Gets the location.
+            </summary>
+            <value>The location.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.LocationCode">
+            <summary>
+            Gets the location code.
+            </summary>
+            <value>The location code.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.LogOffAddress">
+            <summary>
+            Gets the log off address.
+            </summary>
+            <value>The log off address.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.MiddleInitial">
+            <summary>
+            Gets the middle initial.
+            </summary>
+            <value>The middle initial.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.MultiValues">
+            <summary>
+            Gets or sets the dictionary of multi-values e.g. (Groups or other multi-valued keys) as the backing store for the user.
+            </summary>
+            <value>The multi values.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.Name">
+            <summary>
+            Gets the name of the current user.
+            </summary>
+            <value>The name.</value>
+            <returns>The name of the user on whose behalf the code is running.</returns>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.NonAccentureNumber">
+            <summary>
+            Gets the non accenture number.
+            </summary>
+            <value>The non accenture number.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.OriginalIdentity">
+            <summary>
+            Gets the original identity.
+            </summary>
+            <value>The original identity.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+            <value>The password.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.PeopleKey">
+            <summary>
+            Gets the people key.
+            </summary>
+            <value>The people key.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.PersonnelNumber">
+            <summary>
+            Gets the personnel number.
+            </summary>
+            <value>The personnel number.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.SapUserId">
+            <summary>
+            Gets the sap user id.
+            </summary>
+            <value>The sap user id.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.TelephoneNumber">
+            <summary>
+            Gets the telephone number.
+            </summary>
+            <value>The telephone number.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.UserName">
+            <summary>
+            Gets or sets the name of the user.
+            </summary>
+            <value>The name of the user.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.UserPrincipalName">
+            <summary>
+            Gets the name of the user principal.
+            </summary>
+            <value>The name of the user principal.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.UserType">
+            <summary>
+            Gets the type of the user.
+            </summary>
+            <value>The type of the user.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.Values">
+            <summary>
+            Gets or sets the dictionary of values used as the backing store for user information.
+            </summary>
+            <value>The values.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.WorkforceCode">
+            <summary>
+            Gets the workforce code.
+            </summary>
+            <value>The workforce code.</value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Web.DevSignOn.Users.ExpandedEnterpriseIdentity.WorkforceDescription">
+            <summary>
+            Gets the workforce description.
+            </summary>
+            <value>The workforce description.</value>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Session.SessionController">
+            <summary>
+            SessionController Class that inherits Controller.
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Session.SessionController.SignIn(System.String)">
+            <summary>
+            Sign in redirection.
+            </summary>
+            <param name="username">The username.</param>
+            <returns>The home page.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Session.SessionController.CreateBootStrapContext(System.Collections.Generic.IEnumerable{System.Security.Claims.Claim})">
+            <summary>
+            Create Bootstrap context.
+            </summary>
+            <param name="claims">The claims.</param>
+            <returns>The bootstrap context.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Session.SessionController.SignOut">
+            <summary>
+            Sign out redirection.
+            </summary>
+            <returns>The home page.</returns>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Startup">
+            <summary>
+            Assembly Startup method called by the WebActivatorEx package to self configure itself in a web environment.
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Startup.PreApplicationStart">
+            <summary>
+            Registers the into the ASP.Net pipeline.
+            </summary>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Tokens.JWTSecurityTokenHandlerWrapper">
+            <summary>
+            Class JWTSecurityTokenHandlerWrapper that inherits JWTSecurityTokenHandler.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Web.DevSignOn.Tokens.JWTSecurityTokenHandlerWrapper.validationParams">
+            <summary>
+            The validation parameters
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Tokens.JWTSecurityTokenHandlerWrapper.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Accenture.Security.Eso.Web.DevSignOn.Tokens.JWTSecurityTokenHandlerWrapper"/> class.
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Tokens.JWTSecurityTokenHandlerWrapper.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Accenture.Security.Eso.Web.DevSignOn.Tokens.JWTSecurityTokenHandlerWrapper"/> class.
+            </summary>
+            <param name="audience">The audience.</param>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Tokens.JWTSecurityTokenHandlerWrapper.#ctor(System.IdentityModel.Tokens.TokenValidationParameters)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Accenture.Security.Eso.Web.DevSignOn.Tokens.JWTSecurityTokenHandlerWrapper"/> class.
+            </summary>
+            <param name="validationParams">The validation parameters.</param>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Tokens.JWTSecurityTokenHandlerWrapper.ValidateToken(System.IdentityModel.Tokens.JwtSecurityToken)">
+            <summary>
+            Validates the token.
+            </summary>
+            <param name="token">The token.</param>
+            <returns>List of Claims.</returns>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.Tokens.TokenHelper">
+            <summary>
+            Class TokenHelper.
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Tokens.TokenHelper.CreateSamlToken(System.Security.Claims.ClaimsIdentity,System.String)">
+            <summary>
+            Create SAML Token.
+            </summary>
+            <param name="subject">The claims identity.</param>
+            <param name="audience">The audience.</param>
+            <returns>The saml security token</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Tokens.TokenHelper.ParseSaml(System.String)">
+            <summary>
+            Parse SAML Token.
+            </summary>
+            <param name="tokenString">The tokenString.</param>
+            <returns>The saml security token</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Tokens.TokenHelper.ValidateSaml(System.IdentityModel.Tokens.SamlSecurityToken)">
+            <summary>
+            Validate SAML Token.
+            </summary>
+            <param name="token">The SamlSecurityToken.</param>
+            <returns>The claims identity.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Tokens.TokenHelper.CreateJWT(System.Security.Claims.ClaimsIdentity,System.String)">
+            <summary>
+            Create JWT.
+            </summary>
+            <param name="subject">The claims identity.</param>
+            <param name="audience">The claims audience.</param>
+            <returns>The JWTSecurityToken.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Tokens.TokenHelper.ParseJwt(System.String)">
+            <summary>
+            Parse JWT.
+            </summary>
+            <param name="tokenString">The tokenString.</param>
+            <returns>The JWTSecurityToken.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Tokens.TokenHelper.ValidateJwt(System.IdentityModel.Tokens.JwtSecurityToken)">
+            <summary>
+            Validate JWT.
+            </summary>
+            <param name="token">The token.</param>
+            <returns>The claims identity.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Tokens.TokenHelper.SerializeJwt(System.IdentityModel.Tokens.JwtSecurityToken)">
+            <summary>
+            Serialize JWT.
+            </summary>
+            <param name="token">The token.</param>
+            <returns>The jwt.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Tokens.TokenHelper.GetSamlHandler">
+            <summary>
+            Get SAML handler.
+            </summary>
+            <returns>The SamlSecurityTokenHandler.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.Tokens.TokenHelper.CreateDescriptor(System.Security.Claims.ClaimsIdentity,System.String,System.Int32)">
+            <summary>
+            Get SAML handler.
+            </summary>
+            <param name="subject">The claims identity.</param>
+            <param name="audience">The audience.</param>
+            <param name="lifetime">The lifetime.</param>
+            <returns>The SecurityTokenDescriptor.</returns>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.UserManager">
+            <summary>
+            Class UserManager.
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.UserManager.GetAllUserNames">
+            <summary>
+            Get All Users.
+            </summary>
+            <returns>The signing Certificate.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.UserManager.GetClaimsForUser(System.String)">
+            <summary>
+            Get User claims.
+            </summary>
+            <param name="name">The name.</param>
+            <returns>List of claims.</returns>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.WsFed.EmbeddedSTSController">
+            <summary>
+            Class EmbeddedSTSController
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.WsFed.EmbeddedSTSController.Html(System.String)">
+            <summary>
+            Get the Content Html.
+            </summary>
+            <param name="html">The content html.</param>
+            <returns>The Content html.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.WsFed.EmbeddedSTSController.Index">
+            <summary>
+            Load the Content html.
+            </summary>
+            <returns>The Content html.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.WsFed.EmbeddedSTSController.ShowUserList">
+            <summary>
+            Get user list.
+            </summary>
+            <returns>The user list  html.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.WsFed.EmbeddedSTSController.GetDataURL(System.String)">
+            <summary>
+            Get base64 encoded value.
+            </summary>
+            <param name="fileName">The filename.</param>
+            <returns>The string base64</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.WsFed.EmbeddedSTSController.GetUser">
+            <summary>
+            Get User.
+            </summary>
+            <returns>The user claims principal.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.WsFed.EmbeddedSTSController.ProcessSignIn(System.IdentityModel.Services.SignInRequestMessage,System.Security.Claims.ClaimsPrincipal)">
+            <summary>
+            Load process sign in html.
+            </summary>
+            <param name="signInMsg">The sign in message.</param>
+            <param name="user">The user.</param>
+            <returns>The sign in html body.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.WsFed.EmbeddedSTSController.ProcessSignOut(System.IdentityModel.Services.SignOutRequestMessage)">
+            <summary>
+            Load process sign out html.
+            </summary>
+            <param name="signOutMsg">The sign Out message.</param>
+            <returns>The html body.</returns>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.WsFed.EmbeddedTokenService">
+            <summary>
+            Class EmbeddedTokenService that inherits SecurityTokenService.
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.WsFed.EmbeddedTokenService.#ctor(System.IdentityModel.Configuration.SecurityTokenServiceConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Accenture.Security.Eso.Web.DevSignOn.WsFed.EmbeddedTokenService"/> class.
+            </summary>
+            <param name="config">The SecurityTokenServiceConfiguration.</param>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.WsFed.EmbeddedTokenService.CreateClaimsIdentity(System.Collections.Generic.IEnumerable{System.Security.Claims.Claim})">
+            <summary>
+            Create claims identity.
+            </summary>
+            <param name="claims">The claims.</param>
+            <returns>The identity scope.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.WsFed.EmbeddedTokenService.GetOutputClaimsIdentity(System.Security.Claims.ClaimsPrincipal,System.IdentityModel.Protocols.WSTrust.RequestSecurityToken,System.IdentityModel.Scope)">
+            <summary>
+            Gets claims identity.
+            </summary>
+            <param name="principal">The user.</param>
+            <param name="request">The request.</param>
+            <param name="scope">The scope.</param>
+            <returns>The claims identity.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.WsFed.EmbeddedTokenService.GetScope(System.Security.Claims.ClaimsPrincipal,System.IdentityModel.Protocols.WSTrust.RequestSecurityToken)">
+            <summary>
+            Gets Scope.
+            </summary>
+            <param name="principal">The claims principal.</param>
+            <param name="request">The RequestSecurityToken.</param>
+            <returns>The identity scope.</returns>
+        </member>
+        <member name="T:Accenture.Security.Eso.Web.DevSignOn.WsFed.EmbeddedTokenServiceConfiguration">
+            <summary>
+            Class EmbeddedTokenServiceConfiguration that inherits SecurityTokenServiceConfiguration.
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Web.DevSignOn.WsFed.EmbeddedTokenServiceConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Accenture.Security.Eso.Web.DevSignOn.WsFed.EmbeddedTokenServiceConfiguration"/> class.
+            </summary>
+        </member>
+    </members>
+</doc>

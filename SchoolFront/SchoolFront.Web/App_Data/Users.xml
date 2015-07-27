@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<Security>
+  <Templates>
+
+    <Template name="user">
+      <groups>
+        <group>User</group>
+      </groups>
+    </Template>
+    
+    <Template name="admin">
+      <groups>
+        <group>Admin</group>
+      </groups>
+    </Template>
+
+    <Template name="accenture" templates="user">
+      <personnelNumber>${peopleKey}</personnelNumber>
+      <enterpriseId>${firstName}.${lastName}</enterpriseId>
+      <displayName>${lastName}, ${firstName}</displayName>
+      <sapUserId>${peopleKey}</sapUserId>
+      <emailAddress>${firstName}.${lastName}@accenture.com</emailAddress>
+      <instantMessengerAddress>${firstName}.${lastName}@accenture.com</instantMessengerAddress>
+    </Template>
+    
+    <Template name="cio-chicago" templates="accenture">
+      <countryCode>US</countryCode>
+      <countryDescription>US-Chicago</countryDescription>
+      <geographicUnitCode>123</geographicUnitCode>
+      <geographicUnit>CIO</geographicUnit>
+      <workforceCode>50</workforceCode>
+      <workforceDescription>Ent/CIO</workforceDescription>
+      <costCenterCode>Cost Center 1</costCenterCode>
+      <costCenterDescription>Chicago</costCenterDescription>
+      <locationCode>2</locationCode>
+      <location>Chicago/US</location>
+      <companyCode>1</companyCode>
+      <companyDescription>Accenture</companyDescription>
+    </Template>
+    
+  </Templates>
+
+<Users>
+  <User name="adam.tybor" password="adam">
+    <Identity templates="cio-chicago;admin">
+      <peopleKey>10654446</peopleKey>
+      <firstName>Adam</firstName>
+      <middleInitial>J</middleInitial>
+      <lastName>Tybor</lastName>
+      <userType>Contractor</userType>
+      <workforceDescription>Ent/CIO</workforceDescription>
+      <careerLevelCode>10</careerLevelCode>
+      <careerLevelDescription>Architect</careerLevelDescription>
+      <telephoneNumber>555-555-5555</telephoneNumber>
+    </Identity>
+  </User>
+  <User name="joe.dulay" password="joe">
+    <Identity templates="cio-chicago">
+      <peopleKey>1235</peopleKey>
+      <firstName>Joe</firstName>
+      <middleInitial>A</middleInitial>
+      <lastName>Dulay</lastName>
+      <userType>Employee</userType>
+      <careerLevelCode>20</careerLevelCode>
+      <careerLevelDescription>Manager</careerLevelDescription>
+      <telephoneNumber>555-555-5555</telephoneNumber>
+    </Identity>
+  </User>
+</Users>
+</Security>

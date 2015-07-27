@@ -1,0 +1,121 @@
+/* Rebar UI Cranberry Red Theme
+ *
+ */
+.ui-banner {
+  background-color: #eca8b8;
+  border-bottom-color: #cd143e; }
+  .ui-banner a:hover, .ui-banner a:focus, .ui-banner a.ui-state-hover, .ui-banner a.ui-state-focus {
+    background-color: #f9e3e8; }
+  .ui-banner a.ui-state-active, .lt-ie9 .ui-banner a.ui-state-active {
+    background-color: #cd143e;
+    color: white; }
+
+.ui-left-nav a:hover, .ui-left-nav a:focus, .ui-left-nav a.ui-state-hover, .ui-left-nav a.ui-state-focus {
+  background-color: #f9e3e8; }
+.ui-left-nav a.ui-state-active
+, .lt-ie9 .ui-left-nav a.ui-state-active {
+  background-color: #cd143e;
+  color: white; }
+
+label, .ui-text-label, .ui-label-color {
+  color: #cd143e; }
+
+.ui-fill-darkest {
+  background-color: #cd143e; }
+
+.ui-fill-dark {
+  background-color: #f1bbc7; }
+
+.ui-fill-medium {
+  background-color: #f4cbd5; }
+
+.ui-fill-light {
+  background-color: #f9e3e8; }
+
+.ui-fill-popup {
+  background-color: #f5d2da; }
+
+.ui-grid-lines th, .ui-grid-lines tr, .ui-grid-lines td {
+  border-left: 1px solid #f7d9e0;
+  border-right: 1px solid #f7d9e0;
+  border-top: 0px;
+  border-bottom: 0px; }
+
+.ui.grid-lines table {
+  border-bottom: 1px solid #f7d9e0; }
+
+.ui-grid-lines-left td {
+  border-left: 1px solid #f7d9e0; }
+
+.ui-grid-lines-right td {
+  border-right: 1px solid #f7d9e0; }
+
+.ui-grey-bar {
+  background-color: #fdf6f7; }
+
+.ui-palette-gradient {
+  /* Start CSS3 Linear Gradient */
+  /* Non CSS3 Browsers */
+  background-color: white;
+  /* IE10 */
+  background-image: -ms-linear-gradient(top, white 0%, #cd143e 100%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(top, white 0%, #cd143e 100%);
+  /* Opera */
+  background-image: -o-linear-gradient(top, white 0%, #cd143e 100%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(1, #cd143e));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(top, white 0%, #cd143e 100%);
+  /* Proposed W3C Markup */
+  background-image: linear-gradient(top, white 0%, #cd143e 100%);
+  /* End CSS3 Linear Gradient */ }
+  .ie9 .ui-palette-gradient {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImcyNzAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGRkZGRkYiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiNDRDE0M0UiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2cyNzApIiAvPgo8L3N2Zz4=); }
+
+.ui-palette-gradient-reverse {
+  /* Start CSS3 Linear Gradient */
+  /* Non CSS3 Browsers */
+  background-color: #cd143e;
+  /* IE10 */
+  background-image: -ms-linear-gradient(top, #cd143e 0%, #f4cbd5 100%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(top, #cd143e 0%, #f4cbd5 100%);
+  /* Opera */
+  background-image: -o-linear-gradient(top, #cd143e 0%, #f4cbd5 100%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #cd143e), color-stop(1, #f4cbd5));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(top, #cd143e 0%, #f4cbd5 100%);
+  /* Proposed W3C Markup */
+  background-image: linear-gradient(top, #cd143e 0%, #f4cbd5 100%);
+  /* End CSS3 Linear Gradient */ }
+  .ie9 .ui-palette-gradient-reverse {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9Imc4ODgiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiNDRDE0M0UiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiNGRkZGRkYiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2c4ODgpIiAvPgo8L3N2Zz4=); }
+
+.contentHeader {
+  color: #cd143e; }
+
+.contentHeaderCodeDisplay {
+  color: #cd143e; }
+
+.ui-iggrid {
+  background-color: #f1bbc7; }
+  .ui-iggrid .ui-iggrid-headertable, .ui-iggrid .ui-widget-header {
+    background: #f1bbc7; }
+  .ui-iggrid .ui-iggrid-headertext {
+    color: #cd143e; }
+  .ui-iggrid tbody td {
+    border-top: 1px solid #fdf6f7;
+    border-bottom: 1px solid #fdf6f7; }
+  .ui-iggrid tbody tr {
+    background: white; }
+  .ui-iggrid .ui-ig-altrecord {
+    /* graybar-color */
+    background: #fdf6f7; }
+
+.ui-selectlist ul.ui-selectlist-list li.ui-state-active {
+  background-color: #f1bbc7;
+  border-color: #f1bbc7; }
+
+/* End Rebar UI Cranberry Red Theme */

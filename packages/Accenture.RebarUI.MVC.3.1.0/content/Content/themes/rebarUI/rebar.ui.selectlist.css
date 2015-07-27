@@ -1,0 +1,46 @@
+.ui-selectlist {
+  display: inline-block;
+  background-color: none;
+  background-image: none; }
+  .ui-selectlist .ui-widget-content {
+    background-color: white;
+    background-image: none; }
+  .ui-selectlist .ui-state-active {
+    background-color: #cfd3d3;
+    border-color: #cfd3d3;
+    color: #000; }
+    .ui-selectlist .ui-state-active span {
+      color: #000; }
+
+.ui-selectlist-list, .ui-selectlist-group-list {
+  background-color: none;
+  background-image: none;
+  padding: 0; }
+
+.ui-selectlist-list {
+  background-color: white;
+  background-image: none;
+  border: 1px solid #d9d9d9;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: auto; }
+
+.ui-selectlist-item {
+  list-style: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  width: auto;
+  background-color: white;
+  background-image: none;
+  line-height: 18px; }
+
+.ui-selectlist-group-list .ui-selectlist-item {
+  padding-left: 8px;
+  background-color: none;
+  background-image: none; }
+
+.ui-selectlist-group-text {
+  font-weight: bold;
+  background-color: none;
+  background-image: none; }

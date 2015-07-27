@@ -1,0 +1,191 @@
+﻿<style type="text/css">
+a {
+  color: #000;
+  cursor: pointer; }
+  a:hover {
+    color: #000;
+    text-decoration: underline; }
+
+table {
+  border-collapse: collapse; }
+  table th, table td {
+    padding: .25em;
+    border: 1px solid #000;
+    font-family: sans-serif; }
+  table th {
+    text-align: left;
+    font-weight: bold; }
+  table thead tr, table tfoot tr {
+    background-color: #aaa; }
+  table thead th {
+    border-bottom: 3px double #000;
+    background-color: #ccc;
+    text-align: center; }
+  table tfoot td {
+    border-top: 3px double #000;
+    color: #333;
+    font-style: italic;
+    font-size: .8em;
+    text-align: right; }
+  table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; }
+  table tbody td {
+    text-align: right; }
+  table tbody th {
+    color: #000; }
+  table caption {
+    text-align: left;
+    font-size: bigger;
+    font-weight: bolder; }
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+
+.scorecard-report {
+  font-family: Verdana, Arial, Helvetica, Helv, sans-serif;
+  font-size: 10pt;
+  /* Icons */ }
+  .scorecard-report h1, .scorecard-report h2, .scorecard-report h3, .scorecard-report h4, .scorecard-report h4, .scorecard-report h5 {
+    vertical-align: middle; }
+  .scorecard-report h1 {
+    font-size: 13pt;
+    letter-spacing: 0.15em;
+    color: #1F1F1F;
+    padding: 0;
+    margin: 0 0 3px 0;
+    text-indent: 8px; }
+  .scorecard-report div.content {
+    position: fixed;
+    top: 60px;
+    left: 0px;
+    right: 17px;
+    bottom: 0px;
+    overflow: auto;
+    width: auto; }
+  .scorecard-report div.panel {
+    margin: 0px 0px 0px 24px; }
+    .scorecard-report div.panel table {
+      margin-top: 10px; }
+  .scorecard-report .status-error {
+    background-color: red;
+    color: red; }
+  .scorecard-report .status-warn {
+    background-color: yellow;
+    color: yellow; }
+  .scorecard-report .status-pass {
+    background-color: green;
+    color: green; }
+  .scorecard-report td span.status-error, .scorecard-report td span.status-warn, .scorecard-report td span.status-pass {
+    background-color: transparent; }
+  .scorecard-report .status-indicator {
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
+    vertical-align: top; }
+  .scorecard-report .icon {
+    display: inline-block;
+    width: 16px;
+    min-height: 16px;
+    background-repeat: no-repeat;
+    background-position: left center; }
+  .scorecard-report .minus {
+    background-image: url(data:image/gif;base64,R0lGODlhEAAQAJECAP///wAAAP///wAAACH5BAEAAAIALAAAAAAQABAAAAIplI+py60BowwpgIsxRTbnfXTeBRriWArdRFaj5r5Aenq0PFfT5PS+UAAAOw==); }
+  .scorecard-report .plus {
+    background-image: url(data:image/gif;base64,R0lGODlhEAAQAJECAP///wAAAP///wAAACH5BAEAAAIALAAAAAAQABAAAAIplI+py60BowwpgIsxRTbnfXSXCIAGiVajNKra544w581hrVXT5PS+UAAAOw==); }
+  .scorecard-report .full-stop {
+    background-image: url(data:image/gif;base64,R0lGODlhEAAQAJEAAP///wAAAP///wAAACH5BAEAAAAALAAAAAAQABAAAAInhI+py60BowwpiIsxRTbnfXTeBRriWALnWn1fO5JwnJ5ePU3OzgMFADs=); }
+  .scorecard-report .scope-module {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAABaSURBVDhPY2AYBThDoKGh4T8hjFczobA9cODAf6AaEMYEIJtBolBFWGkUA6Aa4KbBDCBkCNgFMMXo/iWkGd0LKP4hyQW4wgBkAyGMMxChhsJchY8mFFkjQh4AhSKev0WWP8YAAAAASUVORK5CYII=); }
+  .scorecard-report .scope-namespace {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAA3SURBVDhPY2AYzOA/0HEgjAywiWH1Az6FRBkyxA0gxo8E1QzxMAAlDIq9gMsQgoE3mLMWDrcBAFfXK9V4Dku/AAAAAElFTkSuQmCC); }
+  .scorecard-report .scope-type {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAErSURBVDhPY2BAA9/e3fj/cJXIfxCNLkeQD9P89WHr/xMzxEkzBKb5y8O2/1+uZf//eDoAqyF/3/zFdBnc5get/z9fy/n/Caj5/QGT/2+3yv5vTOKBuwSk+VLq5f8ohiCc3QbX/OGAKVCzDFbNv9b+QjUEFGAgP3+5DnH2B6DN73DYDNL8a8bv/7cL7vzv0e2FuATkgnkVfEDN/mBnv9+nD7Y5v2E6HN/Iufkfq2ZYtMAMebdNBmwYLApBhoDUgGzaZLMZ1WZs8Y+sGSQPMwBmCMjZj+59x50+0BMPsgEgQ0Cao2ff+P/43Q/iEhmyASBNIM0zz/7/71x8kjhDYAYga67Z8hJsEIPxTMKGwGICZjNJmpEDGeQC0+StxNuMLdeBA44YZ+PLsthCHwB9Q4XhSEaytQAAAABJRU5ErkJggg==); }
+  .scorecard-report .scope-member {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACHSURBVDhP1VJBDsAgCMN9HH7mz2BAhtPNg7jTTIzG2NI2BfjTYhVbdgUzA4uCbadJHExAskMygKckRCS2dRVE5LhfXs23Tw5wVknzPrFx51Fr9cl6uppOBSNg8x4Z2Fsm0IHEwGbjRWD+ewXPLGJqdnrfGw80I31Wuk9t3G3xIk6LdCx+Hb6dQtyWmMSD4DYAAAAASUVORK5CYII=); }
+  .scorecard-report > div.content > div {
+    background-color: #EBEAEA;
+    margin: 5px;
+    padding: 10px;
+    border-bottom: solid 1px gainsboro;
+    border-right: solid 1px gainsboro;
+    overflow: hidden; }
+    .scorecard-report > div.content > div > div h1 {
+      font-size: 13pt;
+      letter-spacing: 0.15em;
+      color: #1F1F1F;
+      padding: 0;
+      margin: 0 0 3px 0;
+      text-indent: 8px; }
+  .scorecard-report .content > div > ul {
+    background-color: #FBFBFB;
+    padding: 10px 10px 10px 10px;
+    overflow: hidden; }
+
+#scorecard caption {
+  display: none; }
+
+#navigator {
+  position: fixed;
+  top: 60px;
+  right: 0px;
+  bottom: 0px;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  width: 17px;
+  background-color: #D0D4D8;
+  overflow: hidden; }
+  #navigator a.navigator-box {
+    display: block;
+    cursor: pointer;
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    border: solid 1px black; }
+  #navigator div.navigator-stripes {
+    position: absolute;
+    top: 17px;
+    bottom: 0px;
+    width: 17px; }
+    #navigator div.navigator-stripes a {
+      display: block;
+      cursor: pointer;
+      width: 11px;
+      height: 2px;
+      position: absolute;
+      left: 3px; }
+
+.scorecard-report section {
+  background-color: #EBEAEA;
+  margin: 5px;
+  padding: 10px;
+  border-bottom: solid 1px gainsboro;
+  border-right: solid 1px gainsboro;
+  overflow: hidden; }
+
+.scorecard-report section header h1 {
+  font-size: 13pt;
+  letter-spacing: 0.15em;
+  color: #1F1F1F;
+  padding: 0;
+  margin: 0 0 3px 0;
+  text-indent: 8px; }
+
+.scorecard-report section > div, .scorecard-report section > ul {
+  background-color: #FBFBFB;
+  padding: 10px 10px 10px 10px;
+  overflow: hidden; }
+
+#scorecard table {
+  border-collapse: collapse; }
+
+#scorecard table tbody th {
+  font-weight: bold;
+  color: #646464;
+  padding: 0px 10px 0px 10px;
+  width: auto;
+  text-align: left; }
+</style>

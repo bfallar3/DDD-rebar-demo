@@ -1,0 +1,76 @@
+/*
+ * jQuery UI Tabs 1.8.16
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Tabs#theming
+ */
+.ui-tabs {
+  position: relative;
+  /* padding: .2em;*/
+  padding: 0;
+  zoom: 1; }
+
+/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+.ui-tabs .ui-tabs-nav {
+  margin: 0;
+  padding: 0; }
+  .ui-tabs .ui-tabs-nav .ui-state-disabled {
+    color: #9b9b9b;
+    background-color: #fafafa;
+    background-image: none;
+    border-color: #dfdfdf;
+    opacity: 1; }
+    .ui-tabs .ui-tabs-nav .ui-state-disabled a {
+      color: #9b9b9b; }
+  .ui-tabs .ui-tabs-nav li {
+    cursor: default;
+    list-style: none;
+    float: left;
+    position: relative;
+    top: 1px;
+    margin: 0 .2em 1px 0;
+    border-bottom: 0;
+    padding: 0;
+    white-space: nowrap;
+    text-align: right;
+    height: 20px; }
+    .ui-tabs .ui-tabs-nav li a {
+      display: block;
+      width: 90%;
+      float: right;
+      padding: 2px 8px;
+      text-decoration: none;
+      cursor: default; }
+    .ui-tabs .ui-tabs-nav li span {
+      left: 0;
+      position: absolute;
+      margin-left: 4px;
+      margin-top: 0px;
+      float: left;
+      height: 16px;
+      width: 16px;
+      pointer-events: none;
+      cursor: pointer; }
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected {
+  margin-bottom: 0;
+  padding-bottom: 1px; }
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a {
+  cursor: text; }
+
+.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a {
+  cursor: pointer; }
+
+/* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.ui-tabs .ui-tabs-panel {
+  display: block;
+  border-width: 1px;
+  padding: 1em 1.4em;
+  overflow: auto; }
+
+.ui-tabs .ui-tabs-hide {
+  display: none !important; }

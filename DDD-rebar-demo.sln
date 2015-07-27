@@ -1,0 +1,104 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{16430A8E-FD44-4740-8A7B-A683E5AC0169}"
+	ProjectSection(SolutionItems) = preProject
+		Lab.testsettings = Lab.testsettings
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web App", "Web App", "{97324856-C815-4DC9-BD47-78B460F08B17}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{593C129A-A3E8-497A-8A6C-9B1C3C8F193F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NugetPackages", "NugetPackages", "{DE34575D-620B-4901-B83D-7D2C96CFF71B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "People", "People", "{C34961C6-FAC4-41FA-B3BF-04901BB7F1BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "People.Service", "People\People.Service\People.Service.csproj", "{5FB645EB-3D4C-4BBA-8313-1848A7781E0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "People.Service.Tests", "People\People.Service.Tests\People.Service.Tests.csproj", "{745AE72F-C597-48A2-B60C-3F5F4EF087DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Host.IIS", "Services\Services.Host.IIS\Services.Host.IIS.csproj", "{866047C3-DBD2-4F5E-9830-741F6B7777F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Service.ETW", "Services\Services.Service.ETW\Services.Service.ETW.csproj", "{75F920B0-9AB2-4C90-A1C6-910B4CA7BAB6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "School", "School", "{0BCED4F0-21FA-4CEF-BF96-3C5217CAEF05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School.Service", "School\School.Service\School.Service.csproj", "{47366C4F-6535-4C94-A336-C01584BA33BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School.Service.Tests", "School\School.Service.Tests\School.Service.Tests.csproj", "{533B8FB9-6593-475E-B3C7-103E15A094B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SchoolFront", "SchoolFront", "{E56115F4-B31C-4F01-BAC9-8D9BFFDB7833}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolFront.Web", "SchoolFront\SchoolFront.Web\SchoolFront.Web.csproj", "{859452A3-7951-4AEA-A8AC-B6FF0ED01342}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolFront.Web.Tests", "SchoolFront\SchoolFront.Web.Tests\SchoolFront.Web.Tests.csproj", "{5ED0C603-0D49-4C2C-83C7-3B1D98C01EAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolFront.Web.ETW", "SchoolFront\SchoolFront.Web.ETW\SchoolFront.Web.ETW.csproj", "{AF3D5F11-2410-4F8C-9415-E81A67369A38}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5FB645EB-3D4C-4BBA-8313-1848A7781E0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FB645EB-3D4C-4BBA-8313-1848A7781E0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FB645EB-3D4C-4BBA-8313-1848A7781E0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FB645EB-3D4C-4BBA-8313-1848A7781E0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{745AE72F-C597-48A2-B60C-3F5F4EF087DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{745AE72F-C597-48A2-B60C-3F5F4EF087DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{745AE72F-C597-48A2-B60C-3F5F4EF087DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{745AE72F-C597-48A2-B60C-3F5F4EF087DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{866047C3-DBD2-4F5E-9830-741F6B7777F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{866047C3-DBD2-4F5E-9830-741F6B7777F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{866047C3-DBD2-4F5E-9830-741F6B7777F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{866047C3-DBD2-4F5E-9830-741F6B7777F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75F920B0-9AB2-4C90-A1C6-910B4CA7BAB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75F920B0-9AB2-4C90-A1C6-910B4CA7BAB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75F920B0-9AB2-4C90-A1C6-910B4CA7BAB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75F920B0-9AB2-4C90-A1C6-910B4CA7BAB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47366C4F-6535-4C94-A336-C01584BA33BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47366C4F-6535-4C94-A336-C01584BA33BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47366C4F-6535-4C94-A336-C01584BA33BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47366C4F-6535-4C94-A336-C01584BA33BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{533B8FB9-6593-475E-B3C7-103E15A094B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{533B8FB9-6593-475E-B3C7-103E15A094B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{533B8FB9-6593-475E-B3C7-103E15A094B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{533B8FB9-6593-475E-B3C7-103E15A094B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{859452A3-7951-4AEA-A8AC-B6FF0ED01342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{859452A3-7951-4AEA-A8AC-B6FF0ED01342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{859452A3-7951-4AEA-A8AC-B6FF0ED01342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{859452A3-7951-4AEA-A8AC-B6FF0ED01342}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ED0C603-0D49-4C2C-83C7-3B1D98C01EAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ED0C603-0D49-4C2C-83C7-3B1D98C01EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ED0C603-0D49-4C2C-83C7-3B1D98C01EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ED0C603-0D49-4C2C-83C7-3B1D98C01EAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF3D5F11-2410-4F8C-9415-E81A67369A38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF3D5F11-2410-4F8C-9415-E81A67369A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF3D5F11-2410-4F8C-9415-E81A67369A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF3D5F11-2410-4F8C-9415-E81A67369A38}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C34961C6-FAC4-41FA-B3BF-04901BB7F1BF} = {593C129A-A3E8-497A-8A6C-9B1C3C8F193F}
+		{5FB645EB-3D4C-4BBA-8313-1848A7781E0F} = {C34961C6-FAC4-41FA-B3BF-04901BB7F1BF}
+		{745AE72F-C597-48A2-B60C-3F5F4EF087DE} = {C34961C6-FAC4-41FA-B3BF-04901BB7F1BF}
+		{866047C3-DBD2-4F5E-9830-741F6B7777F6} = {593C129A-A3E8-497A-8A6C-9B1C3C8F193F}
+		{75F920B0-9AB2-4C90-A1C6-910B4CA7BAB6} = {593C129A-A3E8-497A-8A6C-9B1C3C8F193F}
+		{0BCED4F0-21FA-4CEF-BF96-3C5217CAEF05} = {593C129A-A3E8-497A-8A6C-9B1C3C8F193F}
+		{47366C4F-6535-4C94-A336-C01584BA33BA} = {0BCED4F0-21FA-4CEF-BF96-3C5217CAEF05}
+		{533B8FB9-6593-475E-B3C7-103E15A094B6} = {0BCED4F0-21FA-4CEF-BF96-3C5217CAEF05}
+		{E56115F4-B31C-4F01-BAC9-8D9BFFDB7833} = {97324856-C815-4DC9-BD47-78B460F08B17}
+		{859452A3-7951-4AEA-A8AC-B6FF0ED01342} = {E56115F4-B31C-4F01-BAC9-8D9BFFDB7833}
+		{5ED0C603-0D49-4C2C-83C7-3B1D98C01EAE} = {E56115F4-B31C-4F01-BAC9-8D9BFFDB7833}
+		{AF3D5F11-2410-4F8C-9415-E81A67369A38} = {E56115F4-B31C-4F01-BAC9-8D9BFFDB7833}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Validation.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.ExceptionHandling.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.ExceptionHandling.Logging.6.0.1304.0\lib\NET45
+	EndGlobalSection
+EndGlobal

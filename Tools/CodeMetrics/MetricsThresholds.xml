@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Metrics xmlns="http://rebar.accenture.com/scorecard/metrics">
+  <Levels>
+    <Level><Key>Error</Key><Weight>10</Weight></Level>
+    <Level><Key>Warn</Key><Weight>20</Weight></Level>
+  </Levels>
+  <Metric>
+    <Key>MaintainabilityIndex</Key>
+    <Label>Maintainability Index</Label>
+    <Abbreviation>MI</Abbreviation>
+    <Thresholds>
+      <Threshold>
+        <Scope>Member</Scope>
+        <Comparison>Min</Comparison>
+        <DisplayInScorecard>True</DisplayInScorecard>
+        <TargetValue>60</TargetValue>
+        <Levels>
+          <Level><Key>Error</Key><Threshold>41</Threshold></Level>
+          <Level><Key>Warn</Key><Threshold>51</Threshold></Level>
+        </Levels>
+      </Threshold>
+    </Thresholds>
+  </Metric>
+
+  <Metric>
+    <Key>CyclomaticComplexity</Key>
+    <Label>Cyclomatic Complexity</Label>
+    <Abbreviation>ILCC</Abbreviation>
+    <Thresholds>
+      <Threshold>
+        <Scope>Member</Scope>
+        <Comparison>Max</Comparison>
+        <DisplayInScorecard>True</DisplayInScorecard>
+        <TargetValue>5</TargetValue>
+        <Levels>
+          <Level><Key>Error</Key><Threshold>30</Threshold></Level>
+          <Level><Key>Warn</Key><Threshold>15</Threshold></Level>
+        </Levels>
+      </Threshold>
+    </Thresholds>
+  </Metric>
+
+  <Metric>
+    <Key>ClassCoupling</Key>
+    <Label>Class Coupling</Label>
+    <Abbreviation>TC</Abbreviation>
+    <Thresholds>
+      <Threshold>
+        <Scope>Member</Scope>
+        <Comparison>Max</Comparison>
+        <DisplayInScorecard>True</DisplayInScorecard>
+        <TargetValue>10</TargetValue>
+        <Levels>
+          <Level><Key>Error</Key><Threshold>30</Threshold></Level>
+          <Level><Key>Warn</Key><Threshold>15</Threshold></Level>
+        </Levels>
+      </Threshold>
+      <Threshold>
+        <Scope>Type</Scope>
+        <Comparison>Max</Comparison>
+        <DisplayInScorecard>True</DisplayInScorecard>
+        <TargetValue>10</TargetValue>
+        <Levels>
+          <Level><Key>Error</Key><Threshold>60</Threshold></Level>
+          <Level><Key>Warn</Key><Threshold>40</Threshold></Level>
+        </Levels>
+      </Threshold>
+    </Thresholds>
+  </Metric>
+
+  <Metric>
+    <Key>DepthOfInheritance</Key>
+    <Label>Depth of Inheritance</Label>
+    <Abbreviation>DOI</Abbreviation>
+    <Thresholds>
+      <Threshold>
+        <Scope>Type</Scope>
+        <Comparison>Max</Comparison>
+        <DisplayInScorecard>True</DisplayInScorecard>
+        <Levels>
+          <Level><Key>Error</Key><Threshold>5</Threshold></Level>
+          <Level><Key>Warn</Key><Threshold>4</Threshold></Level>
+        </Levels>
+      </Threshold>
+    </Thresholds>
+  </Metric>
+  
+  <Metric>
+    <Key>LinesOfCode</Key>
+    <Label>Lines Of Code</Label>
+    <Abbreviation>LOC</Abbreviation>
+    <Thresholds>
+      <Threshold>
+        <Scope>Member</Scope>
+        <Comparison>Max</Comparison>
+        <DisplayInScorecard>True</DisplayInScorecard>
+        <TargetValue>10</TargetValue>
+        <Levels>
+          <Level><Key>Error</Key><Threshold>49</Threshold></Level>
+          <Level><Key>Warn</Key><Threshold>30</Threshold></Level>
+        </Levels>
+      </Threshold>
+    </Thresholds>
+  </Metric>
+</Metrics>

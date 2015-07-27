@@ -1,0 +1,3 @@
+﻿namespace School.Service.Tests
+{
+}

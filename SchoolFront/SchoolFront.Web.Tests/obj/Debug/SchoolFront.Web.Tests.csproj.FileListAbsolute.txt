@@ -1,0 +1,6 @@
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\SchoolFront\SchoolFront.Web.Tests\obj\Debug\SchoolFront.Web.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\Build\NET45\Debug\SchoolFront.Web.Tests.dll.config
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\Build\NET45\Debug\SchoolFront.Web.Tests.dll
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\Build\NET45\Debug\SchoolFront.Web.Tests.pdb
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\SchoolFront\SchoolFront.Web.Tests\obj\Debug\SchoolFront.Web.Tests.dll
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\SchoolFront\SchoolFront.Web.Tests\obj\Debug\SchoolFront.Web.Tests.pdb

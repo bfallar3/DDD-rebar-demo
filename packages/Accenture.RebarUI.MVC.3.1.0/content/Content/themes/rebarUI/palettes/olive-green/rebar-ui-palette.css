@@ -1,0 +1,121 @@
+/* Rebar UI Olive Green Theme
+ *
+ */
+.ui-banner {
+  background-color: #bac0a7;
+  border-bottom-color: #445511; }
+  .ui-banner a:hover, .ui-banner a:focus, .ui-banner a.ui-state-hover, .ui-banner a.ui-state-focus {
+    background-color: #e9ebe2; }
+  .ui-banner a.ui-state-active, .lt-ie9 .ui-banner a.ui-state-active {
+    background-color: #445511;
+    color: white; }
+
+.ui-left-nav a:hover, .ui-left-nav a:focus, .ui-left-nav a.ui-state-hover, .ui-left-nav a.ui-state-focus {
+  background-color: #e9ebe2; }
+.ui-left-nav a.ui-state-active
+, .lt-ie9 .ui-left-nav a.ui-state-active {
+  background-color: #445511;
+  color: white; }
+
+label, .ui-text-label, .ui-label-color {
+  color: #445511; }
+
+.ui-fill-darkest {
+  background-color: #445511; }
+
+.ui-fill-dark {
+  background-color: #c9ceba; }
+
+.ui-fill-medium {
+  background-color: #d6dacb; }
+
+.ui-fill-light {
+  background-color: #e9ebe2; }
+
+.ui-fill-popup {
+  background-color: #dbdfd2; }
+
+.ui-grid-lines th, .ui-grid-lines tr, .ui-grid-lines td {
+  border-left: 1px solid #e1e4d9;
+  border-right: 1px solid #e1e4d9;
+  border-top: 0px;
+  border-bottom: 0px; }
+
+.ui.grid-lines table {
+  border-bottom: 1px solid #e1e4d9; }
+
+.ui-grid-lines-left td {
+  border-left: 1px solid #e1e4d9; }
+
+.ui-grid-lines-right td {
+  border-right: 1px solid #e1e4d9; }
+
+.ui-grey-bar {
+  background-color: #f8f8f5; }
+
+.ui-palette-gradient {
+  /* Start CSS3 Linear Gradient */
+  /* Non CSS3 Browsers */
+  background-color: white;
+  /* IE10 */
+  background-image: -ms-linear-gradient(top, white 0%, #445511 100%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(top, white 0%, #445511 100%);
+  /* Opera */
+  background-image: -o-linear-gradient(top, white 0%, #445511 100%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(1, #445511));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(top, white 0%, #445511 100%);
+  /* Proposed W3C Markup */
+  background-image: linear-gradient(top, white 0%, #445511 100%);
+  /* End CSS3 Linear Gradient */ }
+  .ie9 .ui-palette-gradient {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9Imc3ODIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGRkZGRkYiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiM0NDU1MTEiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2c3ODIpIiAvPgo8L3N2Zz4=); }
+
+.ui-palette-gradient-reverse {
+  /* Start CSS3 Linear Gradient */
+  /* Non CSS3 Browsers */
+  background-color: #445511;
+  /* IE10 */
+  background-image: -ms-linear-gradient(top, #445511 0%, #d6dacb 100%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(top, #445511 0%, #d6dacb 100%);
+  /* Opera */
+  background-image: -o-linear-gradient(top, #445511 0%, #d6dacb 100%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #445511), color-stop(1, #d6dacb));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(top, #445511 0%, #d6dacb 100%);
+  /* Proposed W3C Markup */
+  background-image: linear-gradient(top, #445511 0%, #d6dacb 100%);
+  /* End CSS3 Linear Gradient */ }
+  .ie9 .ui-palette-gradient-reverse {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9Imc2MzEiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiM0NDU1MTEiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiNGRkZGRkYiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2c2MzEpIiAvPgo8L3N2Zz4=); }
+
+.contentHeader {
+  color: #445511; }
+
+.contentHeaderCodeDisplay {
+  color: #445511; }
+
+.ui-iggrid {
+  background-color: #c9ceba; }
+  .ui-iggrid .ui-iggrid-headertable, .ui-iggrid .ui-widget-header {
+    background: #c9ceba; }
+  .ui-iggrid .ui-iggrid-headertext {
+    color: #445511; }
+  .ui-iggrid tbody td {
+    border-top: 1px solid #f8f8f5;
+    border-bottom: 1px solid #f8f8f5; }
+  .ui-iggrid tbody tr {
+    background: white; }
+  .ui-iggrid .ui-ig-altrecord {
+    /* graybar-color */
+    background: #f8f8f5; }
+
+.ui-selectlist ul.ui-selectlist-list li.ui-state-active {
+  background-color: #c9ceba;
+  border-color: #c9ceba; }
+
+/* End Rebar UI Olive Green Theme */

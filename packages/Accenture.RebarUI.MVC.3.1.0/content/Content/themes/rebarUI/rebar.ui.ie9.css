@@ -1,0 +1,179 @@
+/* Custom hacks for IE9, primarily for using SVG images
+ * for gradient backgrounds
+ * The SVG image file fixes a known clipping issue when using
+ * border-radius in IE9 combined with a gradient -ms-filter. 
+ * Older versions of IE don't support border-radius and also don't
+ * support SVG, so this only makes sense for IE9
+ * IE 10 supports both CSS3 border radius and linear gradient
+ * which is included in the main style sheet, hence using
+ * conditional comments to only target this sheet for IE9
+ *
+ * The decision to use this svg alternative is so that users
+ * with IE9 will get a very similar experience to users
+ * using chrome, safari, ff, and opera.  Without this fix
+ * we would have to resort to either no rounded corners
+ * and also using filters.  DX Filters have some strange
+ * issues when page zooming, and rendering text that makes
+ * them unattractive unless absolutely necessary.
+ *
+ *
+ * The technique being used for the svg images
+ * is actually including the image bits inside of the css
+ * file so the browser does not have to make more requests
+ * to external image urls.  Notice the data:image/svg+xml prefix
+ * of the url tag.  This is a w3c standard for embedding additional files / content
+ * directly in html and css to prevent extra requests in the browser.
+ * The url for generating these svg gradients and the base64 encoded file conents can be
+ * found on microsoft's website @ http://ie.microsoft.com/testdrive/Graphics/SVGGradientBackgroundMaker/Default.html
+ */
+.ui-widget-content {
+  /* SVG Image
+   * http://ie.microsoft.com/testdrive/Graphics/SVGGradientBackgroundMaker/Default.html
+   * Start: 0, End: 1, Color: #FFFFFF, #E6E8E8
+   */
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9Imc2NTgiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGRkZGRkYiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiNFNkU4RTgiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2c2NTgpIiAvPgo8L3N2Zz4=); }
+
+.ui-panel {
+  /* SVG Image
+     * http://ie.microsoft.com/testdrive/Graphics/SVGGradientBackgroundMaker/Default.html
+     * Start: 0, End: 1, Color: #FFFFFF, #E6E8E8
+     */
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9Imc2NTgiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGRkZGRkYiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiNFNkU4RTgiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2c2NTgpIiAvPgo8L3N2Zz4=); }
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  /* SVG Image
+   * http://ie.microsoft.com/testdrive/Graphics/SVGGradientBackgroundMaker/Default.html
+   * Start: 0, End: 1, Color: #f0f0f0, #d0d0d0
+   */
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImcyODkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGMEYwRjAiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiNEMEQwRDAiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2cyODkpIiAvPgo8L3N2Zz4=); }
+
+.ui-priority-primary, .ui-widget-content .ui-priority-primary {
+  /* SVG Image
+   * http://ie.microsoft.com/testdrive/Graphics/SVGGradientBackgroundMaker/Default.html
+   * Start: 0, End: 1, Color: #ebf5fc, #c0e2f4
+   */
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9Imc4NjIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiNFQkY1RkMiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiNDMEUyRjQiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2c4NjIpIiAvPgo8L3N2Zz4=); }
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+  /* SVG Image
+   * http://ie.microsoft.com/testdrive/Graphics/SVGGradientBackgroundMaker/Default.html
+   * Start: 0, End: 1, Color: #d8ebf5, #b7d5e6
+   */
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImcxMDAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiNEOEVCRjUiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiNCN0Q1RTYiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2cxMDApIiAvPgo8L3N2Zz4=); }
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+  background-image: none; }
+
+.ui-state-hover.ui-state-active {
+  background-image: none; }
+
+.ui-button.ui-state-active {
+  /* Button is the only one that gets special treatment for active
+   * keeping the blue hue, where by default widgets should just
+   * show a white background with no gradient when active
+   */
+  /* SVG Image
+   * http://ie.microsoft.com/testdrive/Graphics/SVGGradientBackgroundMaker/Default.html
+   * Start: 0, End: 1, Color: #C2E7FA, #97D5F7
+   */
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9Imc4NyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0MyRTdGQSIgb2Zmc2V0PSIwIi8+PHN0b3Agc3RvcC1jb2xvcj0iIzk3RDVGNyIgb2Zmc2V0PSIxIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZzg3KSIgLz4KPC9zdmc+); }
+
+.ui-datepicker .ui-state-default {
+  background-image: none; }
+.ui-datepicker .ui-state-hover {
+  /* SVG Image
+   * http://ie.microsoft.com/testdrive/Graphics/SVGGradientBackgroundMaker/Default.html
+   * Start: 0, End: 1, Color: #d8ebf5, #b7d5e6
+   */
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImcxMDAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiNEOEVCRjUiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiNCN0Q1RTYiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2cxMDApIiAvPgo8L3N2Zz4=); }
+.ui-datepicker .ui-state-active {
+  /* SVG Image
+   * http://ie.microsoft.com/testdrive/Graphics/SVGGradientBackgroundMaker/Default.html
+   * Start: 0, End: 1, Color: #C2E7FA, #97D5F7
+   */
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9Imc4NyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0MyRTdGQSIgb2Zmc2V0PSIwIi8+PHN0b3Agc3RvcC1jb2xvcj0iIzk3RDVGNyIgb2Zmc2V0PSIxIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZzg3KSIgLz4KPC9zdmc+); }
+
+.ui-dialog {
+ /* SVG Image
+* http://ie.microsoft.com/testdrive/Graphics/SVGGradientBackgroundMaker/Default.html
+* Start: 0, End: 1, Color: #FFFFFF, #E6E8E8
+*/
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9Imc2NTgiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGRkZGRkYiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiNFNkU4RTgiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2c2NTgpIiAvPgo8L3N2Zz4=); }
+  .ui-dialog.ui-state-attention {
+    /* SVG Image
+     * http://ie.microsoft.com/testdrive/Graphics/SVGGradientBackgroundMaker/Default.html
+     * Start: 0, End: 1, Color: #fff, #FFDD97
+     */
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImcxMTEiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGRkZGRkYiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiNGRkREOTciIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2cxMTEpIiAvPgo8L3N2Zz4=); }
+  .ui-dialog.ui-state-alert {
+    /* SVG Image
+     * http://ie.microsoft.com/testdrive/Graphics/SVGGradientBackgroundMaker/Default.html
+     * Start: 0, End: 1, Color: #fff, #DA9792
+     */
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9Imc2NTciIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGRkZGRkYiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiNEQTk3OTIiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2c2NTcpIiAvPgo8L3N2Zz4=); }
+
+.ui-checkbox {
+  /* Since we are using bg images, by default we reset hover.active
+   * to not do anything which causes an issue with our check boxes
+   * Until we can deprecate this file we need to maintain all the
+   * states again for IE9
+   */ }
+  .ui-checkbox.ui-state-default {
+    background: url("images/rui-sprite.png") no-repeat -60px 0px; }
+  .ui-checkbox.ui-state-active {
+    background: url("images/rui-sprite.png") no-repeat -90px 0px; }
+  .ui-checkbox.ui-state-attention, .ui-checkbox.ui-state-required {
+    background: url("images/rui-sprite.png") no-repeat 0px -30px; }
+  .ui-checkbox.ui-state-attention.ui-state-active, .ui-checkbox.ui-state-required.ui-state-active {
+    background: url("images/rui-sprite.png") no-repeat -30px -30px; }
+  .ui-checkbox.ui-state-alert, .ui-checkboxui-state-error {
+    background: url("images/rui-sprite.png") no-repeat 0px -60px; }
+  .ui-checkbox.ui-state-alert.ui-state-active, .ui-checkbox.ui-state-error.ui-state-active {
+    background: url("images/rui-sprite.png") no-repeat -30px -60px; }
+  .ui-checkbox.ui-state-disabled {
+    background: url("images/rui-sprite.png") no-repeat 0px 0px; }
+  .ui-checkbox.ui-state-disabled.ui-state-active {
+    background: url("images/rui-sprite.png") no-repeat -30px 0px; }
+
+.ui-radio {
+  /* Since we are using bg images, by default we reset hover.active
+   * to not do anything which causes an issue with our check boxes
+   * Until we can deprecate this file we need to maintain all the
+   * states again for IE9
+   */ }
+  .ui-radio.ui-state-default {
+    background: url("images/rui-sprite.png") no-repeat -180px 0px; }
+  .ui-radio.ui-state-active {
+    background: url("images/rui-sprite.png") no-repeat -210px 0px; }
+  .ui-radio.ui-state-attention, .ui-radio.ui-state-required {
+    background: url("images/rui-sprite.png") no-repeat -60px -30px; }
+  .ui-radio.ui-state-attention.ui-state-active, .ui-radio.ui-state-required.ui-state-active {
+    background: url("images/rui-sprite.png") no-repeat -90px -30px; }
+  .ui-radio.ui-state-alert, .ui-radioui-state-error {
+    background: url("images/rui-sprite.png") no-repeat -60px -60px; }
+  .ui-radio.ui-state-alert.ui-state-active, .ui-radio.ui-state-error.ui-state-active {
+    background: url("images/rui-sprite.png") no-repeat -90px -60px; }
+  .ui-radio.ui-state-disabled {
+    background: url("images/rui-sprite.png") no-repeat -120px 0px; }
+  .ui-radio.ui-state-disabled.ui-state-active {
+    background: url("images/rui-sprite.png") no-repeat -150px 0px; }
+
+.ui-checkbox + label, .ui-radio + label {
+  line-height: 20px; }
+
+.ui-iggrid .ui-iggrid-tablebody td {
+  /* ie9 height of the grid rows were less*/
+  line-height: 14px; }
+
+.ui-drawers-item-caption {
+  padding-top: 1px; }
+
+.ui-slider.ui-slider-horizontal {
+  /* SVG Linear Gradient - top #E6E8E8 to bottom #FFF*/
+  /* SVG as background image (IE9/Chrome/Safari/Opera) */
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9Imc0ODgiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMTAwJSIgeTE9IjEwMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgo8c3RvcCBzdG9wLWNvbG9yPSIjRkZGRkZGIiBvZmZzZXQ9IjAiLz48c3RvcCBzdG9wLWNvbG9yPSIjRTZFOEU4IiBvZmZzZXQ9IjEiLz4KPC9saW5lYXJHcmFkaWVudD4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNnNDg4KSIgLz4KPC9zdmc+); }
+
+.ui-slider.ui-slider-vertical {
+  /* SVG Linear Gradient - left #E6E8E8 to right #FFF*/
+  /* SVG as background image (IE9/Chrome/Safari/Opera) */
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9Imc0MTUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMTAwJSIgeTE9IjEwMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgo8c3RvcCBzdG9wLWNvbG9yPSIjRkZGRkZGIiBvZmZzZXQ9IjAiLz48c3RvcCBzdG9wLWNvbG9yPSIjRTZFOEU4IiBvZmZzZXQ9IjEiLz4KPC9saW5lYXJHcmFkaWVudD4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNnNDE1KSIgLz4KPC9zdmc+); }

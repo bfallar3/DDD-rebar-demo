@@ -1,0 +1,22 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Default page for the Admin area</title>
+    </head>
+    <body>
+        <h2>Default page for the Admin area</h2>
+        <div>
+            Welcome @ViewData["DisplayName"]!
+            <br/>
+            Only authorized users can reach this page.
+        </div>
+<p>(Note: You can delete all FedAuth* cookies if you want to force authentication again.)</p>
+    </body>
+</html>

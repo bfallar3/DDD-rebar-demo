@@ -1,0 +1,840 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{859452A3-7951-4AEA-A8AC-B6FF0ED01342}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SchoolFront.Web</RootNamespace>
+    <AssemblyName>SchoolFront.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <CodeAnalysisAdditionalOptions>/assemblyCompareMode:StrongNameIgnoringVersion</CodeAnalysisAdditionalOptions>
+    <WebGreaseLibPath>..\..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PackageAsSingleFile>true</PackageAsSingleFile>
+    <PublishDatabases>true</PublishDatabases>
+    <CodeAnalysisRuleSet>$(SolutionDir)packages\Rebar.Scorecard.2.0.270888\tools\REBARScorecardMvc.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Build\NET45\Release\</OutputPath>
+    <DefineConstants>TRACE;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
+    <RunCodeAnalysis>True</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>$(SolutionDir)packages\Rebar.Scorecard.2.0.270888\tools\REBARScorecardMvc.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PackageAsSingleFile>true</PackageAsSingleFile>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <DocumentationFile>..\..\Build\NET45\Release\SchoolFront.Web.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accenture.Security.Eso.Token, Version=1.0.13346.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Accenture.Security.Eso.Token.1.0.977783\lib\NET45\Accenture.Security.Eso.Token.dll</HintPath>
+    </Reference>
+    <Reference Include="Accenture.Security.Eso.Web, Version=1.0.13346.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Accenture.Security.Eso.Web.1.0.977781\lib\net45\Accenture.Security.Eso.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Accenture.Security.Eso.Web.DevSignOn, Version=1.0.13343.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Accenture.Security.Eso.Web.DevSignOn.1.0.976930\lib\net45\Accenture.Security.Eso.Web.DevSignOn.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Data.OData.5.6.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Data.Services.Client.5.6.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Diagnostics.Tracing.EventSource, Version=1.0.26.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Diagnostics.Tracing.EventSource.Redist.1.0.26\lib\net40\Microsoft.Diagnostics.Tracing.EventSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.OData.Client, Version=6.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.OData.Client.6.10.0\lib\net40\Microsoft.OData.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.OData.Core, Version=6.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.OData.Core.6.10.0\lib\portable-net40+sl5+wp8+win8+wpa\Microsoft.OData.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.OData.Edm, Version=6.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.OData.Edm.6.10.0\lib\portable-net40+sl5+wp8+win8+wpa\Microsoft.OData.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EnterpriseLibrary.ExceptionHandling.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EnterpriseLibrary.ExceptionHandling.Logging.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Unity.3.0.1304.0\lib\Net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Unity.3.0.1304.0\lib\Net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Unity.Interception.3.0.1304.0\lib\Net45\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Unity.Interception.3.0.1304.0\lib\Net45\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Spatial, Version=6.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Spatial.6.10.0\lib\portable-net40+sl5+wp8+win8+wpa\Microsoft.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebar.Soa.Client">
+      <HintPath>..\..\packages\Rebar.WebClient.2.0.300505\lib\NET45\Rebar.Soa.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebar.Web.HealthCheck, Version=2.0.13164.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Rebar.Web.HealthCheck.2.0.20150212\lib\NET45\Rebar.Web.HealthCheck.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Services" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\System.IdentityModel.Tokens.Jwt.1.0.0\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Spatial, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\System.Spatial.5.6.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Web.Optimization.1.1.2\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Thinktecture.IdentityModel, Version=3.4.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Thinktecture.IdentityModel.3.4.6\lib\net45\Thinktecture.IdentityModel.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivator">
+      <HintPath>..\..\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\WebActivatorEx.2.0.2\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\HealthCheckRouteHandler.cs" />
+    <Compile Include="App_Start\REBARHealthCheckInitializer.cs" />
+    <Compile Include="App_Start\REBARInitializer.cs" />
+    <Compile Include="App_Start\VersionRouteHandler.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Infrastructure\Security\AuthorizationMapping.cs" />
+    <Compile Include="Infrastructure\Security\AuthorizeActivityAttribute.cs" />
+    <Compile Include="Infrastructure\Security\ActivitiesAndGroups.cs" />
+    <Compile Include="Infrastructure\Security\IdentityExtensions.cs" />
+    <Compile Include="Infrastructure\Service\ServiceFactory.cs" />
+    <Compile Include="netfx\System\SequentialGuid.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Proxy\People-service.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>People-service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Proxy\School-service.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>School-service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Rebar\Web\Filters\GlobalExceptionHandlingFilterAttribute.cs" />
+    <Compile Include="Rebar\Web\GlobalSuppressions.cs" />
+    <Compile Include="Rebar\Web\Helpers\Extensions.cs" />
+    <Compile Include="Rebar\Web\Helpers\StaticFile.cs" />
+    <Compile Include="Rebar\Web\Helpers\VersionRewriteUrlTransform.cs" />
+    <Compile Include="Rebar\Web\JwtToken.cs" />
+    <Compile Include="Rebar\Web\Properties\Resources.Designer.cs" />
+    <Compile Include="Rebar\Web\RebarSecurityToken.cs" />
+    <Compile Include="Rebar\Web\RebarToken.cs" />
+    <Compile Include="Rebar\Web\UnityControllerFactory.cs" />
+    <Compile Include="ViewModels\AccountModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Users.xml" />
+    <Content Include="Content\Images\pixel.gif" />
+    <Content Include="Content\Styles\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\Styles\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\Styles\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\Styles\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\Styles\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\Styles\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\Styles\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\Styles\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\Styles\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\Styles\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\Styles\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\Styles\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\Styles\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\Styles\themes\base\jquery-ui.css" />
+    <Content Include="Content\Styles\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\Styles\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\Styles\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\Styles\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\Styles\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\Styles\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\Styles\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\Styles\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\Styles\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\Styles\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\Styles\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\Styles\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\Styles\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\Styles\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\Styles\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\Styles\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\Styles\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\Styles\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\Styles\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\Styles\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\Styles\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\Styles\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\Styles\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\Styles\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\Styles\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\Styles\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\Styles\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\Styles\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\Styles\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\Styles\themes\base\minified\jquery.ui.all.min.css" />
+    <Content Include="Content\Styles\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\Styles\themes\base\minified\jquery.ui.base.min.css" />
+    <Content Include="Content\Styles\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\Styles\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\Styles\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\Styles\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\Styles\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\Styles\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\Styles\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\Styles\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\Styles\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\Styles\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\Styles\themes\rebarUI\images\AccentureLogo-About.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\AccentureLogo-About2.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\AccentureLogo-App.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\AccentureLogo-Pub.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\action.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\alert-24.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\alert.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\App-About.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\App-Banner.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\attention-24.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\attention.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\AuxCorner.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\browserLogos.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\building.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Calendar.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\CarouselArrows.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\CarouselBullets.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Checkbox-Alert-Mixed.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Checkbox-Alert-Selected.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Checkbox-Alert-Unselected.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Checkbox-Attention-Mixed.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Checkbox-Attention-Selected.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Checkbox-Attention-Unselected.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Checkbox-Disabled-Mixed.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Checkbox-Disabled-Selected.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Checkbox-Disabled-Unselected.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Checkbox-Mixed.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Checkbox-Selected.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Checkbox-Unselected.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\expandArrowDown-16.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\expandArrowLeft-16.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\expandArrowRight-16.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\expandArrowUp-16.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\expandCollapseDown.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\expandCollapseLeft.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\expandCollapseRight.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\expandCollapseUp.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\firstPage.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\fruit-icon.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\green-checkmark.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\grid.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Help.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\lastPage.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\next.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\nextPage.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\PagingBulletedList.ico" />
+    <Content Include="Content\Styles\themes\rebarUI\images\popupArrow.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\prev.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\previousPage.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Radio-Alert-Selected.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Radio-Alert-Unselected.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Radio-Disabled-Selected.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Radio-Disabled-Unselected.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Radio-Required-Selected.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Radio-Required-Unselected.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Radio-Selected.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\Radio-Unselected.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\rui-sprite.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\sample-icon-f.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\sample-icon.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\transport-icon.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\Styles\themes\rebarUI\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\Styles\themes\rebarUI\palettes\camel\rebar-ui-palette.css" />
+    <Content Include="Content\Styles\themes\rebarUI\palettes\chrome-yellow\rebar-ui-palette.css" />
+    <Content Include="Content\Styles\themes\rebarUI\palettes\cranberry-red\rebar-ui-palette.css" />
+    <Content Include="Content\Styles\themes\rebarUI\palettes\dark-gray\rebar-ui-palette.css" />
+    <Content Include="Content\Styles\themes\rebarUI\palettes\dark-orange\rebar-ui-palette.css" />
+    <Content Include="Content\Styles\themes\rebarUI\palettes\deep-green\rebar-ui-palette.css" />
+    <Content Include="Content\Styles\themes\rebarUI\palettes\dusty-lavender\rebar-ui-palette.css" />
+    <Content Include="Content\Styles\themes\rebarUI\palettes\forest-green\rebar-ui-palette.css" />
+    <Content Include="Content\Styles\themes\rebarUI\palettes\gray-blue\rebar-ui-palette.css" />
+    <Content Include="Content\Styles\themes\rebarUI\palettes\ink-blue\rebar-ui-palette.css" />
+    <Content Include="Content\Styles\themes\rebarUI\palettes\light-gray\rebar-ui-palette.css" />
+    <Content Include="Content\Styles\themes\rebarUI\palettes\olive-green\rebar-ui-palette.css" />
+    <Content Include="Content\Styles\themes\rebarUI\palettes\red-violet\rebar-ui-palette.css" />
+    <Content Include="Content\Styles\themes\rebarUI\palettes\sage-green\rebar-ui-palette.css" />
+    <Content Include="Content\Styles\themes\rebarUI\palettes\sea-green\rebar-ui-palette.css" />
+    <Content Include="Content\Styles\themes\rebarUI\palettes\taupe\rebar-ui-palette.css" />
+    <Content Include="Content\Styles\themes\rebarUI\palettes\violet-blue\rebar-ui-palette.css" />
+    <Content Include="Content\Styles\themes\rebarUI\palettes\violet\rebar-ui-palette.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.aboutbox.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.accordion.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.all.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.autocomplete.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.banner.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.base.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.button.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.carousel.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.checkbox.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.core.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.datepicker.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.dialog.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.grid.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.guidetext.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.horizontal-list.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.ie8.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.ie9.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.label.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.layoutgrid.1024.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.layoutgrid.1280.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.normalize.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.orientation-marker.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.peoplepicker.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.progressbar.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.radiobutton.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.resizable.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.selectable.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.selectlist.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.selectmenu.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.slider.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.spinner.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.tabs.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.textbox.css" />
+    <Content Include="Content\Styles\themes\rebarUI\rebar.ui.theme.css" />
+    <Content Include="Content\Styles\themes\redmond\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\Styles\themes\redmond\images\ui-bg_flat_55_fbec88_40x100.png" />
+    <Content Include="Content\Styles\themes\redmond\images\ui-bg_glass_75_d0e5f5_1x400.png" />
+    <Content Include="Content\Styles\themes\redmond\images\ui-bg_glass_85_dfeffc_1x400.png" />
+    <Content Include="Content\Styles\themes\redmond\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\Styles\themes\redmond\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
+    <Content Include="Content\Styles\themes\redmond\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
+    <Content Include="Content\Styles\themes\redmond\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Content\Styles\themes\redmond\images\ui-icons_217bc0_256x240.png" />
+    <Content Include="Content\Styles\themes\redmond\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\Styles\themes\redmond\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="Content\Styles\themes\redmond\images\ui-icons_6da8d5_256x240.png" />
+    <Content Include="Content\Styles\themes\redmond\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\Styles\themes\redmond\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Content\Styles\themes\redmond\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="Content\Styles\themes\redmond\jquery-ui-1.8.13.custom.css" />
+    <CodeAnalysisDictionary Include="CustomDictionary.xml" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Styles\themes\rebarUI\images\RebarUiSprite.pdn" />
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Default\Index.cshtml" />
+    <Content Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="SchoolFront.Web.wpp.targets" />
+    <Content Include="AccentureEmbeddedSigning.pfx" />
+    <Content Include="Rebar.WebDeploy.targets" />
+    <Content Include="Proxy\School-service.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>School-service.cs</LastGenOutput>
+    </Content>
+    <Content Include="Proxy\School-service.ttinclude" />
+    <Content Include="Proxy\People-service.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>People-service.cs</LastGenOutput>
+    </Content>
+    <Content Include="Proxy\People-service.ttinclude" />
+    <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Scripts\infragistics\ig.ui.min.js" />
+    <Content Include="Scripts\jqPlot\changes.txt" />
+    <Content Include="Scripts\jqPlot\copyright.txt" />
+    <Content Include="Scripts\jqPlot\excanvas.js" />
+    <Content Include="Scripts\jqPlot\excanvas.min.js">
+      <DependentUpon>excanvas.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\gpl-2.0.txt" />
+    <Content Include="Scripts\jqPlot\jqPlotCssStyling.txt" />
+    <Content Include="Scripts\jqPlot\jqPlotOptions.txt" />
+    <Content Include="Scripts\jqPlot\jquery.jqplot.css" />
+    <Content Include="Scripts\jqPlot\jquery.jqplot.js" />
+    <Content Include="Scripts\jqPlot\jquery.jqplot.min.css" />
+    <Content Include="Scripts\jqPlot\jquery.jqplot.min.js">
+      <DependentUpon>jquery.jqplot.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\jquery.js" />
+    <Content Include="Scripts\jqPlot\jquery.min.js">
+      <DependentUpon>jquery.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\MIT-LICENSE.txt" />
+    <Content Include="Scripts\jqPlot\optionsTutorial.txt" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.barRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.barRenderer.min.js">
+      <DependentUpon>jqplot.barRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.BezierCurveRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.BezierCurveRenderer.min.js">
+      <DependentUpon>jqplot.BezierCurveRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.blockRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.blockRenderer.min.js">
+      <DependentUpon>jqplot.blockRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.bubbleRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.bubbleRenderer.min.js">
+      <DependentUpon>jqplot.bubbleRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.canvasAxisLabelRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.canvasAxisLabelRenderer.min.js">
+      <DependentUpon>jqplot.canvasAxisLabelRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.canvasAxisTickRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.canvasAxisTickRenderer.min.js">
+      <DependentUpon>jqplot.canvasAxisTickRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.canvasOverlay.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.canvasOverlay.min.js">
+      <DependentUpon>jqplot.canvasOverlay.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.canvasTextRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.canvasTextRenderer.min.js">
+      <DependentUpon>jqplot.canvasTextRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.categoryAxisRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.categoryAxisRenderer.min.js">
+      <DependentUpon>jqplot.categoryAxisRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.ciParser.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.ciParser.min.js">
+      <DependentUpon>jqplot.ciParser.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.cursor.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.cursor.min.js">
+      <DependentUpon>jqplot.cursor.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.dateAxisRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.dateAxisRenderer.min.js">
+      <DependentUpon>jqplot.dateAxisRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.donutRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.donutRenderer.min.js">
+      <DependentUpon>jqplot.donutRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.dragable.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.dragable.min.js">
+      <DependentUpon>jqplot.dragable.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.enhancedLegendRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.enhancedLegendRenderer.min.js">
+      <DependentUpon>jqplot.enhancedLegendRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.funnelRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.funnelRenderer.min.js">
+      <DependentUpon>jqplot.funnelRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.highlighter.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.highlighter.min.js">
+      <DependentUpon>jqplot.highlighter.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.json2.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.json2.min.js">
+      <DependentUpon>jqplot.json2.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.logAxisRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.logAxisRenderer.min.js">
+      <DependentUpon>jqplot.logAxisRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.mekkoAxisRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.mekkoAxisRenderer.min.js">
+      <DependentUpon>jqplot.mekkoAxisRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.mekkoRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.mekkoRenderer.min.js">
+      <DependentUpon>jqplot.mekkoRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.meterGaugeRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.meterGaugeRenderer.min.js">
+      <DependentUpon>jqplot.meterGaugeRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.ohlcRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.ohlcRenderer.min.js">
+      <DependentUpon>jqplot.ohlcRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.pieRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.pieRenderer.min.js">
+      <DependentUpon>jqplot.pieRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.pointLabels.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.pointLabels.min.js">
+      <DependentUpon>jqplot.pointLabels.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.pyramidAxisRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.pyramidAxisRenderer.min.js">
+      <DependentUpon>jqplot.pyramidAxisRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.pyramidGridRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.pyramidGridRenderer.min.js">
+      <DependentUpon>jqplot.pyramidGridRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.pyramidRenderer.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.pyramidRenderer.min.js">
+      <DependentUpon>jqplot.pyramidRenderer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\plugins\jqplot.trendline.js" />
+    <Content Include="Scripts\jqPlot\plugins\jqplot.trendline.min.js">
+      <DependentUpon>jqplot.trendline.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jqPlot\README.txt" />
+    <Content Include="Scripts\jqPlot\usage.txt" />
+    <Content Include="Scripts\jquery-1.6.4.js" />
+    <Content Include="Scripts\jquery-1.6.4.min.js">
+      <DependentUpon>jquery-1.6.4.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery-ui-1.8.16.js" />
+    <Content Include="Scripts\jquery-ui-1.8.16.min.js">
+      <DependentUpon>jquery-ui-1.8.16.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.ba-throttle-debounce.js" />
+    <Content Include="Scripts\jquery.ba-throttle-debounce.min.js">
+      <DependentUpon>jquery.ba-throttle-debounce.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.bgiframe.js" />
+    <Content Include="Scripts\jquery.bgiframe.min.js">
+      <DependentUpon>jquery.bgiframe.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.ifixpng.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js">
+      <DependentUpon>jquery.unobtrusive-ajax.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js">
+      <DependentUpon>jquery.validate.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js">
+      <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\rebarUI\jquery.ui.selectmenu.js" />
+    <Content Include="Scripts\rebarUI\rebar.ui.carousel.js" />
+    <Content Include="Scripts\rebarUI\rebar.ui.checkbox.js" />
+    <Content Include="Scripts\rebarUI\rebar.ui.datepicker.js" />
+    <Content Include="Scripts\rebarUI\rebar.ui.dialog.js" />
+    <Content Include="Scripts\rebarUI\rebar.ui.guidetext.js" />
+    <Content Include="Scripts\rebarUI\rebar.ui.progressbar.js" />
+    <Content Include="Scripts\rebarUI\rebar.ui.radiobutton.js" />
+    <Content Include="Scripts\rebarUI\rebar.ui.selectlist.js" />
+    <Content Include="Scripts\rebarUI\rebar.ui.slider-x.js" />
+    <Content Include="Scripts\rebarUI\rebar.ui.spinner.js" />
+    <Content Include="Scripts\rebarUI\rebar.ui.table.js" />
+    <Content Include="Scripts\rebarUI\rebar.ui.textbox.js" />
+    <Content Include="Scripts\Site.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\App\_Layout.cshtml" />
+    <Content Include="Views\Shared\Http500.cshtml" />
+    <Content Include="Views\Shared\Http404.cshtml" />
+    <Content Include="Views\Shared\NotAuthorized.cshtml" />
+    <Content Include="Views\Shared\RebarUI\_Layout.cshtml" />
+    <Content Include="Settings.StyleCop" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Readme\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Content\Images\App\" />
+    <Folder Include="Content\Styles\App\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\LogOn.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SchoolFront.Web.ETW\SchoolFront.Web.ETW.csproj">
+      <Project>{af3d5f11-2410-4f8c-9415-e81a67369a38}</Project>
+      <Name>SchoolFront.Web.ETW</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <!-- integrate Gendarme rules into VS IDE -->
+  <UsingTask AssemblyFile="..\..\tools\GendarmeMsBuild.dll" TaskName="GendarmeMsBuild.Gendarme" />
+  <Target Name="AfterBuild" Condition="'$(Configuration)'=='Validate'">
+    <Gendarme Assemblies="$(TargetPath)" GendarmeExeFilename="..\..\tools\Gendarme\Gendarme.exe" IntegrateWithVisualStudio="True" />
+  </Target>
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <!--<Target Name="AfterBuild">
+    <MSBuild Condition="'$(Configuration)' == 'Release'" Projects="..\..\tools\SolutionGenerator\SolutionGenerator.msbuild" />
+  </Target>-->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3383</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:41149/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>http://mytelite/</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <PropertyGroup>
+    <StyleCopMSBuildTargetsFile>$(SolutionDir)packages\StyleCop.MSBuild.4.7.44.1\tools\StyleCop.targets</StyleCopMSBuildTargetsFile>
+  </PropertyGroup>
+  <Import Condition="Exists('$(StyleCopMSBuildTargetsFile)')" Project="$(StyleCopMSBuildTargetsFile)" />
+  <PropertyGroup>
+    <StyleCopMSBuildMessageMissing>Failed to import StyleCop.MSBuild targets from '$(StyleCopMSBuildTargetsFile)'. The StyleCop.MSBuild package was either missing or incomplete when the project was loaded. Ensure that the package is present and then restart the build. If you are using an IDE (e.g. Visual Studio), reload the project before restarting the build.</StyleCopMSBuildMessageMissing>
+    <StyleCopMSBuildMessagePresent>Failed to import StyleCop.MSBuild targets from '$(StyleCopMSBuildTargetsFile)'. The StyleCop.MSBuild package was either missing or incomplete when the project was loaded (but is now present). To fix this, restart the build. If you are using an IDE (e.g. Visual Studio), reload the project before restarting the build.</StyleCopMSBuildMessagePresent>
+    <StyleCopMSBuildMessageRestore>Failed to import StyleCop.MSBuild targets from '$(StyleCopMSBuildTargetsFile)'. The StyleCop.MSBuild package was either missing or incomplete when the project was loaded. To fix this, restore the package and then restart the build. If you are using an IDE (e.g. Visual Studio), you may need to reload the project before restarting the build. Note that regular NuGet package restore (during build) does not work with this package because the package needs to be present before the project is loaded. If this is an automated build (e.g. CI server), you may want to ensure that the build process restores the StyleCop.MSBuild package before the project is built.</StyleCopMSBuildMessageRestore>
+    <StyleCopMSBuildMessageRestored>Failed to import StyleCop.MSBuild targets from '$(StyleCopMSBuildTargetsFile)'. The StyleCop.MSBuild package was either missing or incomplete when the project was loaded (but is now present). To fix this, restart the build. If you are using an IDE (e.g. Visual Studio), reload the project before restarting the build. Note that when using regular NuGet package restore (during build) the package will not be available for the initial build because the package needs to be present before the project is loaded. If package restore executes successfully in the intitial build then the package will be available for subsequent builds. If this is an automated build (e.g. CI server), you may want to ensure that the build process restores the StyleCop.MSBuild package before the initial build.</StyleCopMSBuildMessageRestored>
+  </PropertyGroup>
+  <Target Name="StyleCopMSBuildTargetsNotFound">
+    <Warning Condition="!Exists('$(StyleCopMSBuildTargetsFile)') And $(RestorePackages)!=true And $(StyleCopTreatErrorsAsWarnings)!=false" Text="$(StyleCopMSBuildMessageMissing)" />
+    <Warning Condition="Exists('$(StyleCopMSBuildTargetsFile)')  And $(RestorePackages)!=true And $(StyleCopTreatErrorsAsWarnings)!=false" Text="$(StyleCopMSBuildMessagePresent)" />
+    <Warning Condition="!Exists('$(StyleCopMSBuildTargetsFile)') And $(RestorePackages)==true And $(StyleCopTreatErrorsAsWarnings)!=false" Text="$(StyleCopMSBuildMessageRestore)" />
+    <Warning Condition="Exists('$(StyleCopMSBuildTargetsFile)')  And $(RestorePackages)==true And $(StyleCopTreatErrorsAsWarnings)!=false" Text="$(StyleCopMSBuildMessageRestored)" />
+    <Error Condition="!Exists('$(StyleCopMSBuildTargetsFile)') And $(RestorePackages)!=true And $(StyleCopTreatErrorsAsWarnings)==false" Text="$(StyleCopMSBuildMessageMissing)" />
+    <Error Condition="Exists('$(StyleCopMSBuildTargetsFile)')  And $(RestorePackages)!=true And $(StyleCopTreatErrorsAsWarnings)==false" Text="$(StyleCopMSBuildMessagePresent)" />
+    <Error Condition="!Exists('$(StyleCopMSBuildTargetsFile)') And $(RestorePackages)==true And $(StyleCopTreatErrorsAsWarnings)==false" Text="$(StyleCopMSBuildMessageRestore)" />
+    <Error Condition="Exists('$(StyleCopMSBuildTargetsFile)')  And $(RestorePackages)==true And $(StyleCopTreatErrorsAsWarnings)==false" Text="$(StyleCopMSBuildMessageRestored)" />
+  </Target>
+  <PropertyGroup>
+    <PrepareForBuildDependsOn Condition="!Exists('$(StyleCopMSBuildTargetsFile)')">StyleCopMSBuildTargetsNotFound;$(PrepareForBuildDependsOn)</PrepareForBuildDependsOn>
+  </PropertyGroup>
+</Project>

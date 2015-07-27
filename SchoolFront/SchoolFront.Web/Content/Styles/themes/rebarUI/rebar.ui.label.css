@@ -1,0 +1,38 @@
+.ui-label-color, label, .ui-text-label {
+  color: #5b6868; }
+
+.ui-text-date, .ui-text-numeric, .ui-text-currency {
+  font-family: "Arial Unicode MS", Arial, sans-serif;
+  padding-right: 2px; }
+
+.ui-text-right, label, .ui-text-label, .ui-text-date, .ui-text-numeric, .ui-text-currency {
+  text-align: right;
+  padding-right: 2px; }
+
+.ui-text-left {
+  text-align: left;
+  padding-left: 2px; }
+
+.ui-text-center {
+  text-align: center; }
+
+.ui-text-group-label {
+  font-size: 1.125em;
+  text-align: left;
+  padding: 0 0 0 4px;
+  margin: 4px 0 0 4px; }
+
+.ui-text-em, em {
+  font-weight: bold; }
+
+.ui-link-external {
+  text-decoration: underline;
+  color: #0000FF;
+  font-style: italic; }
+
+.ui-link-external-intext {
+  color: #0000FF;
+  font-style: italic;
+  text-decoration: none; }
+  .ui-link-external-intext:hover {
+    text-decoration: underline; }

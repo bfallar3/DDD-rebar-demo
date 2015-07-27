@@ -1,0 +1,8 @@
+<!--?xml version="1.0" encoding="utf-8"?-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- As of NuGet 2.7, automatic package restore is preferred over the previous MSBuild integrated approach -->
+  <Target Name="RestorePackages" BeforeTargets="Build;Rebuild">
+    <Exec Command="&quot;$(MSBuildThisFileDirectory)..\..\nuget\NuGet.exe&quot; restore &quot;$(SolutionFileName)&quot;" />
+  </Target>
+</Project>

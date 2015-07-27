@@ -1,0 +1,3 @@
+﻿namespace People.Service.Tests
+{
+}

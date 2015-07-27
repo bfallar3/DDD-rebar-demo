@@ -1,0 +1,142 @@
+/* 
+ * Remove the dotted outline when hyperlinks are focused
+ * this is an IE Expression hack that will only work in IE7 or less
+ * IE 8+ should pick-up the :focus selector with outline: none
+ * in the default stylesheet
+ */
+:focus, a:focus, a:active {
+  ie-dummy: expression(this.hideFocus=true); }
+
+/* Add the IE specific filters to keep everything else clean
+ * The idea is to keep the main stylesheet CSS3 compliant
+ * so that once older versions of IE, like 6, 7 & 8 are phased
+ * out, this file can simply be removed from distribution
+ * There is certainly some redundancy, but it makes the main
+ * CSS3 stylesheet much more legible.
+ *
+ * This also isolates all usage of -ms-filter away
+ * from IE9 which can use many other CSS3 features
+ * as well as better hacks to work around limitations
+ *
+ * Since IE9 will pick-up and use filters if they are
+ * present we want to avoid having any filters
+ * because they cause lots of small rendering quirks
+ * and make for much harder to read screen print.
+ *
+ * The general rule is any time there is a css
+ * gradient or opacity setting on a style
+ * the rule should be duplicated here using a -ms-filter
+ *
+ * Take caution and remember order and precendence matters
+ * when organizing rules, generaly you should be able to
+ * follow the same order of rules that listed in the
+ * main style sheet.
+ */
+*[disabled], .ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled {
+  /* TODO: Fix, looks bad and looks even worse in IE */ }
+
+.ui-datepicker .ui-state-default {
+  /* Give all date cells layout so filters work
+   * clear all existing filters to get rid of the default gradient
+   */ }
+.ui-datepicker td.ui-state-disabled span {
+  color: #9b9b9b; }
+
+.ui-checkbox, .ui-radio {
+  zoom: 1;
+  *display: inline; }
+  .ui-checkbox.ui-state-disabled + label, .ui-radio.ui-state-disabled + label {
+    color: #e2ded8; }
+
+.ui-radio + label {
+  *line-height: 20px;
+  *vertical-align: bottom; }
+
+.ui-banner {
+  *filter: none;
+  height: 75px; }
+  .ui-banner .ui-banner-aux-nav > ul li:first-child {
+    padding-left: 0; }
+
+.ui-layout-wrapper {
+  *position: relative; }
+
+.ui-banner {
+  *z-index: 1; }
+
+.ui-button {
+  /*padding: 0.2em 0;*/
+  *padding: 0.08em 0 0; }
+
+.ui-button-icons-only, .ui-button-icon-only {
+  /* padding: 0.3em 0; */
+  *padding: 0; }
+
+.ui-button-icon-only .ui-icon {
+  /*margin-left: -8px;*/
+  *margin-left: -9px; }
+
+.ui-button-text-icon-primary .ui-button-icon-primary, .ui-button-text-icons .ui-button-icon-primary {
+  /*margin-left:0px;*/
+  *margin-left: -2px; }
+
+.ui-button-text-icon-secondary .ui-button-icon-secondary, .ui-button-text-icons .ui-button-icon-secondary, .ui-button-icons-only .ui-button-icon-secondary {
+  /* right: .5em; */
+  *right: -0.2em; }
+
+/* padding: .4em 1em .4em 2.1em; */
+/* with icon text should have extra left padding */
+.ui-button-text-icon-primary .ui-button-text {
+  *padding-left: 1.2em;
+  *padding-right: 0.5em; }
+
+.ui-button-text-icons .ui-button-text {
+  *padding-left: 1.2em;
+  *padding-right: 1.2em; }
+
+.ui-iggrid .ui-iggrid-paging .ui-iggrid-lastpage a {
+  *postion: relative;
+  *top: -15px; }
+.ui-iggrid .ui-iggrid-paging .ui-iggrid-lastpage span.ui-state-disabled {
+  *postion: relative;
+  *top: -15px; }
+.ui-iggrid .ui-state-disabled {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; }
+.ui-iggrid td.ui-state-hover {
+  border-width: 0px 1px 0px 1px;
+  border-left-color: #d9d9d9;
+  border-right-color: #d9d9d9; }
+
+/* overriding disabled dates in datepicker
+    as opacity is not working in IE7 & IE8 */
+.ui-datepicker-calendar td.ui-state-disabled span {
+  color: #9b9b9b; }
+
+.ui-drawers {
+  margin-top: -2px;
+  *margin-top: 3px; }
+  .ui-drawers .ui-drawers-item-caption {
+    *padding-top: 0px; }
+  .ui-drawers .ui-drawers-item-title {
+    *position: relative;
+    *top: 2px;
+    margin-bottom: 1px;
+    *margin-top: 10px; }
+  .ui-drawers .ui-drawers-title {
+    *border: solid 1px #8c8c8c; }
+
+.ui-left-nav {
+  *border-width: 1px; }
+
+.ui-spinner-container-page, .ui-spinner-container-local {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)"; }
+
+.ui-spinner-overlay {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)"; }
+
+.ui-spinner-caption {
+  *margin-top: 45px;
+  *position: fixed; }

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="tools\BuildScripts\Solution\*.targets" Condition="Exists('tools\BuildScripts\Solution\')" />
+  <Import Project="packages\Rebar.AssemblyVersioning.2.0.316950\tools\AssemblyVersioning.targets" Label="Rebar.AssemblyVersioning 2.0.316950" Condition="Exists('packages\Rebar.AssemblyVersioning.2.0.316950\tools\AssemblyVersioning.targets')" />
+  <Import Project="packages\Rebar.AssemblyVersioning.2.0.613679\tools\AssemblyVersioning.targets" Label="Rebar.AssemblyVersioning 2.0.613679" Condition="Exists('packages\Rebar.AssemblyVersioning.2.0.613679\tools\AssemblyVersioning.targets')" />
+</Project>

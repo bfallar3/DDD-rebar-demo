@@ -1,0 +1,35 @@
+/* Rebar UI Checkbox Widget
+ *
+ */
+.ui-checkbox {
+  border: none;
+  vertical-align: middle;
+  display: inline-block;
+  width: 16px;
+  height: 16px; }
+  .ui-checkbox input {
+    width: 100%;
+    height: 100%; }
+  .ui-checkbox.ui-state-default, .lt-ie9 .ui-checkbox.ui-state-default {
+    background: url("images/rui-sprite.png") no-repeat -60px 0px;
+    border: none; }
+  .ui-checkbox.ui-state-active, .lt-ie9 .ui-checkbox.ui-state-active {
+    background: url("images/rui-sprite.png") no-repeat -90px 0px; }
+  .ui-checkbox.ui-state-attention, .ui-checkbox.ui-state-required, .lt-ie9 .ui-checkbox.ui-state-attention, .lt-ie9 .ui-checkbox.ui-state-required {
+    background: url("images/rui-sprite.png") no-repeat 0px -30px; }
+  .ui-checkbox.ui-state-attention.ui-state-active, .ui-checkbox.ui-state-required.ui-state-active, .lt-ie9 .ui-checkbox.ui-state-attention.ui-state-active, .lt-ie9 .ui-checkbox.ui-state-required.ui-state-active {
+    background: url("images/rui-sprite.png") no-repeat -30px -30px; }
+  .ui-checkbox.ui-state-alert, .ui-checkboxui-state-error, .lt-ie9 .ui-checkbox.ui-state-alert, .lt-ie9 .ui-checkboxui-state-error {
+    background: url("images/rui-sprite.png") no-repeat 0px -60px; }
+  .ui-checkbox.ui-state-alert.ui-state-active, .ui-checkbox.ui-state-error.ui-state-active, .lt-ie9 .ui-checkbox.ui-state-alert.ui-state-active, .lt-ie9 .ui-checkbox.ui-state-error.ui-state-active {
+    background: url("images/rui-sprite.png") no-repeat -30px -60px; }
+  .ui-checkbox.ui-state-disabled, .lt-ie9 .ui-checkbox.ui-state-disabled {
+    background: url("images/rui-sprite.png") no-repeat 0px 0px; }
+  .ui-checkbox.ui-state-disabled.ui-state-active, .lt-ie9 .ui-checkbox.ui-state-disabled.ui-state-active {
+    background: url("images/rui-sprite.png") no-repeat -30px 0px; }
+  .ui-checkbox + label {
+    line-height: 18px;
+    vertical-align: middle;
+    margin-left: 2px; }
+
+/* End Rebar UI Checkbox Widget */

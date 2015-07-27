@@ -1,0 +1,125 @@
+/* Rebar UI Banner Widget
+ *
+ */
+.ui-banner {
+  position: relative;
+  height: 75px;
+  background-color: #c2c7c7;
+  background-image: url("images/App-Banner.png");
+  border-bottom: 5px solid #5b6868; }
+  .ui-banner .ui-state-active, .ui-banner .ui-widget-content .ui-state-active, .ui-banner .ui-widget-header .ui-state-active {
+    border: 0; }
+  .ui-banner .ui-banner-logo h1 {
+    position: absolute;
+    top: 5px;
+    left: 8px;
+    z-index: 1;
+    padding: 0;
+    margin: 0;
+    width: 126px;
+    height: 45px;
+    background: url("images/AccentureLogo-App.png") no-repeat; }
+  .ui-banner .ui-banner-logo h2 {
+    font-size: 2em;
+    position: absolute;
+    top: 22px;
+    left: 144px;
+    bottom: 29px;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    text-shadow: 0 1px 1px #222222; }
+  .ui-banner a {
+    color: black;
+    text-decoration: none;
+    line-height: 1.5; }
+    .ui-banner a:hover, .ui-banner a:focus, .ui-banner a.ui-state-hover, .ui-banner a.ui-state-focus {
+      background-color: #ebeded; }
+    .ui-banner a.ui-state-active {
+      background-color: #5b6868; }
+  .ui-banner ul {
+    padding: 0;
+    margin: 0; }
+  .ui-banner li {
+    padding: 0;
+    margin: 0;
+    list-style-type: none; }
+  .ui-banner .ui-banner-main-nav {
+    position: absolute;
+    width: 100%;
+    height: 25px;
+    top: 50px;
+    left: 0px;
+    background: white; }
+    .ui-banner .ui-banner-main-nav ul {
+      padding: .5em;
+      padding-left: 0;
+      padding-bottom: 5px; }
+      .ui-banner .ui-banner-main-nav ul li {
+        float: left; }
+        .ui-banner .ui-banner-main-nav ul li a {
+          font-size: 1.273em;
+          display: block;
+          padding: 1px 8px 1px 8px; }
+  .ui-banner .ui-banner-aux-nav {
+    position: absolute;
+    right: 0;
+    height: 18px; }
+    .ui-banner .ui-banner-aux-nav ul {
+      padding: 0;
+      margin: 0;
+      background-color: white; }
+    .ui-banner .ui-banner-aux-nav li {
+      float: left;
+      list-style-type: none;
+      background-color: white; }
+    .ui-banner .ui-banner-aux-nav > ul > li {
+      border-right: 1px solid #e2ded8; }
+      .ui-banner .ui-banner-aux-nav > ul > li:first-child {
+        border-bottom-left-radius: 18px;
+        padding-left: 18px; }
+      .ui-banner .ui-banner-aux-nav > ul > li:last-child {
+        border-right: none; }
+    .ui-banner .ui-banner-aux-nav a {
+      padding: 0px .7272em 0 .7272em;
+      min-height: 18px;
+      display: block; }
+    .ui-banner .ui-banner-aux-nav ul ul {
+      display: none;
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      top: 0;
+      background: white;
+      border: 1px solid #e2ded8;
+      border-top: 3px solid #5b6868;
+      padding: 5px; }
+    .ui-banner .ui-banner-aux-nav ul ul li {
+      float: none;
+      white-space: nowrap; }
+  .ui-banner.ui-banner-pub {
+    height: 81px; }
+    .ui-banner.ui-banner-pub .ui-banner-logo h1 {
+      width: 148px;
+      height: 77px;
+      background: url("images/AccentureLogo-Pub.png") no-repeat; }
+    .ui-banner.ui-banner-pub .ui-banner-logo h2 {
+      font-size: 2em;
+      position: absolute;
+      top: 28px;
+      left: 164px;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      text-shadow: 0 1px 1px #222222; }
+    .ui-banner.ui-banner-pub .ui-banner-main-nav {
+      height: 25px;
+      top: 56px; }
+      .ui-banner.ui-banner-pub .ui-banner-main-nav ul li a {
+        padding: 1px 8px 1px 8px; }
+
+/*put here banner styles specific to firefox
+  use only if no alternative is there*/
+@-moz-document url-prefix() {
+  .ui-banner .ui-banner-logo h2 {
+    top: 20px; } }

@@ -1,0 +1,76 @@
+<!--?xml version="1.0" encoding="utf-8"?-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <RestoreSolutionPackagesDependsOn>
+      $(RestoreSolutionPackagesDependsOn);
+      _WriteSolutionPackagesConfig;
+    </RestoreSolutionPackagesDependsOn>
+    <_ReadPackagesConfigDependsOn>
+      $(_ReadPackagesConfigDependsOn);
+      _GetPackagesConfig;
+    </_ReadPackagesConfigDependsOn>
+    <_WriteSolutionPackagesConfigDependsOn>
+      $(_WriteSolutionPackagesConfigDependsOn);
+      _ReadPackagesConfig;
+    </_WriteSolutionPackagesConfigDependsOn>
+    <SolutionPackagesFile 
+      Condition="'$(SolutionPackagesFile)' == ''">$([System.IO.Path]::Combine('$([System.IO.Path]::GetTempPath())','$(MSBuildProjectName)\packages.config'))</SolutionPackagesFile>
+  </PropertyGroup>
+
+  <Target Name="RestoreSolutionPackages" Condition="'$(RestoreSolutionPackages)'!='false'" BeforeTargets="Build;Rebuild" DependsOnTargets="$(RestoreSolutionPackagesDependsOn)">
+
+    <MSBuild Projects="$(SolutionDir).nuget\nuget.targets" Targets="RestorePackages" Properties="PackagesConfig=$(SolutionPackagesFile);SolutionDir=$(SolutionDir)" />
+
+    <ItemGroup Condition="'$(DisableProjectPackageRestore)' != 'true'">
+      <ProjectReference Condition="'%(Identity)' != ''">
+        <AdditionalProperties>%(AdditionalProperties);RestorePackages=false</AdditionalProperties>
+      </ProjectReference>
+    </ItemGroup>
+
+  </Target>
+
+  <Target Name="_GetPackagesConfig" 
+    Returns="_PackagesConfig">
+
+    <ItemGroup Condition="'$(RestoreAllPackages)' != 'true'">
+      <_PackagesConfig Include="@(ProjectReference -> '%(RootDir)%(Directory)packages.config')" 
+        Condition="Exists('%(ProjectReference.RootDir)%(ProjectReference.Directory)packages.config')" />
+    </ItemGroup>
+    <ItemGroup Condition="'$(RestoreAllPackages)' == 'true'">
+      <_PackagesConfig Include=".\**\packages.config" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="_ReadPackagesConfig"
+    Returns="_Packages"
+    DependsOnTargets="$(_ReadPackagesConfigDependsOn)">
+
+    <XmlPeek Query="//package"
+      XmlInputPath="%(_PackagesConfig.Identity)"
+      Condition="@(_PackagesConfig) != ''">
+      <Output TaskParameter="Result" ItemName="_AllPackages" />
+    </XmlPeek>
+
+    <RemoveDuplicates Inputs="@(_AllPackages)">
+      <Output TaskParameter="Filtered" ItemName="_Packages" />
+    </RemoveDuplicates>
+  </Target>
+
+  <!-- Don't use Inputs and Ouputs since we always want this new file written -->
+  <Target Name="_WriteSolutionPackagesConfig" DependsOnTargets="$(_WriteSolutionPackagesConfigDependsOn)">
+
+    <ItemGroup>
+      <_TempPackageFileLines Include="&lt;?xml version='1.0' encoding='utf-8'?&gt;;&lt;packages&gt;" />
+      <_TempPackageFileLines Include="@(_Packages)" />
+      <_TempPackageFileLines Include="&lt;/packages&gt;" />
+    </ItemGroup>
+
+    <MakeDir Directories="$([System.IO.Path]::GetDirectoryName('$(SolutionPackagesFile)'))" />
+    <WriteLinesToFile 
+      Lines="@(_TempPackageFileLines)"
+      File="$(SolutionPackagesFile)"
+      Encoding="utf-8"
+      Overwrite="true" />
+
+  </Target>
+</Project>

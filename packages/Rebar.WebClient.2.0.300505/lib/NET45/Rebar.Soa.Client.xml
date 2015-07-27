@@ -1,0 +1,1883 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rebar.Soa.Client</name>
+    </assembly>
+    <members>
+        <member name="T:Rebar.Soa.Client.ClientConfiguration">
+            <summary>
+            Class ClientConfiguration
+            </summary>
+        </member>
+        <member name="P:Rebar.Soa.Client.ClientConfiguration.UseCompression">
+            <summary>
+            Gets a value indicating whether [use compression].
+            </summary>
+            <value><c>true</c> if [use compression]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ClientConfiguration.ClientId">
+            <summary>
+            Gets the client id.
+            </summary>
+            <value>The client id.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ClientConfiguration.ApiKey">
+            <summary>
+            Gets the API key.
+            </summary>
+            <value>The API key.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ClientConfiguration.ApiSecret">
+            <summary>
+            Gets the API secret.
+            </summary>
+            <value>The API secret.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ClientConfiguration.ApiKeyFieldName">
+            <summary>
+            Gets the name of the API key field.
+            </summary>
+            <value>The name of the API key field.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ClientConfiguration.ApiSecretHashFieldName">
+            <summary>
+            Gets the name of the API secret hash field.
+            </summary>
+            <value>The name of the API secret hash field.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ClientConfiguration.ClientIdFieldName">
+            <summary>
+            Gets the name of the client id field.
+            </summary>
+            <value>The name of the client id field.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ClientConfiguration.AuthenticationType">
+            <summary>
+            Gets the type of the authentication.
+            </summary>
+            <value>The type of the authentication.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ClientConfiguration.HashType">
+            <summary>
+            Gets the type of the hash.
+            </summary>
+            <value>The type of the hash.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ClientConfiguration.ApiKeyFieldPlacement">
+            <summary>
+            Gets the API key field placement.
+            </summary>
+            <value>The API key field placement.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ClientConfiguration.ApiSecretHashFieldPlacement">
+            <summary>
+            Gets the API secret hash field placement.
+            </summary>
+            <value>The API secret hash field placement.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ClientConfiguration.Encoding">
+            <summary>
+            Gets the encoding.
+            </summary>
+            <value>The encoding.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ClientConfiguration.ApiSecretTimeout">
+            <summary>
+            Gets the API secret timeout.
+            </summary>
+            <value>The API secret timeout.</value>
+        </member>
+        <member name="T:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration">
+            <summary>
+            A <see cref="T:Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration"/> that delegates calls
+            to the a source configuration, and if that result is null, then delegates the call
+            to an inner configuration.  All property set statements will set the source and not call through
+            to the inner.
+            </summary>
+        </member>
+        <member name="T:Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration">
+            <summary>
+            Interface IRebarWebClientConfiguration represents a rebar web service client configuration.
+            </summary>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration.ClientId">
+            <summary>Gets or sets the client id.</summary>
+            <value>The client id.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration.UseCompression">
+            <summary> Gets or sets a value indicating whether to use compression (gzip / deflate). </summary>
+            <value><c>null</c> if [use compression] contains no value, <c>true</c> if [use compression]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration.AuthenticationType">
+            <summary>Gets or sets the type of the authentication.</summary>
+            <value>The type of the authentication.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration.ApiKey">
+            <summary>Gets or sets the API key.</summary>
+            <value>The API key.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration.ApiSecret">
+            <summary>Gets or sets the API secret.</summary>
+            <value>The API secret.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration.ApiKeyFieldName">
+            <summary>Gets or sets the name of the API key field.</summary>
+            <value>The name of the API key field.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration.ApiSecretHashFieldName">
+            <summary>Gets or sets the name of the API secret hash field.</summary>
+            <value>The name of the API secret hash field.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration.ClientIdFieldName">
+            <summary>Gets or sets the name of the client id field.</summary>
+            <value>The name of the client id field.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration.HashType">
+            <summary>Gets or sets the type of the hash.</summary>
+            <value>The type of the hash.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration.ApiKeyFieldPlacement">
+            <summary>Gets or sets the API key field placement.</summary>
+            <value>The API key field placement.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration.ApiSecretHashFieldPlacement">
+            <summary>Gets or sets the API secret hash field placement.</summary>
+            <value>The API secret hash field placement.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration.Encoding">
+            <summary>Gets or sets the encoding to use when generating the secret hash.</summary>
+            <value>The encoding.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration.ApiSecretTimeout">
+            <summary>Gets or sets the API secret timeout, how long is a generated hash valid for?</summary>
+            <value>The API secret timeout.</value>
+        </member>
+        <member name="F:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration._source">
+            <summary>
+            The _source
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration._inner">
+            <summary>
+            The _inner
+            </summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration.#ctor(Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration,Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration)">
+            <summary>
+            Creates a new coalescing delegating <see cref="T:Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration"/>
+            </summary>
+            <param name="source">The source configuration to first delegate calls to.</param>
+            <param name="inner">The inner configuration to delegate calls to the <paramref name="source"/> returns a <c>null</c> value.</param>
+            <remarks>This class does not gurantee that a non-null value will be returned at the end of the chain.</remarks>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration.Source">
+            <summary>
+            The source configuration that is first checked for a non null value.
+            </summary>
+            <value>The source.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration.Inner">
+            <summary>
+            The inner configuration that is delegated to if a null value is returned from the <see cref="P:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration.Source"/>.
+            </summary>
+            <value>The inner.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration.ClientId">
+            <summary>
+            Gets or sets the client id.
+            </summary>
+            <value>The client id.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration.UseCompression">
+            <summary>
+            Gets or sets a value indicating whether to use compression (gzip / deflate).
+            </summary>
+            <value><c>null</c> if [use compression] contains no value, <c>true</c> if [use compression]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration.AuthenticationType">
+            <summary>
+            Gets or sets the type of the authentication.
+            </summary>
+            <value>The type of the authentication.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration.ApiKey">
+            <summary>
+            Gets or sets the API key.
+            </summary>
+            <value>The API key.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration.ApiSecret">
+            <summary>
+            Gets or sets the API secret.
+            </summary>
+            <value>The API secret.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration.ApiKeyFieldName">
+            <summary>
+            Gets or sets the name of the API key field.
+            </summary>
+            <value>The name of the API key field.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration.ApiSecretHashFieldName">
+            <summary>
+            Gets or sets the name of the API secret hash field.
+            </summary>
+            <value>The name of the API secret hash field.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration.ClientIdFieldName">
+            <summary>
+            Gets or sets the name of the client id field.
+            </summary>
+            <value>The name of the client id field.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration.HashType">
+            <summary>
+            Gets or sets the type of the hash.
+            </summary>
+            <value>The type of the hash.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration.ApiKeyFieldPlacement">
+            <summary>
+            Gets or sets the API key field placement.
+            </summary>
+            <value>The API key field placement.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration.ApiSecretHashFieldPlacement">
+            <summary>
+            Gets or sets the API secret hash field placement.
+            </summary>
+            <value>The API secret hash field placement.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration.Encoding">
+            <summary>
+            Gets or sets the encoding to use when generating the secret hash.
+            </summary>
+            <value>The encoding.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration.ApiSecretTimeout">
+            <summary>
+            Gets or sets the API secret timeout, how long is a generated hash valid for?
+            </summary>
+            <value>The API secret timeout.</value>
+        </member>
+        <member name="T:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration">
+            <summary>
+            A read-only <see cref="T:Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration"/> class that delegates all calls to <see cref="T:Rebar.Soa.Client.ClientConfiguration"/>.
+            This represents the default values for the <see cref="T:Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration"/>.
+            </summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to this instance.
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <remarks>Throws <see cref="T:System.NotImplementedException"/> for setter.</remarks>
+            <returns><c>true</c> if the specified <see cref="T:System.Object"/> is equal to this instance; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration.Equals(Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration)">
+            <summary>
+            Equalses the specified other.
+            </summary>
+            <param name="other">The other.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration.Equals(Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration,Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration)">
+            <summary>
+            Equalses the specified left.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration.op_Equality(Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration,Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration)">
+            <summary>
+            Implements the ==.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration.op_Inequality(Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration,Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration)">
+            <summary>
+            Implements the !=.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration.ClientId">
+            <summary>
+            Gets or sets the client id.
+            </summary>
+            <value>The client id.</value>
+            <remarks>Throws <see cref="T:System.NotImplementedException"/> for setter.</remarks>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration.UseCompression">
+            <summary>
+            Gets or sets a value indicating whether to use compression (gzip / deflate).
+            </summary>
+            <value><c>null</c> if [use compression] contains no value, <c>true</c> if [use compression]; otherwise, <c>false</c>.</value>
+            <remarks>Throws <see cref="T:System.NotImplementedException"/> for setter.</remarks>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration.AuthenticationType">
+            <summary>
+            Gets or sets the type of the authentication.
+            </summary>
+            <value>The type of the authentication.</value>
+            <remarks>Throws <see cref="T:System.NotImplementedException"/> for setter.</remarks>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration.ApiKey">
+            <summary>
+            Gets or sets the API key.
+            </summary>
+            <value>The API key.</value>
+            <remarks>Throws <see cref="T:System.NotImplementedException"/> for setter.</remarks>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration.ApiSecret">
+            <summary>
+            Gets or sets the API secret.
+            </summary>
+            <value>The API secret.</value>
+            <remarks>Throws <see cref="T:System.NotImplementedException"/> for setter.</remarks>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration.ApiKeyFieldName">
+            <summary>
+            Gets or sets the name of the API key field.
+            </summary>
+            <value>The name of the API key field.</value>
+            <remarks>Throws <see cref="T:System.NotImplementedException"/> for setter.</remarks>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration.ApiSecretHashFieldName">
+            <summary>
+            Gets or sets the name of the API secret hash field.
+            </summary>
+            <value>The name of the API secret hash field.</value>
+            <remarks>Throws <see cref="T:System.NotImplementedException"/> for setter.</remarks>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration.ClientIdFieldName">
+            <summary>
+            Gets or sets the name of the client id field.
+            </summary>
+            <value>The name of the client id field.</value>
+            <remarks>Throws <see cref="T:System.NotImplementedException"/> for setter.</remarks>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration.HashType">
+            <summary>
+            Gets or sets the type of the hash.
+            </summary>
+            <value>The type of the hash.</value>
+            <remarks>Throws <see cref="T:System.NotImplementedException"/> for setter.</remarks>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration.ApiKeyFieldPlacement">
+            <summary>
+            Gets or sets the API key field placement.
+            </summary>
+            <value>The API key field placement.</value>
+            <remarks>Throws <see cref="T:System.NotImplementedException"/> for setter.</remarks>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration.ApiSecretHashFieldPlacement">
+            <summary>
+            Gets or sets the API secret hash field placement.
+            </summary>
+            <value>The API secret hash field placement.</value>
+            <remarks>Throws <see cref="T:System.NotImplementedException"/> for setter.</remarks>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration.Encoding">
+            <summary>
+            Gets or sets the encoding to use when generating the secret hash.
+            </summary>
+            <value>The encoding.</value>
+            <remarks>Throws <see cref="T:System.NotImplementedException"/> for setter.</remarks>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.DefaultRebarWebClientConfiguration.ApiSecretTimeout">
+            <summary>
+            Gets or sets the API secret timeout, how long is a generated hash valid for?
+            </summary>
+            <value>The API secret timeout.</value>
+            <remarks>Throws <see cref="T:System.NotImplementedException"/> for setter.</remarks>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Rebar.Soa.Client.Configuration.CaseInsensitiveEnumConfigConverter`1">
+            <summary>A type converter that will convert case insensitive nullable enums.</summary>
+            <typeparam name="T">The type of enum</typeparam>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.CaseInsensitiveEnumConfigConverter`1.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>Converts a string to an <typeparamref name="T"/>.</summary>
+            <param name="context">The context.</param>
+            <param name="culture">The cultureinfo.</param>
+            <param name="value">The value.</param>
+            <returns>System.Object.</returns>
+            <exception cref="T:System.ArgumentException">when <typeparamref name="T"/> is not an <c>enum</c> or <see cref="T:System.Nullable`1"/> enum.</exception>
+            <exception cref="T:System.ArgumentNullException">when <typeparamref name="T"/> is not <see cref="T:System.Nullable`1"/> and <paramref name="value"/> is <c>null</c></exception>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.CaseInsensitiveEnumConfigConverter`1.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary>
+            Converts the given value object to the specified type, using the specified context and culture information.
+            </summary>
+            <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> that provides a format context.</param>
+            <param name="culture">A <see cref="T:System.Globalization.CultureInfo"/>. If null is passed, the current culture is assumed.</param>
+            <param name="value">The <see cref="T:System.Object"/> to convert.</param>
+            <param name="destinationType">The <see cref="T:System.Type"/> to convert the <paramref name="value"/> parameter to.</param>
+            <returns>An <see cref="T:System.Object"/> that represents the converted value.</returns>
+            <exception cref="T:System.ArgumentNullException">destinationType</exception>
+            <exception cref="T:System.ArgumentException">destinationType</exception>
+        </member>
+        <member name="T:Rebar.Soa.Client.Configuration.TimeSpanSecondsConverter">
+            <summary>Type converter that will convert seconds to a timespan and vice versa.</summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.TimeSpanSecondsConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>
+            Converts the given object to a <see cref="T:System.TimeSpan" />.
+            </summary>
+            <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext" /> that provides a format context.</param>
+            <param name="culture">An optional <see cref="T:System.Globalization.CultureInfo" />. If not supplied, the current culture is assumed.</param>
+            <param name="value">The <see cref="T:System.Object" /> to convert.</param>
+            <returns>An <see cref="T:System.Object" /> that represents the converted value.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.TimeSpanSecondsConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary>
+            Converts the given object to another type.
+            </summary>
+            <param name="context">A formatter context.</param>
+            <param name="culture">The culture into which <paramref name="value" /> will be converted.</param>
+            <param name="value">The object to convert.</param>
+            <param name="destinationType">The type to convert the object to.</param>
+            <returns>The converted object.</returns>
+        </member>
+        <member name="T:Rebar.Soa.Client.Configuration.EncodingTypeConverter">
+            <summary>Converts an encoding name to an <see cref="T:System.Text.Encoding"/>.</summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.EncodingTypeConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>
+            Converts the given object to the type of this converter, using the specified context and culture information.
+            </summary>
+            <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext" /> that provides a format context.</param>
+            <param name="culture">The <see cref="T:System.Globalization.CultureInfo" /> to use as the current culture.</param>
+            <param name="value">The <see cref="T:System.Object" /> to convert.</param>
+            <returns>An <see cref="T:System.Object" /> that represents the converted value.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.EncodingTypeConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary>
+            Converts the given value object to the specified type, using the specified context and culture information.
+            </summary>
+            <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext" /> that provides a format context.</param>
+            <param name="culture">A <see cref="T:System.Globalization.CultureInfo" />. If null is passed, the current culture is assumed.</param>
+            <param name="value">The <see cref="T:System.Object" /> to convert.</param>
+            <param name="destinationType">The <see cref="T:System.Type" /> to convert the <paramref name="value" /> parameter to.</param>
+            <returns>An <see cref="T:System.Object" /> that represents the converted value.</returns>
+        </member>
+        <member name="T:Rebar.Soa.Client.Configuration.RebarWebClientConfiguration">
+            <summary>
+            Manages the Service Call Configuration.  The user can override the default location by specifying the name
+            of the Section Group name and Section name.  By default a section_group/section_name path is checked first, then a fallback
+            to just the section_name is checked.
+            
+            Finally the entire configuration is recursively scanned to try and find the configuration section.  Using the defaults or appsettings
+            to specifically define the names can increase performance and reduce memory consumption.
+            
+            The default configuration is assumed to be: sectionGroup name=Rebar / section name=RebarWebClient
+            <code lang="xml">
+            <![CDATA[
+            <configSections>
+                <sectionGroup name="Rebar">
+                    <section name="RebarWebClient" type="Rebar.Soa.Client.Configuration.RebarWebClientSection, Rebar.Soa.Client"/>
+                </sectionGroup>
+            </configSections>
+            <Rebar>
+                <RebarWebClient>
+                    <!-- Applied to all url specific configurations unless overriden at the url configuration level. -->
+                    <global clientId="MyAppAirId" apiKey="mybiglongapikey" apiSecret="secret_that_should_be_encrypted"/>
+                    <urls>
+                        <!-- 
+                            Configures urls to use the default configuration which generates and appends the apikey and hash to the request
+                            plus any other default headers like content-type application/json and client_id
+                        -->
+                        <add urlPrefix="https://mrdr.accenture.com" />
+                        <!--
+                            Configures another url to not use any authentication, no apikey, secret, etc
+                            and overrides the contentType from the default application/json to application/xml
+                        -->
+                        <add urlPrefix="https://someservice.accenture.com" authenticationType="None">
+                            <headers>
+                                <add name="content-type" value="application/xml" />
+                            </headers>
+                            <parameters>
+                                <add name="isFedMp" value="false" />
+                            </parameters>
+                        </add>
+                        <!-- 
+                          GET https://someservice.accenture.com/SomeServiceMethod?isFedMp=false
+                          Content-Type: application/xml
+                          Client_Id: MyAppAirId
+                        -->
+                    </urls>
+                </RebarWebClient>
+            </Rebar>
+            ]]>
+            </code>
+            
+            To override the default section group and section names you can use the following <see cref="T:System.Configuration.AppSettingsSection"/>
+            <code lang="xml">
+            <![CDATA[
+            <configSections>
+                <sectionGroup name="Company">
+                    <section name="WebService" type="Rebar.Soa.Client.RebarWebClientSection, Rebar.Soa.Client"/>
+                </sectionGroup>
+            </configSections>
+            <appSettings>
+                <add key="RebarSectionGroupName" value="Company" />
+                <add key="RebarWebClientSectionName" value="WebService" />
+            </appSettings>
+            <Company>
+                <WebService>
+                    <global clientId="MyAppAirId" />
+                    <urls>
+                        <add urlPrefix="https://mrdr.accenture.com" />
+                    </urls>
+                </WebService>
+            </Company>
+            ]]>
+            </code>
+            
+            If all else fails we will recursively enumerate all the configuration section groups and sections looking for
+            one that matches the type <see cref="T:Rebar.Soa.Client.Configuration.RebarWebClientSection"/>.
+            </summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.RebarWebClientConfiguration.FindConfigurationSection">
+            <summary>Find the configuration section in the app.config file.</summary>
+            <returns>The configuration section or <c>null</c> if it does not exist.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.RebarWebClientConfiguration.ForUrl(System.Uri)">
+            <summary>Find the <see cref="T:Rebar.Soa.Client.ServiceCallConfiguration"/> for the given url.  The configuration
+            can be used to instantiate a <see cref="T:Rebar.Soa.Client.ServiceCallBuilder"/> for the url.</summary>
+            <param name="url">The url to find the configuration for.</param>
+            <returns>The <see cref="T:Rebar.Soa.Client.ServiceCallConfiguration"/> or <c>null</c> if one is not found.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.RebarWebClientConfiguration.ForUrl(System.String)">
+            <summary>Find the <see cref="T:Rebar.Soa.Client.ServiceCallConfiguration"/> for the given url.  The configuration
+            can be used to instantiate a <see cref="T:Rebar.Soa.Client.ServiceCallBuilder"/> for the url.</summary>
+            <param name="url">The url to find the configuration for.</param>
+            <returns>The <see cref="T:Rebar.Soa.Client.ServiceCallConfiguration"/> or <c>null</c> if one is not found.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.RebarWebClientConfiguration.CreateServiceCallConfiguration(Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration)">
+            <summary>Creates the service call configuration from the <see cref="T:Rebar.Soa.Client.Configuration.IRebarWebClientConfiguration"/>.</summary>
+            <param name="config">The config.</param>
+            <returns>ServiceCallConfiguration.</returns>
+            <exception cref="T:System.ArgumentNullException">config</exception>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientConfiguration.Default">
+            <summary>Gets the pre-configured default configuration.</summary>
+            <remarks>Use this with the <see cref="T:Rebar.Soa.Client.Configuration.CoalescingDelegatingRebarWebConfiguration"/>
+            and the <see cref="P:Rebar.Soa.Client.Configuration.RebarWebClientConfiguration.Global"/> to concatenate a configuration that falls back to default values.
+            None of the values from the default configuration should be null, unless they have been altered by the user.</remarks>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientConfiguration.Global">
+            <summary>Gets the Global level configuration, or <c>null</c> if none exists.</summary>
+        </member>
+        <member name="T:Rebar.Soa.Client.Configuration.RebarWebClientGlobalElement">
+            <summary>
+            Class RebarWebClientGlobalElement
+            </summary>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientGlobalElement.ClientId">
+            <summary>
+            Gets or sets the client id.
+            </summary>
+            <value>The client id.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientGlobalElement.UseCompression">
+            <summary>
+            Gets or sets a value indicating whether to use compression (gzip / deflate).
+            </summary>
+            <value><c>null</c> if [use compression] contains no value, <c>true</c> if [use compression]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientGlobalElement.AuthenticationType">
+            <summary>
+            Gets or sets the type of the authentication.
+            </summary>
+            <value>The type of the authentication.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientGlobalElement.ApiKey">
+            <summary>
+            Gets or sets the API key.
+            </summary>
+            <value>The API key.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientGlobalElement.ApiSecret">
+            <summary>
+            Gets or sets the API secret.
+            </summary>
+            <value>The API secret.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientGlobalElement.ApiKeyFieldName">
+            <summary>
+            Gets or sets the name of the API key field.
+            </summary>
+            <value>The name of the API key field.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientGlobalElement.ApiSecretHashFieldName">
+            <summary>
+            Gets or sets the name of the API secret hash field.
+            </summary>
+            <value>The name of the API secret hash field.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientGlobalElement.ClientIdFieldName">
+            <summary>
+            Gets or sets the name of the client id field.
+            </summary>
+            <value>The name of the client id field.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientGlobalElement.HashType">
+            <summary>
+            Gets or sets the type of the hash.
+            </summary>
+            <value>The type of the hash.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientGlobalElement.ApiKeyFieldPlacement">
+            <summary>
+            Gets or sets the API key field placement.
+            </summary>
+            <value>The API key field placement.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientGlobalElement.ApiSecretHashFieldPlacement">
+            <summary>
+            Gets or sets the API secret hash field placement.
+            </summary>
+            <value>The API secret hash field placement.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientGlobalElement.Encoding">
+            <summary>
+            Gets or sets the encoding to use when generating the secret hash.
+            </summary>
+            <value>The encoding.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientGlobalElement.ApiSecretTimeout">
+            <summary>
+            Gets or sets the API secret timeout, how long is a generated hash valid for?
+            </summary>
+            <value>The API secret timeout.</value>
+        </member>
+        <member name="T:Rebar.Soa.Client.Configuration.RebarWebClientSection">
+            <summary>
+            Class RebarWebClientSection
+            </summary>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientSection.Global">
+            <summary>
+            Gets or sets the global.
+            </summary>
+            <value>The global.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientSection.Urls">
+            <summary>
+            Gets or sets the urls.
+            </summary>
+            <value>The urls.</value>
+        </member>
+        <member name="T:Rebar.Soa.Client.Configuration.RebarWebClientUrlCollection">
+            <summary>
+            Class RebarWebClientUrlCollection
+            </summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.RebarWebClientUrlCollection.CreateNewElement">
+            <summary>
+            When overridden in a derived class, creates a new <see cref="T:System.Configuration.ConfigurationElement" />.
+            </summary>
+            <returns>A new <see cref="T:System.Configuration.ConfigurationElement" />.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.RebarWebClientUrlCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for a specified configuration element when overridden in a derived class.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement" /> to return the key for.</param>
+            <returns>An <see cref="T:System.Object" /> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement" />.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.RebarWebClientUrlCollection.BaseAdd(System.Configuration.ConfigurationElement)">
+            <summary>
+            Adds a configuration element to the <see cref="T:System.Configuration.ConfigurationElementCollection" />.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement" /> to add.</param>
+        </member>
+        <member name="M:Rebar.Soa.Client.Configuration.RebarWebClientUrlCollection.System#Collections#Generic#IEnumerable{Rebar#Soa#Client#Configuration#RebarWebClientUrlElement}#GetEnumerator">
+            <summary>
+            Gets the enumerator.
+            </summary>
+            <returns>IEnumerator{RebarWebClientUrlElement}.</returns>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientUrlCollection.CollectionType">
+            <summary>
+            Gets the type of the <see cref="T:System.Configuration.ConfigurationElementCollection" />.
+            </summary>
+            <value>The type of the collection.</value>
+            <returns>The <see cref="T:System.Configuration.ConfigurationElementCollectionType" /> of this collection.</returns>
+        </member>
+        <member name="T:Rebar.Soa.Client.Configuration.RebarWebClientUrlElement">
+            <summary>
+            Class RebarWebClientUrlElement
+            </summary>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientUrlElement.UrlPrefix">
+            <summary>
+            Gets or sets the URL prefix.
+            </summary>
+            <value>The URL prefix.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientUrlElement.ClientId">
+            <summary>
+            Gets or sets the client id.
+            </summary>
+            <value>The client id.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientUrlElement.UseCompression">
+            <summary>
+            Gets or sets a value indicating whether to use compression (gzip / deflate).
+            </summary>
+            <value><c>null</c> if [use compression] contains no value, <c>true</c> if [use compression]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientUrlElement.AuthenticationType">
+            <summary>
+            Gets or sets the type of the authentication.
+            </summary>
+            <value>The type of the authentication.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientUrlElement.ApiKey">
+            <summary>
+            Gets or sets the API key.
+            </summary>
+            <value>The API key.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientUrlElement.ApiSecret">
+            <summary>
+            Gets or sets the API secret.
+            </summary>
+            <value>The API secret.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientUrlElement.ApiKeyFieldName">
+            <summary>
+            Gets or sets the name of the API key field.
+            </summary>
+            <value>The name of the API key field.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientUrlElement.ApiSecretHashFieldName">
+            <summary>
+            Gets or sets the name of the API secret hash field.
+            </summary>
+            <value>The name of the API secret hash field.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientUrlElement.ClientIdFieldName">
+            <summary>
+            Gets or sets the name of the client id field.
+            </summary>
+            <value>The name of the client id field.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientUrlElement.HashType">
+            <summary>
+            Gets or sets the type of the hash.
+            </summary>
+            <value>The type of the hash.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientUrlElement.ApiKeyFieldPlacement">
+            <summary>
+            Gets or sets the API key field placement.
+            </summary>
+            <value>The API key field placement.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientUrlElement.ApiSecretHashFieldPlacement">
+            <summary>
+            Gets or sets the API secret hash field placement.
+            </summary>
+            <value>The API secret hash field placement.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientUrlElement.Encoding">
+            <summary>
+            Gets or sets the encoding to use when generating the secret hash.
+            </summary>
+            <value>The encoding.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.Configuration.RebarWebClientUrlElement.ApiSecretTimeout">
+            <summary>
+            Gets or sets the API secret timeout, how long is a generated hash valid for?
+            </summary>
+            <value>The API secret timeout.</value>
+        </member>
+        <member name="T:Rebar.Soa.Client.DateTimeExtensions">
+            <summary>Datetime extensions for use with the hashing functions change comment</summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.DateTimeExtensions.UtcEpoch">
+            <summary>The UTC epoch time</summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.DateTimeExtensions.SinceEpoch(System.DateTime)">
+            <summary>Time since the <see cref="F:Rebar.Soa.Client.DateTimeExtensions.UtcEpoch"/></summary>
+            <param name="time">The time, should be in Universal time, otherwise it gets converted.</param>
+            <returns>TimeSpan.</returns>
+        </member>
+        <member name="T:Rebar.Soa.Client.WebRequestExtensions">
+            <summary>Extension methods used for working with <see cref="T:System.Net.HttpWebRequest"/>s</summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.WebRequestExtensions.CloneRequest(System.Net.HttpWebRequest,System.Uri)">
+            <summary>Clones an existing web request replaces the <see cref="P:System.Net.WebRequest.RequestUri"/> with <paramref name="newUri"/></summary>
+            <param name="originalRequest">The request to clone</param>
+            <param name="newUri">The new uri</param>
+            <returns>A new cloned request</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.WebRequestExtensions.CloneRequest(System.Net.WebRequest,System.Uri)">
+            <summary>Clones an existing web request replaces the <see cref="P:System.Net.WebRequest.RequestUri"/> with <paramref name="newUri"/></summary>
+            <param name="originalRequest">The request to clone</param>
+            <param name="newUri">The new uri</param>
+            <returns>A new cloned request</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.WebRequestExtensions.CloneHttpWebRequest(System.Net.HttpWebRequest,System.Uri)">
+            <summary>
+            Clones the HTTP web request.
+            </summary>
+            <param name="old">The old.</param>
+            <param name="newUri">The new URI.</param>
+            <returns>HttpWebRequest.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.WebRequestExtensions.CloneWebRequest(System.Net.WebRequest,System.Uri)">
+            <summary>
+            Clones the web request.
+            </summary>
+            <param name="old">The old.</param>
+            <param name="newUri">The new URI.</param>
+            <returns>WebRequest.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.WebRequestExtensions.CopyWebRequestProperties(System.Net.WebRequest,System.Net.WebRequest)">
+            <summary>
+            Copies the web request properties.
+            </summary>
+            <param name="old">The old.</param>
+            <param name="new">The new.</param>
+        </member>
+        <member name="M:Rebar.Soa.Client.WebRequestExtensions.CopyWebRequestHeaders(System.Net.WebRequest,System.Net.WebRequest)">
+            <summary>
+            Copies the web request headers.
+            </summary>
+            <param name="old">The old.</param>
+            <param name="new">The new.</param>
+        </member>
+        <member name="M:Rebar.Soa.Client.WebRequestExtensions.CopyHttpWebRequestProperties(System.Net.HttpWebRequest,System.Net.HttpWebRequest)">
+            <summary>
+            Copies the HTTP web request properties.
+            </summary>
+            <param name="old">The old.</param>
+            <param name="new">The new.</param>
+        </member>
+        <member name="M:Rebar.Soa.Client.WebRequestExtensions.CopyHttpWebRequestHeaders(System.Net.HttpWebRequest,System.Net.HttpWebRequest)">
+            <summary>
+            Copies the HTTP web request headers.
+            </summary>
+            <param name="old">The old.</param>
+            <param name="new">The new.</param>
+        </member>
+        <member name="T:System.StringExtensions">
+            <summary>
+            Implementation of string.IsNullOrWhiteSpace that will work on .Net 3.5.
+            Keep this internal so it doesn't leak into consumers applications
+            </summary>
+        </member>
+        <member name="M:System.StringExtensions.IsNullOrWhiteSpace(System.String)">
+            <summary>
+            Indicates wether a string is null, empty, or consists of only whitespace characters.
+            </summary>
+            <param name="value">The value</param>
+            <returns><c>true</c>if null, empty or whitespace, otherwise <c>false</c>.</returns>
+        </member>
+        <member name="T:Rebar.Soa.Client.OData.ODataRequestModifier">
+            <summary>A Function to modify an OData Request before being sent.</summary>
+            <param name="originalRequest">The original HttpWebRequest</param>
+            <param name="headers">Optional / Additional Headers to apply to the request</param>
+            <returns>A <see cref="T:System.Net.HttpWebRequest"/> that will replace the original.  This can also just be the original request.</returns>
+        </member>
+        <member name="T:Rebar.Soa.Client.OData.SoaClientServiceContextFactory">
+            <summary>A factory for for creating DataServiceContext classes ensuring all the proper HTTP Headers are added to the service request.
+            By default this factory hooks into the <see cref="E:System.Data.Services.Client.DataServiceContext.SendingRequest"/> event and adds the necessary
+            HTTP Headers and Query String parameters to the request that are required for authentication and authorizing
+            service requests.  If additional or different behavior is required call the <see cref="M:Rebar.Soa.Client.OData.SoaClientServiceContextFactory.Initialize(Rebar.Soa.Client.OData.ODataRequestModifier)"/> function
+            passing in a custom delegate that will perform your desired behavior.</summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.OData.SoaClientServiceContextFactory.CreateContext``1(``0)">
+            <summary>Wraps the context with an event handler</summary>
+            <typeparam name="T">The type of context to wrap</typeparam>
+            <param name="context">An instance of the context</param>
+            <returns>The context with a <see cref="E:System.Data.Services.Client.DataServiceContext.SendingRequest"/> event handler attached</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.OData.SoaClientServiceContextFactory.Initialize(Rebar.Soa.Client.OData.ODataRequestModifier)">
+            <summary>Initializes the factory with a custom event handler to use instead of the default.</summary>
+            <param name="onSendingRequest">A custom delegate that will handle the event before a service call is made.</param>
+        </member>
+        <member name="P:Rebar.Soa.Client.OData.SoaClientServiceContextFactory.DefaultOnSendingRequestHandler">
+            <summary>The default implementation of the OnSendingRequest handler.</summary>
+        </member>
+        <member name="T:Rebar.Soa.Client.RebarHttpClient">
+            <summary>
+            Convience class for consuming REBAR based web services hosted in mashery.
+            </summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.RebarHttpClient.#ctor(System.Net.Http.HttpMessageHandler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Soa.Client.RebarHttpClient"/> class.
+            </summary>
+            <param name="inner">The inner.</param>
+        </member>
+        <member name="P:Rebar.Soa.Client.RebarHttpClient.DefaultChain">
+            <summary>The default HttpMessageHandler chain used for the RebarHttpClient.</summary>
+            <remarks>The default chain consists of a <see cref="T:System.Net.Http.WebRequestHandler"/> wrapped by a <see cref="T:Rebar.Soa.Client.RebarHttpHandler"/>.
+            <list type=""></list>
+            </remarks>
+        </member>
+        <member name="T:Rebar.Soa.Client.RebarHttpClientExtensions">
+            <summary>
+            Class RebarHttpClientExtensions
+            </summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.RebarHttpClientExtensions.BuildChain(System.Collections.Generic.IEnumerable{System.Func{System.Net.Http.HttpMessageHandler,System.Net.Http.HttpMessageHandler}})">
+            <summary>
+            Constructs an HttpMessageHandler using factory functions in the <paramref name="chain"/>/
+            </summary>
+            <param name="chain">The factory functions used to create the chain.</param>
+            <returns>The http message handler</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.RebarHttpClientExtensions.AddItem``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>Adds an item to a sequence.</summary>
+            <typeparam name="T">the type of item to add</typeparam>
+            <param name="sequence">The sequence to add the item to</param>
+            <param name="item">The item to add</param>
+            <returns>The sequence with the item appended</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.RebarHttpClientExtensions.Coalesce``1(``0,``0[])">
+            <summary>
+            Coalesces the specified value.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value">The value.</param>
+            <param name="values">The values.</param>
+            <returns>``0.</returns>
+        </member>
+        <member name="T:Rebar.Soa.Client.RebarHttpHandler">
+            <summary>
+            Class RebarHttpHandler
+            </summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.RebarHttpHandler.#ctor(Rebar.Soa.Client.IServiceCallBuilder,System.Net.Http.HttpMessageHandler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Soa.Client.RebarHttpHandler"/> class.
+            </summary>
+            <param name="serviceCallBuilder">The service call builder.</param>
+            <param name="inner">The inner.</param>
+        </member>
+        <member name="M:Rebar.Soa.Client.RebarHttpHandler.ProcessRequest(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+            <summary>
+            Processes an HTTP request message.
+            </summary>
+            <param name="request">The HTTP request message to process.</param>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Returns <see cref="T:System.Net.Http.HttpRequestMessage"/>.The HTTP request message that was processed.</returns>
+            <exception cref="T:System.ArgumentNullException">request</exception>
+        </member>
+        <member name="M:Rebar.Soa.Client.RebarHttpHandler.ProcessResponse(System.Net.Http.HttpResponseMessage,System.Threading.CancellationToken)">
+            <summary>
+            Processes an HTTP response message.
+            </summary>
+            <param name="response">The HTTP response message to process.</param>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Returns <see cref="T:System.Net.Http.HttpResponseMessage" />.The HTTP response message that was processed.</returns>
+        </member>
+        <member name="T:Rebar.Soa.Client.RebarWebClient">
+            <summary>A simple webclient that can handle automatic compression</summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.RebarWebClient.#ctor(Rebar.Soa.Client.IServiceCallBuilder)">
+            <summary>Constructs a <see cref="T:System.Net.WebClient"/> that applies REBAR Service call information to it.</summary>
+            <param name="serviceCallBuilder"></param>
+        </member>
+        <member name="M:Rebar.Soa.Client.RebarWebClient.GetWebRequest(System.Uri)">
+            <summary>
+            Returns a <see cref="T:System.Net.WebRequest" /> object for the specified resource.
+            </summary>
+            <param name="address">A <see cref="T:System.Uri" /> that identifies the resource to request.</param>
+            <returns>A new <see cref="T:System.Net.WebRequest" /> object for the specified resource.</returns>
+        </member>
+        <member name="P:Rebar.Soa.Client.RebarWebClient.UseCompression">
+            <summary>Wether or not to use compression</summary>
+        </member>
+        <member name="T:Rebar.Soa.Client.RebarWebRequestCreator">
+            <summary>
+            An HttpWebRequest factory that adds required query string parameters and request headers for making web service calls to rebar.
+            </summary>
+            <seealso cref="T:System.Net.IWebRequestCreate"/>
+        </member>
+        <member name="M:Rebar.Soa.Client.RebarWebRequestCreator.#ctor(Rebar.Soa.Client.IServiceCallBuilder)">
+            <summary>Creates a new factory that will use the provided <paramref name="serviceCallBuilder"/></summary>
+            <param name="serviceCallBuilder">The service call builder that will be used to create the web request</param>
+        </member>
+        <member name="M:Rebar.Soa.Client.RebarWebRequestCreator.Create(System.Uri)">
+            <summary>
+            Creates a <see cref="T:System.Net.WebRequest" /> instance.
+            </summary>
+            <param name="uri">The uniform resource identifier (URI) of the Web resource.</param>
+            <returns>A <see cref="T:System.Net.WebRequest" /> instance.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.RebarWebRequestCreator.Register(System.String,System.Net.IWebRequestCreate)">
+            <summary>Registers a url prefix to automatically be created by the <paramref name="creator"/>.</summary>
+            <param name="urlPrefix">The url prefix to register, the default is https://mrdr.accenture.com</param>
+            <param name="creator">The factory used to create the web request, by default this is a <see cref="T:Rebar.Soa.Client.RebarWebRequestCreator"/>.</param>
+        </member>
+        <member name="T:Rebar.Soa.Client.Hasher">
+            <summary>Function that takes an encoding and input string and hashes it using some method and returns the output string.</summary>
+            <param name="encoding">The encoding to use to convert the input string into binary value</param>
+            <param name="input">The input string to hash</param>
+            <returns>The hashed output string</returns>
+        </member>
+        <member name="T:Rebar.Soa.Client.HashConcatenator">
+            <summary>Function used to combine multiple parameters into a single string that can later be hashed.</summary>
+            <param name="key">A key / user name</param>
+            <param name="secret">A secret / password</param>
+            <param name="time">A point in time for entropy</param>
+            <returns>The concatenated parameters as a single string</returns>
+        </member>
+        <member name="T:Rebar.Soa.Client.RequestHasher">
+            <summary>Composite function that will compute a hash for the given parameters.</summary>
+            <param name="encoding">The encoding to use on the strings</param>
+            <param name="key">The key / user name</param>
+            <param name="secret">The secret / password</param>
+            <param name="time">A point in time for entropy</param>
+            <returns>The hash</returns>
+        </member>
+        <member name="T:Rebar.Soa.Client.ServiceAuthenticator">
+            <summary>Handles creating security hashes for service authentication.</summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceAuthenticator.EpochTimeConcatenator">
+            <summary>A <see cref="T:Rebar.Soa.Client.HashConcatenator"/> that uses seconds since the Epoch as part of the concatenation.</summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceAuthenticator.MD5Hasher">
+            <summary>A <see cref="T:System.Security.Cryptography.MD5CryptoServiceProvider"/> <see cref="T:Rebar.Soa.Client.Hasher"/></summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceAuthenticator.SHA1Hasher">
+            <summary>A <see cref="T:System.Security.Cryptography.SHA1Managed"/> <see cref="T:Rebar.Soa.Client.Hasher"/></summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceAuthenticator.SHA256Hasher">
+            <summary>A <see cref="T:System.Security.Cryptography.SHA256Managed"/> <see cref="T:Rebar.Soa.Client.Hasher"/></summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceAuthenticator.MD5RequestHasher">
+            <summary>A <see cref="F:Rebar.Soa.Client.ServiceAuthenticator.MD5Hasher"/> <see cref="T:Rebar.Soa.Client.RequestHasher"/> that uses the default <see cref="F:Rebar.Soa.Client.ServiceAuthenticator.EpochTimeConcatenator"/></summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceAuthenticator.SHA1RequestHasher">
+            <summary>A <see cref="F:Rebar.Soa.Client.ServiceAuthenticator.SHA1Hasher"/> <see cref="T:Rebar.Soa.Client.RequestHasher"/> that uses the default <see cref="F:Rebar.Soa.Client.ServiceAuthenticator.EpochTimeConcatenator"/></summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceAuthenticator.SHA256RequestHasher">
+            <summary>A <see cref="F:Rebar.Soa.Client.ServiceAuthenticator.SHA256Hasher"/> <see cref="T:Rebar.Soa.Client.RequestHasher"/> that uses the default <see cref="F:Rebar.Soa.Client.ServiceAuthenticator.EpochTimeConcatenator"/></summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceAuthenticator.#ctor(Rebar.Soa.Client.HashType,System.Text.Encoding,System.Func{System.String},System.Func{System.String})">
+            <summary>
+            
+            </summary>
+            <param name="hashType"></param>
+            <param name="encoding"></param>
+            <param name="apiKeyGetter"></param>
+            <param name="apiSecretGetter"></param>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceAuthenticator.#ctor(System.Text.Encoding,Rebar.Soa.Client.HashConcatenator,Rebar.Soa.Client.Hasher,System.Func{System.String},System.Func{System.String})">
+            <summary>
+            
+            </summary>
+            <param name="encoding"></param>
+            <param name="concatenator"></param>
+            <param name="hasher"></param>
+            <param name="keyGetter"></param>
+            <param name="secretGetter"></param>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceAuthenticator.#ctor(System.Text.Encoding,Rebar.Soa.Client.RequestHasher,System.Func{System.String},System.Func{System.String})">
+            <summary>
+            
+            </summary>
+            <param name="encoding"></param>
+            <param name="hasher"></param>
+            <param name="keyGetter"></param>
+            <param name="secretGetter"></param>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceAuthenticator.ComputeHash">
+            <summary>Computes a hash</summary>
+            <returns>The hash</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceAuthenticator.ComputeHash(System.String,System.String,System.DateTime)">
+            <summary>
+            Compjutes a hash
+            </summary>
+            <param name="key">The key</param>
+            <param name="secret">The secret</param>
+            <param name="time">The time</param>
+            <returns>The hash</returns>
+        </member>
+        <member name="T:Rebar.Soa.Client.HasherExtensions">
+            <summary>Extension methods for working with byte arrays and Hexadecimal encoding.</summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.HasherExtensions.ToHex(System.Byte[])">
+            <summary>
+            Converts a byte array to hex encoded string
+            </summary>
+            <remarks>
+            Taken from Stackoverflow http://stackoverflow.com/questions/623104/c-sharp-byte-to-hex-string/3974535#3974535
+            based on benchmarks performed from this question.  Besides performance it creates less garbage on the heap.
+            http://stackoverflow.com/questions/623104/c-sharp-byte-to-hex-string/10048895#10048895
+            </remarks>
+            <param name="value">The value to convert</param>
+            <returns>A hex encoded string</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.HasherExtensions.HexToBytes(System.String)">
+            <summary>
+            Converts a byte array to hex encoded string
+            </summary>
+            <remarks>
+            Taken from Stackoverflow http://stackoverflow.com/questions/623104/c-sharp-byte-to-hex-string/3974535#3974535
+            based on benchmarks performed from this question.  Besides performance it creates less garbage on the heap.
+            http://stackoverflow.com/questions/623104/c-sharp-byte-to-hex-string/10048895#10048895
+            </remarks>
+            <param name="hexValue">The hex encoded string to convert</param>
+            <returns>A byte array</returns>
+        </member>
+        <member name="T:Rebar.Soa.Client.IServiceCallBuilder">
+            <summary>The core building block for creating uri querystring parameters and http headers for making service calls.</summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.IServiceCallBuilder.IsWellFormed(System.Uri)">
+            <summary>Validates that a Uri is well-formed for calling a service.  Ensures that any required
+            querystring parameters are present, how it does not validate any of the values of those parameters.</summary>
+            <param name="uri">The uri to validate</param>
+            <returns><c>true</c> if required parameters are present in the URI otherwise <c>false</c></returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.IServiceCallBuilder.BuildUri(System.UriBuilder)">
+            <summary>Appends any required parameters to the URI to ensure it is valid for calling a service</summary>
+            <param name="uri">The base uri</param>
+            <returns>A <see cref="M:Rebar.Soa.Client.IServiceCallBuilder.IsWellFormed(System.Uri)"/> uri</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.IServiceCallBuilder.BuildHeaders">
+            <summary>Builds a dictionary of any required HTTP headers needed to perform a service call.</summary>
+            <returns>The required HTTP headers.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.IServiceCallBuilder.BuildServiceCall(System.String)">
+            <summary>Builds a uri and headers for a service call.</summary>
+            <param name="uri">The base uri</param>
+            <returns><see cref="T:Rebar.Soa.Client.ServiceCallData"/>.</returns>
+        </member>
+        <member name="T:Rebar.Soa.Client.ServiceCallData">
+            <summary>
+            Holder object for a Uri, Headers, and Validity Time
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallData._uri">
+            <summary>
+            The _uri
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallData._headers">
+            <summary>
+            The _headers
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallData._validUntil">
+            <summary>
+            The _valid until
+            </summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallData.#ctor(System.UriBuilder,System.Collections.Generic.IDictionary{System.String,System.String},System.DateTime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Soa.Client.ServiceCallData"/> class.
+            </summary>
+            <param name="uri">The URI.</param>
+            <param name="headers">The headers.</param>
+            <param name="validUntil">The valid until.</param>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallData.Uri">
+            <summary>
+            Gets the URI.
+            </summary>
+            <value>The URI.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallData.Headers">
+            <summary>
+            Gets the headers.
+            </summary>
+            <value>The headers.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallData.ValidUntil">
+            <summary>
+            Gets the valid until.
+            </summary>
+            <value>The valid until.</value>
+        </member>
+        <member name="T:Rebar.Soa.Client.ServiceCallBuilder">
+            <summary>
+            The Default ServiceCallBuilder <see cref="T:Rebar.Soa.Client.IServiceCallBuilder"/> that is used to help
+            generate web requests.  If this doesn't work, you can easily write a custom implementation
+            and initialize the <see cref="T:Rebar.Soa.Client.ServiceCallFactory"/> with the custom builder.
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallBuilder._serviceConfiguration">
+            <summary>
+            The _service configuration
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallBuilder._authenticator">
+            <summary>
+            The _authenticator
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallBuilder._queryStringParamsToAdd">
+            <summary>
+            The _query string params to add
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallBuilder._headersToAdd">
+            <summary>
+            The _headers to add
+            </summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Soa.Client.ServiceCallBuilder"/> class.
+            </summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallBuilder.#ctor(Rebar.Soa.Client.ServiceCallConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Soa.Client.ServiceCallBuilder"/> class.
+            </summary>
+            <param name="serviceConfiguration">The service configuration.</param>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallBuilder.#ctor(Rebar.Soa.Client.ServiceCallConfiguration,Rebar.Soa.Client.ServiceAuthenticator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Soa.Client.ServiceCallBuilder"/> class.
+            </summary>
+            <param name="serviceConfiguration">The service configuration.</param>
+            <param name="authenticator">The authenticator.</param>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallBuilder.IsWellFormed(System.Uri)">
+            <summary>
+            Checks if the <paramref name="uri" /> is valid for a service call.  It ensures parameters like api and secrets are properly added.
+            </summary>
+            <param name="uri">The uri to validate</param>
+            <returns><c>true</c> if the uri is properly formatted.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallBuilder.BuildUri(System.UriBuilder)">
+            <summary>
+            Appends any missing required information to the <paramref name="uri" /> that is required for making a service call.
+            </summary>
+            <param name="uri">The uri</param>
+            <returns>The uri with any missing parameters added.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallBuilder.BuildServiceCall(System.String)">
+            <summary>
+            Builds the required service call data for making a service call.
+            </summary>
+            <param name="uri">The base uri for the service call.</param>
+            <returns>The service call data.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallBuilder.BuildHeaders">
+            <summary>
+            Builds the required http headers for a service call request
+            </summary>
+            <returns>A dictionary of the required headers needed for an http call.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallBuilder.RegisterQueryStringParameters">
+            <summary>
+            Registers the query string parameters.
+            </summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallBuilder.RegisterHeaders">
+            <summary>
+            Registers the headers.
+            </summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallBuilder.RegisterQueryStringParameter(System.String,System.Func{System.String})">
+            <summary>
+            Registers the query string parameter.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="getter">The getter.</param>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallBuilder.RegisterHeader(System.String,System.Func{System.String})">
+            <summary>
+            Registers the header.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="getter">The getter.</param>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallBuilder.NeedsSecretAddedToQueryString(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Needses the secret added to query string.
+            </summary>
+            <param name="parameters">The parameters.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallBuilder.NeedsApiKeyAddedToQueryString(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Needses the API key added to query string.
+            </summary>
+            <param name="parameters">The parameters.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallBuilder.QueryStringParameterExists(System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+            Queries the string parameter exists.
+            </summary>
+            <param name="parameters">The parameters.</param>
+            <param name="apiKeyFieldName">Name of the API key field.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallBuilder.IsUriModificationRequired">
+            <summary>
+            Determines whether [is URI modification required].
+            </summary>
+            <returns><c>true</c> if [is URI modification required]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallBuilder.AddHashedSecretToQueryString(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Adds the hashed secret to query string.
+            </summary>
+            <param name="parameters">The parameters.</param>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallBuilder.AddApiKeyToQueryString(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Adds the API key to query string.
+            </summary>
+            <param name="parameters">The parameters.</param>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallBuilder.NeedsAuthentication">
+            <summary>
+            Gets a value indicating whether [needs authentication].
+            </summary>
+            <value><c>true</c> if [needs authentication]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallBuilder.NeedsApiKeyInQueryString">
+            <summary>
+            Gets a value indicating whether [needs API key in query string].
+            </summary>
+            <value><c>true</c> if [needs API key in query string]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallBuilder.NeedsApiKeyInHeader">
+            <summary>
+            Gets a value indicating whether [needs API key in header].
+            </summary>
+            <value><c>true</c> if [needs API key in header]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallBuilder.NeedsHash">
+            <summary>
+            Gets a value indicating whether [needs hash].
+            </summary>
+            <value><c>true</c> if [needs hash]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallBuilder.NeedsSecretInQueryString">
+            <summary>
+            Gets a value indicating whether [needs secret in query string].
+            </summary>
+            <value><c>true</c> if [needs secret in query string]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallBuilder.NeedsSecretInHeader">
+            <summary>
+            Gets a value indicating whether [needs secret in header].
+            </summary>
+            <value><c>true</c> if [needs secret in header]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Rebar.Soa.Client.AuthenticationType">
+            <summary>
+            Enum AuthenticationType
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.AuthenticationType.None">
+            <summary>
+            The none
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.AuthenticationType.ApiKeyOnly">
+            <summary>
+            The API key only
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.AuthenticationType.ApiKeySecretHash">
+            <summary>
+            The API key secret hash
+            </summary>
+        </member>
+        <member name="T:Rebar.Soa.Client.HashType">
+            <summary>
+            Enum HashType
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.HashType.MD5">
+            <summary>
+            The MD5
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.HashType.SHA1">
+            <summary>
+            The sha1
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.HashType.SHA256">
+            <summary>
+            The sha256
+            </summary>
+        </member>
+        <member name="T:Rebar.Soa.Client.FieldPlacement">
+            <summary>
+            Enum FieldPlacement
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.FieldPlacement.QueryString">
+            <summary>
+            The query string
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.FieldPlacement.HttpHeader">
+            <summary>
+            The HTTP header
+            </summary>
+        </member>
+        <member name="T:Rebar.Soa.Client.ServiceCallConfiguration">
+            <summary>
+            Class ServiceCallConfiguration
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallConfiguration._authenticationType">
+            <summary>
+            The _authentication type
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallConfiguration._hashType">
+            <summary>
+            The _hash type
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallConfiguration._apiKeyPlacement">
+            <summary>
+            The _api key placement
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallConfiguration._apiKeyFieldName">
+            <summary>
+            The _api key field name
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallConfiguration._encoding">
+            <summary>
+            The _encoding
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallConfiguration._apiKeyGetter">
+            <summary>
+            The _api key getter
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallConfiguration._apiSecretGetter">
+            <summary>
+            The _api secret getter
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallConfiguration._apiHashPlacement">
+            <summary>
+            The _api hash placement
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallConfiguration._apiHashFieldName">
+            <summary>
+            The _api hash field name
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallConfiguration._clientIdFieldName">
+            <summary>
+            The _client id field name
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallConfiguration._clientIdGetter">
+            <summary>
+            The _client id getter
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallConfiguration._useCompression">
+            <summary>
+            The _use compression
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallConfiguration._apiApiSecretTimeout">
+            <summary>
+            The _api API secret timeout
+            </summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallConfiguration.#ctor(Rebar.Soa.Client.AuthenticationType,Rebar.Soa.Client.HashType,Rebar.Soa.Client.FieldPlacement,System.String,Rebar.Soa.Client.FieldPlacement,System.String,System.Text.Encoding,System.Func{System.String},System.Func{System.String},System.String,System.Func{System.String},System.Boolean,System.TimeSpan)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Soa.Client.ServiceCallConfiguration"/> class.
+            </summary>
+            <param name="authenticationType">Type of the authentication.</param>
+            <param name="hashType">Type of the hash.</param>
+            <param name="apiKeyPlacement">The API key placement.</param>
+            <param name="apiKeyFieldName">Name of the API key field.</param>
+            <param name="apiHashPlacement">The API hash placement.</param>
+            <param name="apiHashFieldName">Name of the API hash field.</param>
+            <param name="encoding">The encoding.</param>
+            <param name="apiKeyGetter">The API key getter.</param>
+            <param name="apiSecretGetter">The API secret getter.</param>
+            <param name="clientIdFieldName">Name of the client id field.</param>
+            <param name="clientIdGetter">The client id getter.</param>
+            <param name="useCompression">if set to <c>true</c> [use compression].</param>
+            <param name="apiApiSecretTimeout">The API API secret timeout.</param>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallConfiguration.GetClientId">
+            <summary>
+            Gets the client id.
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallConfiguration.GetApiKey">
+            <summary>
+            Gets the API key.
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallConfiguration.GetSecret">
+            <summary>
+            Gets the secret.
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallConfiguration.BuildDefaultConfiguration">
+            <summary>
+            Creates a configuration using the default settings found in the App.config file AppSettings and ClientSettings.settings sections
+            </summary>
+            <returns>The default configuration</returns>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallConfiguration.AuthenticationType">
+            <summary>
+            Gets the type of the authentication.
+            </summary>
+            <value>The type of the authentication.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallConfiguration.HashType">
+            <summary>
+            Gets the type of the hash.
+            </summary>
+            <value>The type of the hash.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallConfiguration.ApiKeyPlacement">
+            <summary>
+            Gets the API key placement.
+            </summary>
+            <value>The API key placement.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallConfiguration.ApiKeyFieldName">
+            <summary>
+            Gets the name of the API key field.
+            </summary>
+            <value>The name of the API key field.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallConfiguration.ApiHashPlacement">
+            <summary>
+            Gets the API hash placement.
+            </summary>
+            <value>The API hash placement.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallConfiguration.ApiHashFieldName">
+            <summary>
+            Gets the name of the API hash field.
+            </summary>
+            <value>The name of the API hash field.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallConfiguration.Encoding">
+            <summary>
+            Gets the encoding.
+            </summary>
+            <value>The encoding.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallConfiguration.ClientIdFieldName">
+            <summary>
+            Gets the name of the client id field.
+            </summary>
+            <value>The name of the client id field.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallConfiguration.UseCompression">
+            <summary>
+            Gets a value indicating whether [use compression].
+            </summary>
+            <value><c>true</c> if [use compression]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallConfiguration.ApiSecretTimeout">
+            <summary>
+            Gets the API secret timeout.
+            </summary>
+            <value>The API secret timeout.</value>
+        </member>
+        <member name="T:Rebar.Soa.Client.ServiceCallFactory">
+            <summary>
+            A global class used to handle all service authentication and authorization requirements.
+            The class can be configured via web.config or app.config settings.
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallFactory._builder">
+            <summary>
+            The _builder
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallFactory._webRequestCreater">
+            <summary>
+            The _web request creater
+            </summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.Initialize(Rebar.Soa.Client.IServiceCallBuilder,System.String[])">
+            <summary>
+            Initializes the <see cref="T:Rebar.Soa.Client.ServiceCallFactory"/> with a custom <see cref="T:Rebar.Soa.Client.IServiceCallBuilder"/>.
+            </summary>
+            <param name="builder">The builder to use when creating requests and proxies.</param>
+            <param name="urlPrefixes">The URL prefixes.</param>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.CreateDataServiceContext``1(``0)">
+            <summary>
+            Wraps and Initializes a <see cref="T:System.Data.Services.Client.DataServiceContext"/> for use with Rebar SOA Services
+            </summary>
+            <typeparam name="T">The type of <see cref="T:System.Data.Services.Client.DataServiceContext"/></typeparam>
+            <param name="context">An instance of a context to wrap</param>
+            <returns>The context</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.CreateServiceableWebClient">
+            <summary>
+            Creates a <see cref="T:System.Net.WebClient"/> for use with Rebar SOA Services using the default <see cref="T:Rebar.Soa.Client.IServiceCallBuilder"/>
+            </summary>
+            <returns>The webclient</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.CreateServiceableWebClient(Rebar.Soa.Client.IServiceCallBuilder)">
+            <summary>
+            Creates a <see cref="T:System.Net.WebClient"/> for use with Rebar SOA Services.
+            </summary>
+            <param name="builder">The builder to use to create the web client</param>
+            <returns>The webclient</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.CreateServiceableUri(System.String)">
+            <summary>
+            Creates a URI with the proper querystring parameters added for use with Rebar SOA Services
+            </summary>
+            <param name="uri">The base uri.</param>
+            <returns>A uri builder with all existing information preserved, plus any additional required parameters</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.CreateServiceableUri(System.Uri)">
+            <summary>
+            Creates a URI with the proper querystring parameters added for use with Rebar SOA Services
+            </summary>
+            <param name="uri">The base uri.</param>
+            <returns>A uri builder with all existing information preserved, plus any additional required parameters</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.CreateServiceableUri(System.UriBuilder)">
+            <summary>
+            Creates a URI with the proper querystring parameters added for use with Rebar SOA Services
+            </summary>
+            <param name="uri">The base uri.</param>
+            <returns>A uri builder with all existing information preserved, plus any additional required parameters</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.CreateServiceableUri(System.UriBuilder,Rebar.Soa.Client.IServiceCallBuilder)">
+            <summary>
+            Creates a URI with the proper querystring parameters added for use with Rebar SOA Services
+            </summary>
+            <param name="uri">The base uri.</param>
+            <param name="builder">A custom builder to use to create the uri</param>
+            <returns>A uri builder with all existing information preserved, plus any additional required parameters</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.CreateServiceableRequest(System.String)">
+            <summary>
+            Creates the serviceable request.
+            </summary>
+            <param name="uri">The URI.</param>
+            <returns>HttpWebRequest.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.CreateServiceableRequest(System.Uri)">
+            <summary>
+            Creates the serviceable request.
+            </summary>
+            <param name="uri">The URI.</param>
+            <returns>HttpWebRequest.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.CreateServiceableRequest(System.UriBuilder)">
+            <summary>
+            Creates the serviceable request.
+            </summary>
+            <param name="uri">The URI.</param>
+            <returns>HttpWebRequest.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.CreateServiceableRequest(System.UriBuilder,Rebar.Soa.Client.IServiceCallBuilder)">
+            <summary>
+            Creates the serviceable request.
+            </summary>
+            <param name="uri">The URI.</param>
+            <param name="builder">The builder.</param>
+            <returns>HttpWebRequest.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.CreateServiceableRequest(System.Net.HttpWebRequest)">
+            <summary>
+            Creates the serviceable request.
+            </summary>
+            <param name="originalRequest">The original request.</param>
+            <returns>HttpWebRequest.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.CreateServiceableRequest(System.Net.HttpWebRequest,Rebar.Soa.Client.IServiceCallBuilder)">
+            <summary>
+            Creates the serviceable request.
+            </summary>
+            <param name="originalRequest">The original request.</param>
+            <param name="builder">The builder.</param>
+            <returns>HttpWebRequest.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.AppendUriPath(System.UriBuilder,System.String)">
+            <summary>
+            Appends the URI path.
+            </summary>
+            <param name="uri">The URI.</param>
+            <param name="path">The path.</param>
+            <returns>UriBuilder.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.AppendUriQueryParameters(System.UriBuilder,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Appends the URI query parameters.
+            </summary>
+            <param name="uri">The URI.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>UriBuilder.</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.Wrap``1(``0)">
+            <summary>
+            Wraps the specified client.
+            </summary>
+            <typeparam name="TClient">The type of the T client.</typeparam>
+            <param name="client">The client.</param>
+            <returns>IDisposable.</returns>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallFactory.DefaultBuilder">
+            <summary>
+            Gets the default builder.
+            </summary>
+            <value>The default builder.</value>
+        </member>
+        <member name="T:Rebar.Soa.Client.ServiceCallFactory.CommunicationObjectWrapper">
+            <summary>
+            Class CommunicationObjectWrapper
+            </summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.ServiceCallFactory.CommunicationObjectWrapper.m_CommunicationObject">
+            <summary>
+            The m_ communication object
+            </summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.CommunicationObjectWrapper.#ctor(System.ServiceModel.ICommunicationObject)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Soa.Client.ServiceCallFactory.CommunicationObjectWrapper"/> class.
+            </summary>
+            <param name="communicationObject">The communication object.</param>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.CommunicationObjectWrapper.Close">
+            <summary>
+            Closes this instance.
+            </summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.ServiceCallFactory.CommunicationObjectWrapper.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:Rebar.Soa.Client.ServiceCallFactory.CommunicationObjectWrapper.CommunicationObject">
+            <summary>
+            Gets the communication object.
+            </summary>
+            <value>The communication object.</value>
+        </member>
+        <member name="T:Rebar.Soa.Client.Wcf.SoaClientExtensionsInspector">
+            <summary>WCF Behavior to add required headers and url querystring parameters for WCF servicecalls.</summary>
+        </member>
+        <member name="F:Rebar.Soa.Client.Wcf.SoaClientExtensionsInspector._builder">
+            <summary>
+            The _builder
+            </summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.Wcf.SoaClientExtensionsInspector.#ctor(Rebar.Soa.Client.IServiceCallBuilder)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Soa.Client.Wcf.SoaClientExtensionsInspector"/> class.
+            </summary>
+            <param name="builder">The builder.</param>
+        </member>
+        <member name="M:Rebar.Soa.Client.Wcf.SoaClientExtensionsInspector.BeforeSendRequest(System.ServiceModel.Channels.Message@,System.ServiceModel.IClientChannel)">
+            <summary>Modifiest the request message before sending.</summary>
+            <param name="request">The request</param>
+            <param name="channel">The channel</param>
+            <returns>null</returns>
+        </member>
+        <member name="M:Rebar.Soa.Client.Wcf.SoaClientExtensionsInspector.AfterReceiveReply(System.ServiceModel.Channels.Message@,System.Object)">
+            <summary>After a reply is recieved, do nothing.</summary>
+            <param name="reply"></param>
+            <param name="correlationState"></param>
+        </member>
+        <member name="T:Rebar.Soa.Client.Wcf.SoaClientExtensionsBehavior">
+            <summary>A behavior to add the SOA client extensions, it adds the <see cref="T:Rebar.Soa.Client.Wcf.SoaClientExtensionsInspector"/></summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.Wcf.SoaClientExtensionsBehavior.#ctor(Rebar.Soa.Client.ServiceCallConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Soa.Client.Wcf.SoaClientExtensionsBehavior"/> class.
+            </summary>
+            <param name="configuration">The configuration.</param>
+        </member>
+        <member name="M:Rebar.Soa.Client.Wcf.SoaClientExtensionsBehavior.Validate(System.ServiceModel.Description.ServiceEndpoint)">
+            <summary>
+            Implement to confirm that the endpoint meets some intended criteria.
+            </summary>
+            <param name="endpoint">The endpoint to validate.</param>
+        </member>
+        <member name="M:Rebar.Soa.Client.Wcf.SoaClientExtensionsBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)">
+            <summary>
+            Implement to pass data at runtime to bindings to support custom behavior.
+            </summary>
+            <param name="endpoint">The endpoint to modify.</param>
+            <param name="bindingParameters">The objects that binding elements require to support the behavior.</param>
+        </member>
+        <member name="M:Rebar.Soa.Client.Wcf.SoaClientExtensionsBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)">
+            <summary>
+            Implements a modification or extension of the service across an endpoint.
+            </summary>
+            <param name="endpoint">The endpoint that exposes the contract.</param>
+            <param name="endpointDispatcher">The endpoint dispatcher to be modified or extended.</param>
+        </member>
+        <member name="M:Rebar.Soa.Client.Wcf.SoaClientExtensionsBehavior.ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+            <summary>
+            Implements a modification or extension of the client across an endpoint.
+            </summary>
+            <param name="endpoint">The endpoint that is to be customized.</param>
+            <param name="clientRuntime">The client runtime to be customized.</param>
+        </member>
+        <member name="T:Rebar.Soa.Client.Wcf.SoaClientExtensionsElement">
+            <summary>
+            Class SoaClientExtensionsElement
+            </summary>
+        </member>
+        <member name="M:Rebar.Soa.Client.Wcf.SoaClientExtensionsElement.CreateBehavior">
+            <summary>
+            Creates a behavior extension based on the current configuration settings.
+            </summary>
+            <returns>The behavior extension.</returns>
+        </member>
+        <member name="P:Rebar.Soa.Client.Wcf.SoaClientExtensionsElement.BehaviorType">
+            <summary>
+            Gets the type of behavior.
+            </summary>
+            <value>The type of the behavior.</value>
+            <returns>A <see cref="T:System.Type" />.</returns>
+        </member>
+    </members>
+</doc>

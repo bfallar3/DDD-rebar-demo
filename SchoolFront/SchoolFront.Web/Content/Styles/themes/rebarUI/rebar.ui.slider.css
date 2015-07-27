@@ -1,0 +1,211 @@
+/*
+ * jQuery UI Slider 1.8.18
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Slider#theming
+ */
+.ui-slider {
+  position: relative;
+  text-align: left;
+  border-radius: 0; }
+
+.ui-slider .ui-slider-handle {
+  position: absolute;
+  z-index: 2;
+  width: 17px;
+  height: 17px;
+  cursor: default;
+  border-radius: 3px; }
+
+.ui-slider .ui-slider-range {
+  position: absolute;
+  z-index: 1;
+  font-size: .7em;
+  display: block;
+  border: 0;
+  background-position: 0 0; }
+
+.ui-slider-horizontal {
+  height: 13px; }
+  .ui-slider-horizontal .ui-slider-handle {
+    top: -0.25em;
+    margin-left: -0.8em; }
+  .ui-slider-horizontal .ui-slider-range {
+    top: 0;
+    height: 100%; }
+  .ui-slider-horizontal .ui-slider-range-min {
+    left: 0; }
+  .ui-slider-horizontal .ui-slider-range-max {
+    right: 0; }
+  .ui-slider-horizontal .ui-slider-ticks-mark {
+    width: 1px;
+    height: 8px;
+    margin-top: 0.9em; }
+  .ui-slider-horizontal div.ticks-labels {
+    margin-top: 2.7em; }
+  .ui-slider-horizontal div.ui-slider-ticks-marks {
+    margin-top: 0.75em; }
+
+.ui-slider-vertical {
+  width: 13px;
+  min-height: 150px; }
+  .ui-slider-vertical .ui-slider-handle {
+    left: -0.25em;
+    margin-left: 0;
+    margin-bottom: -1em; }
+  .ui-slider-vertical .ui-slider-range {
+    left: 0;
+    width: 100%; }
+  .ui-slider-vertical .ui-slider-range-min {
+    bottom: 0; }
+  .ui-slider-vertical .ui-slider-range-max {
+    top: 0; }
+  .ui-slider-vertical .ui-slider-ticks-mark {
+    width: 8px;
+    height: 1px;
+    margin-left: 0.9em; }
+  .ui-slider-vertical div.ticks-labels {
+    margin-left: 3em; }
+  .ui-slider-vertical div.ui-slider-ticks-marks {
+    margin-left: 1em; }
+  .ui-slider-vertical div.ticks-label {
+    text-align: right; }
+
+/* classes for rebar.ui.slider-x */
+.ui-slider-handle-input {
+  position: absolute;
+  top: -1.5em;
+  width: 4em;
+  padding: 0; }
+
+.ui-slider-handle-input-0 {
+  left: 0; }
+
+.ui-slider-handle-input-1 {
+  right: 0; }
+
+.ui-slider-horizontal-handle-labels {
+  margin-top: 1.25em; }
+
+.ui-slider-vertical-handle-labels {
+  margin-left: 1.25em; }
+
+.ui-slider-horizontal-ticks-labels {
+  /*margin-bottom: 1em;*/ }
+
+.ui-slider-vertical-ticks-labels {
+  margin-right: 2em; }
+
+.ui-slider .ui-slider-handle-label {
+  position: absolute;
+  display: inline;
+  font-size: 1.0em;
+  font-weight: normal;
+  z-index: 3; }
+
+/*
+.ui-slider-horizontal .ui-slider-handle-label {
+  top: -1.5em; }
+
+.ui-slider-vertical .ui-slider-handle-label {
+  right: 1.5em; }*/
+.ui-slider .ui-slider-ticks-mark {
+  position: absolute;
+  z-index: 1; }
+
+.ui-slider .ticks-label {
+  position: absolute;
+  z-index: 3; }
+
+.ui-slider-horizontal div.ui-slider-handle-label {
+  top: -1.5em; }
+
+.ui-slider-horizontal.slider-ticks-bottom div.ui-slider-ticks-marks {
+  margin-top: 0.75em; }
+
+.ui-slider-horizontal.slider-labels-bottom div.ticks-labels {
+  margin-top: 1.6em; }
+
+.ui-slider-horizontal.slider-ticks-bottom.slider-labels-bottom div.ticks-labels {
+  margin-top: 2.75em; }
+
+.ui-slider-horizontal.slider-labels-top div.ui-slider-handle-label {
+  top: 1.5em; }
+
+.ui-slider-horizontal.slider-ticks-top div.ui-slider-ticks-marks {
+  margin-top: -2.1em; }
+
+.ui-slider-horizontal.slider-labels-top div.ticks-labels {
+  margin-top: -1.6em; }
+
+.ui-slider-horizontal.slider-labels-top.slider-ticks-top div.ticks-labels {
+  margin-top: -2.75em; }
+
+.ui-slider-vertical div.ui-slider-handle-label {
+  right: 1.5em; }
+
+.ui-slider-vertical.slider-ticks-right div.ui-slider-ticks-marks {
+  margin-left: 1em; }
+
+.ui-slider-vertical.slider-labels-right div.ticks-labels {
+  margin-left: 1.75em; }
+
+.ui-slider-vertical.slider-ticks-right.slider-labels-right div.ticks-labels {
+  margin-left: 3em; }
+
+.ui-slider-vertical.slider-labels-left div.ui-slider-handle-label {
+  left: 1.75em; }
+
+.ui-slider-vertical.slider-labels-left {
+  margin-left: 2em; }
+
+.ui-slider-vertical.slider-ticks-left div.ui-slider-ticks-marks {
+  margin-left: -2.1em; }
+
+.ui-slider-vertical.slider-labels-left div.ticks-labels {
+  margin-left: -1.6em; }
+
+.ui-slider-vertical.slider-labels-left.slider-ticks-left div.ticks-labels {
+  margin-left: -2.75em; }
+
+.ui-slider-vertical.slider-labels-left div.ticks-labels div.ticks-label {
+  right: 2.75em; }
+
+.ui-slider.ui-slider-horizontal {
+  /* Start CSS3 Linear Gradient */
+  /* Non CSS3 Browsers */
+  background-color: #F6F6F6;
+  /* IE10 */
+  background-image: -ms-linear-gradient(center bottom, white 0%, #e6e8e8 100%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(center bottom, white 0%, #e6e8e8 100%);
+  /* Opera */
+  background-image: -o-linear-gradient(center bottom, white 0%, #e6e8e8 100%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, center bottom, center top, color-stop(0, white), color-stop(1, #e6e8e8));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(bottom, white 0%, #e6e8e8 100%);
+  /* Proposed W3C Markup */
+  background-image: linear-gradient(bottom, white 0%, #e6e8e8 100%);
+  /* End CSS3 Linear Gradient */ }
+
+.ui-slider.ui-slider-vertical {
+  /* Start CSS3 Linear Gradient */
+  /* Non CSS3 Browsers */
+  background-color: #F6F6F6;
+  /* IE10 */
+  background-image: -ms-linear-gradient(center right, white 0%, #e6e8e8 100%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(center right, white 0%, #e6e8e8 100%);
+  /* Opera */
+  background-image: -o-linear-gradient(center right, white 0%, #e6e8e8 100%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, center right, center left, color-stop(0, white), color-stop(1, #e6e8e8));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(right, white 0%, #e6e8e8 100%);
+  /* Proposed W3C Markup */
+  background-image: linear-gradient(right, white 0%, #e6e8e8 100%);
+  /* End CSS3 Linear Gradient */ }

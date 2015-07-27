@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FxCopProject Version="10.0" Name="REBAR Scorecard">
+ <ProjectOptions>
+  <SharedProject>True</SharedProject>
+  <Stylesheet Apply="False">$(FxCopDir)\Xml\FxCopReport.xsl</Stylesheet>
+  <SaveMessages>
+   <Project Status="Active, Excluded" NewOnly="False" />
+   <Report Status="Active" NewOnly="False" />
+  </SaveMessages>
+  <ProjectFile Compress="True" DefaultTargetCheck="True" DefaultRuleCheck="True" SaveByRuleGroup="" Deterministic="True" />
+  <EnableMultithreadedLoad>True</EnableMultithreadedLoad>
+  <EnableMultithreadedAnalysis>True</EnableMultithreadedAnalysis>
+  <SourceLookup>True</SourceLookup>
+  <AnalysisExceptionsThreshold>10</AnalysisExceptionsThreshold>
+  <RuleExceptionsThreshold>1</RuleExceptionsThreshold>
+  <Spelling Locale="en-US" />
+  <OverrideRuleVisibilities>False</OverrideRuleVisibilities>
+  <CustomDictionaries SearchFxCopDir="True" SearchUserProfile="True" SearchProjectDir="True" />
+  <SearchGlobalAssemblyCache>True</SearchGlobalAssemblyCache>
+  <DeadlockDetectionTimeout>120</DeadlockDetectionTimeout>
+  <IgnoreGeneratedCode>True</IgnoreGeneratedCode>
+ </ProjectOptions>
+ <Targets />
+ <Rules>
+  <RuleFiles> 
+   <RuleFile Name="$(ProjectDir)/../tools/CodeAnalysis/Rules/MaintainabilityRules.dll" Enabled="True" AllRulesEnabled="True" />  
+   <RuleFile Name="$(ProjectDir)/../tools/CodeAnalysis/Rules/DataflowRules.dll" Enabled="True" AllRulesEnabled="True" /> 
+   <RuleFile Name="$(ProjectDir)/../tools/CodeAnalysis/Rules/DesignRules.dll" Enabled="True" AllRulesEnabled="True" /> 
+   <RuleFile Name="$(ProjectDir)/../tools/CodeAnalysis/Rules/GlobalizationRules.dll" Enabled="True" AllRulesEnabled="True" /> 
+   <RuleFile Name="$(ProjectDir)/../tools/CodeAnalysis/Rules/InteroperabilityRules.dll" Enabled="True" AllRulesEnabled="True" /> 
+   <RuleFile Name="$(ProjectDir)/../tools/CodeAnalysis/Rules/MobilityRules.dll" Enabled="True" AllRulesEnabled="True" /> 
+   <RuleFile Name="$(ProjectDir)/../tools/CodeAnalysis/Rules/NamingRules.dll" Enabled="True" AllRulesEnabled="True" /> 
+   <RuleFile Name="$(ProjectDir)/../tools/CodeAnalysis/Rules/PerformanceRules.dll" Enabled="True" AllRulesEnabled="True" /> 
+   <RuleFile Name="$(ProjectDir)/../tools/CodeAnalysis/Rules/PortabilityRules.dll" Enabled="True" AllRulesEnabled="True" /> 
+   <RuleFile Name="$(ProjectDir)/../tools/CodeAnalysis/Rules/ReliabilityRules.dll" Enabled="True" AllRulesEnabled="True" /> 
+   <RuleFile Name="$(ProjectDir)/../tools/CodeAnalysis/Rules/SecurityRules.dll" Enabled="True" AllRulesEnabled="True" /> 
+   <RuleFile Name="$(ProjectDir)/../tools/CodeAnalysis/Rules/SecurityTransparencyRules.dll" Enabled="True" AllRulesEnabled="True" /> 
+   <RuleFile Name="$(ProjectDir)/../tools/CodeAnalysis/Rules/UsageRules.dll" Enabled="True" AllRulesEnabled="True" /> 
+  </RuleFiles>
+  <Groups />
+  <!-- Override settings of FxCop rules that implement IConfigurableRule -->
+  <Settings>
+   <Rule TypeName="AvoidExcessiveClassCoupling">
+    <!-- These rule really breaks down with EF and linq -->
+    <Entry Name="Method Warning Threshold">15</Entry>
+    <Entry Name="Type Error Threshold">60</Entry>
+    <Entry Name="Method Error Threshold">30</Entry>
+    <Entry Name="Type Warning Threshold">40</Entry>
+   </Rule>
+   <Rule TypeName="AvoidExcessiveComplexity">
+    <Entry Name="Critical Error Threshold">40</Entry>
+    <Entry Name="Error Threshold">30</Entry>
+    <Entry Name="Critical Warning Threshold">20</Entry>
+    <Entry Name="Warning Threshold">15</Entry>
+    <Entry Name="Information Threshold">15</Entry> <!-- This value will trigger the build error -->
+    <Entry Name="Recommended Threshold">7</Entry>    
+   </Rule>
+   <Rule TypeName="AvoidExcessiveInheritance">
+    <Entry Name="Inheritance Threshold">4</Entry>  
+   </Rule>   
+   <Rule TypeName="AvoidUnmaintainableCode">
+    <Entry Name="Error Threshold">40</Entry>  
+    <Entry Name="Warning Threshold">50</Entry>  
+   </Rule>        
+  </Settings>
+ </Rules>
+ <FxCopReport Version="10.0" />
+</FxCopProject>

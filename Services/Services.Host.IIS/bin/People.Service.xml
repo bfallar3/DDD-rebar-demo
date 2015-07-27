@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>People.Service</name>
+    </assembly>
+    <members>
+        <member name="T:People.Service.App_Start.HealthCheckRouteHandler">
+            <summary>
+            Registers the health check route
+            </summary>
+        </member>
+        <member name="M:People.Service.App_Start.HealthCheckRouteHandler.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:People.Service.App_Start.HealthCheckRouteHandler"/> class.
+            </summary>
+            <param name="endpointId">The endpoint id.</param>
+            <param name="isRemotelyCallable">if set to <c>true</c> [is remotely callable].</param>
+        </member>
+        <member name="M:People.Service.App_Start.HealthCheckRouteHandler.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:People.Service.App_Start.HealthCheckRouteHandler"/> class.
+            </summary>
+        </member>
+        <member name="M:People.Service.App_Start.HealthCheckRouteHandler.GetHttpHandler(System.Web.Routing.RequestContext)">
+            <summary>
+            Provides the object that processes the request.
+            </summary>
+            <param name="requestContext">An object that encapsulates information about the request.</param>
+            <returns>An object that processes the request.</returns>
+        </member>
+        <member name="M:People.Service.App_Start.HealthCheckRouteHandler.CreateHandler">
+            <summary>
+            Creates the handler.
+            </summary>
+            <returns>The handler</returns>
+        </member>
+        <member name="T:People.Service.App_Start.RegisterRebarWebHealthCheck">
+            <summary>
+            Registers the REBAR HealthCheck and Version HttpHandlers.
+            Code goes in here instead of directly into <c>global.asax</c> to support
+            NuGet packaging.
+            </summary>
+        </member>
+        <member name="M:People.Service.App_Start.RegisterRebarWebHealthCheck.PostApplicationStart">
+            <summary>
+            Calls made after application start.
+            </summary>
+        </member>
+        <member name="T:People.Service.App_Start.VersionRouteHandler">
+            <summary>
+            Registers the version route
+            </summary>
+        </member>
+        <member name="F:People.Service.App_Start.VersionRouteHandler.handler">
+            <summary>
+            The handler
+            </summary>
+        </member>
+        <member name="M:People.Service.App_Start.VersionRouteHandler.GetHttpHandler(System.Web.Routing.RequestContext)">
+            <summary>
+            Provides the object that processes the request.
+            </summary>
+            <param name="requestContext">An object that encapsulates information about the request.</param>
+            <returns>An object that processes the request.</returns>
+        </member>
+        <member name="M:People.Service.App_Start.VersionRouteHandler.CreateHandler">
+            <summary>
+            Creates the handler.
+            </summary>
+            <returns>The handler</returns>
+        </member>
+        <member name="T:People.Service.Config.PeopleServiceRouteConfig">
+            <summary>The People service route config.</summary>
+        </member>
+        <member name="M:People.Service.Config.PeopleServiceRouteConfig.RegisterRoutes(System.Web.Http.HttpConfiguration,System.Collections.Generic.IEnumerable{System.Func{System.Net.Http.DelegatingHandler}})">
+            <summary>Registers the routes.</summary>
+            <param name="config">The config.</param>
+            <param name="handlers">The delegating handlers</param>
+        </member>
+        <member name="T:People.Service.Entities.People">
+            <summary>
+            Entity to store People
+            </summary>    
+        </member>
+        <member name="M:People.Service.Entities.People.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:People.Service.Entities.People"/> class.
+            </summary>
+        </member>
+        <member name="M:People.Service.Entities.People.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:People.Service.Entities.People"/> class.
+            </summary>
+            <param name="id">The ID.</param>
+        </member>
+        <member name="P:People.Service.Entities.People.Id">
+            <summary>
+            Gets or sets Id column.
+            </summary>
+        </member>
+        <member name="P:People.Service.Entities.People.CreatedDateTime">
+            <summary>
+            Gets or sets the created date time.
+            </summary>
+            <value>
+            The created date time.
+            </value>
+        </member>
+        <member name="P:People.Service.Entities.People.CreatedUser">
+            <summary>
+            Gets or sets the created user.
+            </summary>
+            <value>
+            The created user.
+            </value>
+        </member>
+        <member name="P:People.Service.Entities.People.UpdatedDateTime">
+            <summary>
+            Gets or sets the updated date time.
+            </summary>
+            <value>
+            The updated date time.
+            </value>
+        </member>
+        <member name="P:People.Service.Entities.People.Version">
+            <summary>
+            Gets or sets the version.
+            </summary>
+            <value>
+            The version.
+            </value>
+        </member>
+        <member name="P:People.Service.Entities.People.UpdatedUser">
+            <summary>
+            Gets or sets the updated user.
+            </summary>
+            <value>
+            The updated user.
+            </value>
+        </member>
+        <member name="T:People.Service.Entities.PeopleMapping">
+            <summary>
+            The DB mapping configuration for the TimeReport entity.
+            </summary>
+        </member>
+        <member name="M:People.Service.Entities.PeopleMapping.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:People.Service.Entities.PeopleMapping"/> class.
+            </summary>
+        </member>
+        <member name="T:People.Service.Entities.PeopleModelContainer">
+            <summary>The CostCollector Model Container.</summary>
+        </member>
+        <member name="M:People.Service.Entities.PeopleModelContainer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:People.Service.Entities.PeopleModelContainer"/> class.
+            </summary>
+        </member>
+        <member name="M:People.Service.Entities.PeopleModelContainer.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:People.Service.Entities.PeopleModelContainer"/> class.
+            </summary>
+            <param name="connectionString">The connection string.</param>
+        </member>
+        <member name="M:People.Service.Entities.PeopleModelContainer.OnModelCreating(System.Data.Entity.DbModelBuilder)">
+            <summary>
+            This method is called when the model for a derived context has been initialized, but
+            before the model has been locked down and used to initialize the context.  The default
+            implementation of this method does nothing, but it can be overridden in a derived class
+            such that the model can be further configured before it is locked down.
+            </summary>
+            <param name="modelBuilder">The builder that defines the model for the context being created.</param>
+            <remarks>
+            Typically, this method is called only once when the first instance of a derived context
+            is created.  The model for that context is then cached and is for all further instances of
+            the context in the app domain.  This caching can be disabled by setting the ModelCaching
+            property on the given ModelBuilder, but note that this can seriously degrade performance.
+            More control over caching is provided through use of the DbModelBuilder and DbContextFactory
+            classes directly.
+            </remarks>
+        </member>
+        <member name="P:People.Service.Entities.PeopleModelContainer.PeopleSet">
+            <summary>
+            Gets or sets PeopleSet
+            </summary>
+        </member>
+        <member name="T:Rebar.Web.EmptyAuthenticationHandler">
+            <summary>
+            Class AuthenticationHandler
+            </summary>
+        </member>
+        <member name="M:Rebar.Web.EmptyAuthenticationHandler.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Web.EmptyAuthenticationHandler"/> class.
+            </summary>
+        </member>
+        <member name="M:Rebar.Web.EmptyAuthenticationHandler.#ctor(System.Net.Http.HttpMessageHandler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Web.EmptyAuthenticationHandler"/> class with a specific inner handler.
+            </summary>
+            <param name="innerHandler">The inner handler which is responsible for processing the HTTP response messages.</param>
+        </member>
+        <member name="M:Rebar.Web.EmptyAuthenticationHandler.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+            <summary>
+            Ignores Authentication
+            </summary>
+            <param name="request">The HTTP request message to send to the server.</param>
+            <param name="cancellationToken">A cancellation token to cancel operation.</param>
+            <returns>Returns <see cref="T:System.Threading.Tasks.Task`1" />. The task object representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:People.Service.PeopleController">
+            <summary>
+            PeopleController is a default controller implementation for your WebAPI OData service. 
+            Modify it to meet your requirements.
+            </summary>
+        </member>
+        <member name="M:People.Service.PeopleController.Get">
+            <summary>
+            Gets this instance.
+            </summary>
+        </member>
+        <member name="M:People.Service.PeopleController.Get(System.Int32)">
+            <summary>Gets a People by Id.</summary>
+            <param name="key">The key.</param>
+            <returns>The People.</returns>
+        </member>
+        <member name="M:People.Service.PeopleController.Put(System.Int32,People.Service.Entities.People)">
+            <summary>Update Method For Users</summary>
+            <param name="key">Entity key</param>
+            <param name="update">User Entity to update</param>
+            <returns>returns updated User</returns>
+        </member>
+        <member name="M:People.Service.PeopleController.Dispose(System.Boolean)">
+            <summary>Releases the unmanaged resources that are used by the object and, optionally, releases the managed resources.</summary>
+            <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+        </member>
+        <member name="T:Rebar.Web.Extensions">
+            <summary>
+            Extension methods for REBAR web.
+            </summary>
+        </member>
+        <member name="M:Rebar.Web.Extensions.AddFiddler(System.String)">
+            <summary>
+            Adds .fiddler to the host name if Fiddler is running.
+            </summary>
+            <param name="url">The URL.</param>
+            <returns>
+            The updated URI.
+            </returns>
+        </member>
+        <member name="M:Rebar.Web.Extensions.AddFiddler(System.UriBuilder)">
+            <summary>Adds the .fiddler domain suffix to the host name of the Uri if the Fiddler.exe process is running.
+            </summary>
+            <param name="uriBuilder">The URI builder containing the URI to append the host name to</param>
+            <returns><paramref name="uriBuilder"/> with the <see cref="P:System.UriBuilder.Host"/> property having .fiddler appended to it, only if the host was local.</returns>
+            <exception cref="T:System.ArgumentNullException">when <paramref name="uriBuilder"/> is <c>null</c></exception>
+        </member>
+        <member name="M:Rebar.Web.Extensions.FindParentUri(System.Uri,System.String)">
+            <summary>Finds the parent uri using the parentSegment as a stop.</summary>
+            <param name="fullUri">A full uri</param>
+            <param name="parentSegment">The uri prefix used as a stop.</param>
+            <returns>A UriBuilder with the path of the <paramref name="fullUri"/> truncated up to and including the <paramref name="parentSegment"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">when <paramref name="fullUri"/> is <c>null</c>.</exception>
+            <remarks>Path will always end in /</remarks>
+        </member>
+        <member name="T:Rebar.Web.ODataRouteConfigurationExtensions">
+            <summary>
+            Class ODataRouteConfigurationExtensions
+            </summary>
+        </member>
+        <member name="M:Rebar.Web.ODataRouteConfigurationExtensions.MapRebarODataRoute(System.Web.Http.HttpConfiguration,System.String,System.String,Microsoft.OData.Edm.IEdmModel,System.Collections.Generic.IEnumerable{System.Func{System.Net.Http.DelegatingHandler}},System.String)">
+            <summary>
+            Maps a route to a service.
+            </summary>
+            <param name="config">The config.</param>
+            <param name="routeName">Name of the route.</param>
+            <param name="routePrefix">The route prefix.</param>
+            <param name="model">The model.</param>
+            <param name="handlers">The handlers.</param>
+            <param name="serviceIdentifier">The security identifier for the service</param>
+        </member>
+    </members>
+</doc>

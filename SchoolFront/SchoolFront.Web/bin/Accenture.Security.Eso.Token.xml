@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Accenture.Security.Eso.Token</name>
+    </assembly>
+    <members>
+        <member name="T:Accenture.Security.Eso.Token.Commands">
+            <summary>
+            Contains Functions use to retrieve JWT 
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Token.Commands.Base64PadCharacter">
+            <summary>
+            The base64 pad character
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Token.Commands.Base64Character62">
+            <summary>
+            The base64 character62
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Token.Commands.Base64Character63">
+            <summary>
+            The base64 character63
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Token.Commands.Base64UrlCharacter62">
+            <summary>
+            The base64 URL character62
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Token.Commands.Base64UrlCharacter63">
+            <summary>
+            The base64 URL character63
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Token.Commands.UserNameToJwtAsync(Accenture.Security.Eso.Token.Services,System.String,System.String)">
+            <summary>
+            Users the name to JWT async.
+            </summary>
+            <param name="service">The service.</param>
+            <param name="userName">The userName.</param>
+            <param name="password">The password.</param>
+            <returns>The Jwt token.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Token.Commands.SamlToJwtAsync(Accenture.Security.Eso.Token.Services,System.IdentityModel.Tokens.SecurityToken,System.String)">
+            <summary>
+            Saml to JWT async.
+            </summary>
+            <param name="service">The service.</param>
+            <param name="token">The token.</param>
+            <param name="signOnHint">The sign on hint.</param>
+            <returns>The Jwt token.</returns>
+            <exception cref="T:System.ArgumentException">token not an instance of a SamlSecurityToken</exception>
+        </member>
+        <member name="M:Accenture.Security.Eso.Token.Commands.SamlToJwtAsync(Accenture.Security.Eso.Token.Services,System.String,System.String)">
+            <summary>
+            Saml to JWT async.
+            </summary>
+            <param name="service">The service.</param>
+            <param name="samlToken">The saml token.</param>
+            <param name="signOnHint">The sign on hint.</param>
+            <returns>The Jwt token.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Token.Commands.JwtToJwtAsync(Accenture.Security.Eso.Token.Services,System.String,System.String)">
+            <summary>
+            JWTs to JWT async.
+            </summary>
+            <param name="service">The service.</param>
+            <param name="token">The token.</param>
+            <param name="signOnHint">The sign on hint.</param>
+            <returns>The Jwt token.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Token.Commands.GetServiceAsync(Accenture.Security.Eso.Token.Services,System.IdentityModel.Tokens.BootstrapContext,System.String,System.String)">
+            <summary>
+            Gets the JWT async.
+            </summary>
+            <param name="service">The service.</param>
+            <param name="bootstrap">The bootstrap.</param>
+            <param name="serviceEndpoint">The service endpoint.</param>
+            <param name="signOnHint">The sign on hint.</param>
+            <returns>The service http response.</returns>
+            <exception cref="T:System.ArgumentException">Invalid bootstrap token.</exception>
+        </member>
+        <member name="M:Accenture.Security.Eso.Token.Commands.GetJwtAsync(System.String,System.Net.Http.FormUrlEncodedContent)">
+            <summary>
+            Gets the JWT async.
+            </summary>
+            <param name="jwtEndpoint">The JWT endpoint.</param>
+            <param name="content">The content.</param>
+            <returns>The Jwt token.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Token.Commands.Expiration(System.String)">
+            <summary>
+            Expirations the specified JWT.
+            </summary>
+            <param name="jwt">The JWT.</param>
+            <returns>The jwt token expiration.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Token.Commands.Base64Decode(System.String)">
+            <summary>
+            Base64s the decode.
+            </summary>
+            <param name="jwt">The JWT.</param>
+            <returns>The decoded jwt token.</returns>
+            <exception cref="T:System.ApplicationException">String to decode cannot be null or empty.</exception>
+        </member>
+        <member name="T:Accenture.Security.Eso.Token.Helper.Cache">
+            <summary>
+            Helper class to cache jwt token.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Token.Helper.Cache.EncryptionPurpose">
+            <summary>
+            The encryption purpose
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Token.Helper.Cache.Insert(System.String,System.String,System.String,System.DateTime)">
+            <summary>
+            Inserts the specified sign on hint.
+            </summary>
+            <param name="signOnHint">The sign on hint.</param>
+            <param name="realm">The realm.</param>
+            <param name="token">The token.</param>
+            <param name="expiration">The expiration.</param>
+        </member>
+        <member name="M:Accenture.Security.Eso.Token.Helper.Cache.Get(System.String,System.String)">
+            <summary>
+            Gets the specified sign on hint.
+            </summary>
+            <param name="signOnHint">The sign on hint.</param>
+            <param name="realm">The realm.</param>
+            <returns>The cached jwt token.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Token.Helper.Cache.Encrypt(System.String)">
+            <summary>
+            Encrypts the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <returns>The encrypted jwt token.</returns>
+        </member>
+        <member name="M:Accenture.Security.Eso.Token.Helper.Cache.Decrypt(System.Object)">
+            <summary>
+            Decrypts the specified encrypted message.
+            </summary>
+            <param name="encryptedMessage">The encrypted message.</param>
+            <returns>The decrypted jwt token.</returns>
+        </member>
+        <member name="T:Accenture.Security.Eso.Token.Services">
+            <summary>
+            Contains functions to retrieved Jwt end point.
+            </summary>
+        </member>
+        <member name="F:Accenture.Security.Eso.Token.Services.defaultinstance">
+            <summary>
+            The default
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Token.Services.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Accenture.Security.Eso.Token.Services"/> class.
+            </summary>
+            <param name="jwtEndpoint">The JWT endpoint.</param>
+            <param name="identifier">The identifier.</param>
+        </member>
+        <member name="M:Accenture.Security.Eso.Token.Services.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:Accenture.Security.Eso.Token.Services"/> class from being created.
+            </summary>
+        </member>
+        <member name="M:Accenture.Security.Eso.Token.Services.Validate">
+            <summary>
+            Validates this instance.
+            </summary>
+            <exception cref="T:System.ArgumentException">
+            JWT Endpoint is required.
+            or
+            Identifier is required.
+            </exception>
+        </member>
+        <member name="P:Accenture.Security.Eso.Token.Services.Default">
+            <summary>
+            Gets the default.
+            </summary>
+            <value>
+            The default.
+            </value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Token.Services.JwtEndpoint">
+            <summary>
+            Gets the JWT endpoint.
+            </summary>
+            <value>
+            The JWT endpoint.
+            </value>
+        </member>
+        <member name="P:Accenture.Security.Eso.Token.Services.Identifier">
+            <summary>
+            Gets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+    </members>
+</doc>

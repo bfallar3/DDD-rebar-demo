@@ -1,0 +1,125 @@
+/* Selectmenu
+This is not an official jquery-ui widget
+it is a 3rd party plugin
+----------------------------------*/
+.ui-selectmenu {
+  display: block;
+  display: inline-block;
+  position: relative;
+  height: 20px;
+  vertical-align: middle;
+  text-decoration: none;
+  overflow: hidden;
+  padding-left: 2px;
+  zoom: 1;
+  border: 1px solid #d9d9d9;
+  /* text area of select menu should be white */
+  /* above style will affect button so overriding to gray again */ }
+  .ui-selectmenu span {
+    background-color: #fff; }
+  .ui-selectmenu span.ui-selectmenu-button span {
+    background-color: #e5e5e5; }
+
+.ui-selectmenu-icon {
+  position: absolute;
+  right: 0;
+  margin-top: -8px;
+  top: 50%; }
+
+.ui-selectmenu-button {
+  position: absolute;
+  height: 100%;
+  right: 0;
+  top: 0;
+  width: 16px;
+  border: none;
+  border-left: 1px solid #d9d9d9; }
+
+.ui-selectmenu-menu {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  display: none;
+  z-index: 1005; }
+
+/* z-index: 1005 to make selectmenu work with dialog */
+.ui-selectmenu-menu ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden; }
+
+.ui-selectmenu-open {
+  display: block; }
+
+.ui-selectmenu-menu-popup {
+  margin-top: -1px; }
+
+.ui-selectmenu-menu li {
+  padding: 0;
+  margin: 0;
+  display: block; }
+
+.ui-selectmenu-menu li a, .ui-selectmenu-status {
+  line-height: 16px;
+  display: block;
+  padding: .3636em 2em 0 .3636em;
+  outline: none;
+  text-decoration: none; }
+
+.ui-selectmenu-menu li.ui-state-disabled a, .ui-state-disabled {
+  cursor: default; }
+
+.ui-selectmenu-menu li.ui-selectmenu-hasIcon a,
+.ui-selectmenu-hasIcon .ui-selectmenu-status {
+  position: relative;
+  padding-left: 18px; }
+
+.ui-selectmenu-menu li .ui-icon, .ui-selectmenu-status .ui-icon {
+  position: absolute;
+  top: 1em;
+  margin-top: -8px;
+  left: 0; }
+
+.ui-selectmenu-status {
+  line-height: 16px; }
+
+.ui-selectmenu-menu li span, .ui-selectmenu-status span {
+  display: block;
+  margin-bottom: .2em; }
+
+.ui-selectmenu-menu li .ui-selectmenu-item-header {
+  font-weight: bold; }
+
+.ui-selectmenu-menu li .ui-selectmenu-item-footer {
+  opacity: .8; }
+
+/* for optgroups */
+.ui-selectmenu-menu .ui-selectmenu-group {
+  font-size: 1em; }
+
+.ui-selectmenu-menu .ui-selectmenu-group .ui-selectmenu-group-label {
+  line-height: 16px;
+  display: block;
+  padding: .6em .5em 0;
+  font-weight: bold; }
+
+.ui-selectmenu-menu .ui-selectmenu-group ul {
+  margin: 0;
+  padding: 0; }
+
+/* IE6 workaround (dotted transparent borders) */
+* html .ui-selectmenu-menu li {
+  border-color: pink;
+  width: 100%; }
+
+.lt-ie8 .ui-selectmenu-menu li a {
+  position: relative; }
+
+/* IE* & IE7 workaround (opacity disabled) */
+.lt-ie9 .ui-state-disabled, .lt-ie9 .ui-state-disabled a {
+  color: silver; }

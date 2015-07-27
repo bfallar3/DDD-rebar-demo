@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+  For more information on how to configure your ASP.NET application, please visit
+  http://go.microsoft.com/fwlink/?LinkId=152368
+  -->
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <configSections xdt:Transform="InsertIfMissing">
+    <section name="accenture.security.eso.token" type="System.Configuration.NameValueSectionHandler" xdt:Transform="InsertIfMissing" xdt:Locator="Match(name)"/>
+  </configSections>
+
+  <accenture.security.eso.token xdt:Transform="InsertIfMissing">
+    <add key="Services:Endpoints:Jwt" value="http://localhost:{iisexpressport}/_sts/adfs" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)"/>
+    <add key="Services:Identifier" value="{Service Identifier}" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)"/>
+  </accenture.security.eso.token>
+</configuration>

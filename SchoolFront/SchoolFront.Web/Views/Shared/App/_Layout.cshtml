@@ -1,0 +1,79 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+@*    <link href="@Url.Content("~/Content/App/Site.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Styles/themes/redmond/jquery-ui-1.8.13.custom.css")" rel="stylesheet" type="text/css" />*@
+    @Styles.Render("~/AssetBundles/Styles/Custom")
+    @Styles.Render("~/StyleBundle/Redmond")
+
+    @* Pages should use this section to include any additional CSS stylesheets that are required
+       for the page view or any of the partial views that the page is composing *@
+    @RenderSection(name: "PageStyles", required: false)
+</head>
+
+<body>
+<div id="container">
+    <div id="header">
+        <div>
+            <h1><span>Accenture</span></h1>
+        </div>
+        @* Pages can use this section to render any additional content in the global site header section *@
+        @RenderSection(name: "Header", required: false)
+    </div>
+
+    <div id="main">
+        @* The main content of page and its partial views will be rendered here. *@
+        @RenderBody()
+    </div>
+
+    <div id="footer">
+        &#169; 2013 Accenture All Rights Reserved. REBAR NEXT Version @{Html.RenderAction("GetApplicationVersion", "Base", new RouteValueDictionary() { { "Namespaces", new[] { "SchoolFront.Web.Controllers" } }, { "area", null } });} .Accenture Confidential. For Internal Use Only. 
+
+        @* This needs to be moved somewhere else... this is here just for testing purposes. *@
+        @*<h3><span>@Html.ActionLink("Log Off", "LogOff", "Home", new { area = "" }, null)</span></h3>*@
+
+        @* Pages can use this section to render any content for the global page footer *@
+        @RenderSection(name: "Footer", required: false)
+    </div>
+</div>
+    @*Pages can use this section to render unobtrusive client script that will execute at the bottom of the page.
+    Note that this will work for Page Views only, partial views cannot render to specific layout sections .*@
+    @Scripts.Render("~/ScriptBundle/jquery") 
+    @Scripts.Render("~/ScriptBundle/app")
+@*    <script src="@Url.Content("~/Scripts/jquery-1.6.4.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.16.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.ba-throttle-debounce.min.js")" type="text/javascript"></script>*@
+    <!--[if lte IE 6]>
+    <script src="@Url.Content("~/Scripts/jquery.ifixpng.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.bgiframe.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            @* Apply the png fix to css background images on the div, h1, h2 tags within the scope of the #header *@
+            $("h1, h2", $("#header")).ifixpng();
+        });
+    </script>
+    <![endif]-->
+    <!--[if lte IE 7]>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("form").iebuttonfix();
+      });
+    </script>
+    <![endif]-->
+    @*<script src="@Url.Content("~/Scripts/Site.js")" type="text/javascript"></script>*@
+    @* <script type="text/javascript">
+         // Disable caching for all ajax requests, IE has lots of issues with its cache policies 
+         // Instead we use OutputCacheAttribute on the MVC controller actions. 
+        $(document).ready(function() {
+            $.ajaxSetup({ cache: false });
+        });
+    </script> *@
+@RenderSection(name: "PageScripts", required: false)
+
+</body>
+</html>

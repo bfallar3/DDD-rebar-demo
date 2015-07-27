@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <!-- Mandatory - This makes browsers render all elements more consistently and in line with modern standards -->
+    <link href="@Url.Content("~/Content/themes/rebarUI/rebar.ui.normalize.css")" rel="stylesheet" type="text/css" />
+
+    
+    <link href="@Url.Content("~/Content/themes/redmond/jquery-ui-1.8.13.custom.css")" rel="stylesheet" type="text/css" />
+
+    @* Pages should use this section to include any additional CSS stylesheets that are required
+       for the page view or any of the partial views that the page is composing *@
+    @RenderSection(name: "PageStyles", required: false)
+
+    @* Add third party vendor components style sheets here e.g. infragistics *@	
+
+    <!-- Optinal - REBAR UI layout standards. -->
+    <link href="@Url.Content("~/Content/themes/rebarUI/rebar.ui.layoutgrid.1280.css")" rel="stylesheet" type="text/css" />
+
+    <!-- Mandatory - This is the main style sheet that imports all REBAR UI cross browser styles -->
+    <link href="@Url.Content("~/Content/themes/rebarUI/rebar.ui.all.css")" rel="stylesheet" type="text/css" data-rebar_css="base"/>
+    
+    <!-- Optional - Include a desired theme style sheet here. More themes are available under palettes folder -->
+    <link href="@Url.Content("~/Content/themes/rebarUI/palettes/ink-blue/rebar-ui-palette.css")" rel="stylesheet" type="text/css" />
+
+    <!-- Mandatory - Conditionally attaching ie9 based styles -->
+    <!--[if IE 9]>
+    <link href="@Url.Content("~/Content/themes/rebarUI/rebar.ui.ie9.css")" rel="stylesheet" type="text/css" />
+    <![endif]-->
+
+    <!-- Mandatory - Conditionally attaching ie7 and ie8 based styles -->
+    <!--[if lte IE 8]>
+        <link href="@Url.Content("~/Content/themes/rebarUI/rebar.ui.ie8.css")" rel="stylesheet" type="text/css" />
+    <![endif]-->
+
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <!-- Mandatory - jQuery includes to be downloaded from jQuery UI Site. -->
+    <script src="@Url.Content("~/Scripts/jquery-1.6.4.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.16.min.js")"></script>
+
+     <!-- Optional - jQuery plugins. Include these libraries on demand. 
+    e.g. When you use jQuery UI datepicker, you must include the corresponding library - "rebar.ui.datepicker.js"  -->      
+    <script src="@Url.Content("~/Scripts/rebarUI/rebar.ui.datepicker.js")"></script> @* jQuery UI Datepicker overrides *@
+    <script src="@Url.Content("~/Scripts/rebarUI/rebar.ui.dialog.js")"></script> @* jQuery UI Dialog overrides *@
+    <script src="@Url.Content("~/Scripts/rebarUI/rebar.ui.checkbox.js")"></script> @* Checkbox widget *@
+    <script src="@Url.Content("~/Scripts/rebarUI/rebar.ui.radiobutton.js")"></script> @* Radiobutton widget *@
+    <script src="@Url.Content("~/Scripts/rebarUI/rebar.ui.textbox.js")"></script> @* Textbox widget *@
+    <script src="@Url.Content("~/Scripts/rebarUI/jquery.ui.selectmenu.js")"></script> @* Dropdownlist widget *@
+    <script src="@Url.Content("~/Scripts/rebarUI/rebar.ui.selectlist.js")"></script> @* List widget *@
+    <script src="@Url.Content("~/Scripts/rebarUI/rebar.ui.table.js")"></script> @* Table control *@
+    <script src="@Url.Content("~/Scripts/rebarUI/rebar.ui.progressbar.js")"></script> @* jQuery UI Progressbar overrides *@
+    <script src="@Url.Content("~/Scripts/rebarUI/rebar.ui.guidetext.js")"></script> @* Guidetext open source plugin *@
+    <script src="@Url.Content("~/Scripts/rebarUI/rebar.ui.carousel.js")"></script> @* Media Carousel open source plugin *@
+    <script src="@Url.Content("~/Scripts/rebarUI/rebar.ui.spinner.js")"></script> @* Wait Spinner open source plugin *@
+    <script src="@Url.Content("~/Scripts/rebarUI/rebar.ui.slider-x.js")"></script> @* Slider open source plugin *@
+</head>
+
+<body>
+    <div id="wrapper" class="ui-layout-wrapper">
+
+        <div class="ui-widget ui-banner ui-fill-dark ">
+            <div class="ui-banner-logo">
+                <h1 class="ui-image-replace"><span>Accenture</span></h1>
+                <h2>REBAR UI just made your project look BEAUTIFUL!</h2>
+            </div>
+            @* Pages can use this section to render any additional content in the global site header section *@
+            @RenderSection(name: "Header", required: false)
+        </div>
+
+        <!-- Placeholder for orientation marker -->
+        <div class="ui-layout-orientation ui-palette-gradient-reverse">
+        </div>
+
+        <!-- Placeholder for content -->
+        <div class="ui-layout-content">
+            @* The main content of page and its partial views will be rendered here. *@
+            @RenderBody()
+        </div>
+
+    <div id="footer">
+@*        &#169; 2011 Accenture All Rights Reserved. Accenture Confidential. For Internal Use Only.*@
+        @* Pages can use this section to render any content for the global page footer *@
+        @RenderSection(name: "Footer", required: false)
+    </div>
+</div>
+@*Pages can use this section to render unobtrusive client script that will execute at the bottom of the page.
+    Note that this will work for Page Views only, partial views cannot render to specific layout sections .*@    
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.ba-throttle-debounce.min.js")" type="text/javascript"></script>
+    <!--[if lte IE 6]>
+    <script src="@Url.Content("~/Scripts/jquery.ifixpng.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.bgiframe.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            @* Set the location of transparent gif used for the ie png hack *@
+            $.ifixpng("@Url.Content("~/Content/pixel.gif")");
+
+            @* Apply the png fix to css background images on the div, h1, h2 tags within the scope of the #header *@
+            $("h1, h2", $("#header")).ifixpng();
+        });
+    </script>
+    <![endif]-->
+    <!--[if lte IE 7]>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("form").iebuttonfix();
+      });
+    </script>
+    <![endif]-->
+    <script src="@Url.Content("~/Scripts/Site.js")" type="text/javascript"></script>
+    @* <script type="text/javascript">
+         // Disable caching for all ajax requests, IE has lots of issues with its cache policies 
+         // Instead we use OutputCacheAttribute on the MVC controller actions. 
+        $(document).ready(function() {
+            $.ajaxSetup({ cache: false });
+        });
+    </script> *@
+@RenderSection(name: "PageScripts", required: false)
+</body>
+</html>

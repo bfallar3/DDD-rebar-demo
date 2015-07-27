@@ -1,0 +1,20 @@
+<configuration>
+  <configSections>
+    <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <section name="Rebar.CacheAdapter.Core.MainConfig" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+    </sectionGroup>
+  </configSections>
+  <appSettings>
+    <add key="CacheKeyPrefix" value="replace_this_with_a_unique_combination_of_your_AIR_ID_and_app_name_and_app_version" />
+  </appSettings>
+  <applicationSettings>
+    <Rebar.CacheAdapter.Core.MainConfig>
+      <setting name="DefaultCacheItemTtl" serializeAs="String">
+        <value>300</value>
+      </setting>
+      <setting name="ProviderRetrySeconds" serializeAs="String">
+        <value>10</value>
+      </setting>
+    </Rebar.CacheAdapter.Core.MainConfig>
+  </applicationSettings>
+</configuration>

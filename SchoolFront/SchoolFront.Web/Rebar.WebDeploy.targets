@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemDefinitionGroup>
+    <DeploymentEnvironment>
+      <Environment />
+      <IISAppPath />
+      <SkipRules />
+      <ReplaceRules />
+    </DeploymentEnvironment>
+
+    <DeploymentTarget>
+      <Environment />
+      <IISAppPath />
+      <SkipRules />
+      <ReplaceRules />
+      <WebPublishMethod>MSDeploy</WebPublishMethod>
+      <MSDeployPublishMethod>wmsvc</MSDeployPublishMethod>
+      <MSDeployPort></MSDeployPort>
+      <AuthType>NTLM</AuthType>
+      <MSDeployPath></MSDeployPath>
+      <AllowUntrusted>True</AllowUntrusted>
+      <MSDeployServiceUrl />
+      <UserName />
+      <Password />
+      <MSDeployBaseDomain />
+      <UseChecksum />
+      <ComputerName />
+    </DeploymentTarget>
+  </ItemDefinitionGroup>
+
+  <Target Name="RebarFilterInUseEnvironments"
+    DependsOnTargets="CollectRebarConfigsToTransform"
+    AfterTargets="CollectRebarConfigsToTransform"
+    Returns="@(ValidDeploymentEnvironment)">
+    <ItemGroup>
+      <_RebarInUseEnvironments Include="@(RebarConfigsToTransform -> '%(Environment)')" />
+    </ItemGroup>
+
+    <RemoveDuplicates Inputs="@(RebarConfigsToTransform -> '%(Environment)')">
+      <Output TaskParameter="Filtered" ItemName="_RebarInUseEnvironmentsFiltered" />
+    </RemoveDuplicates>
+
+    <JoinItems
+      OuterItems="@(DeploymentEnvironment)"
+      InnerItems="@(_RebarInUseEnvironmentsFiltered)"
+      CopyMetadata="false"
+  >
+      <Output TaskParameter="Items" ItemName="ValidDeploymentEnvironment" />
+    </JoinItems>
+
+  </Target>
+
+
+  <PropertyGroup>
+    <OnBeforeTransformWebConfig>
+      $(OnBeforeTransformWebConfig);
+      AddRebarConfigsToTransformToWpp;
+    </OnBeforeTransformWebConfig>
+  </PropertyGroup>
+
+  <UsingTask
+    TaskName="CreateRebarDeployRules"
+    TaskFactory="CodeTaskFactory"
+    AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll" >
+    <ParameterGroup>
+      <Environments ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+      <RebarConfigsToTransform ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+      <EnvironmentDeployRules ParameterType="Microsoft.Build.Framework.ITaskItem[]" Output="true" />
+    </ParameterGroup>
+    <Task>
+      <Using Namespace="System" />
+      <Using Namespace="System.Linq" />
+      <Using Namespace="System.Collections.Generic"/>
+      <Using Namespace="Microsoft.Build.Framework"/>
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+      Func<string, IEnumerable<ITaskItem>> getConfigsToSkip = (string x) => {
+        return RebarConfigsToTransform.Where(y => !y.GetMetadata("Environment").Equals(x, StringComparison.OrdinalIgnoreCase));
+      };
+
+      Func<string, IEnumerable<ITaskItem>> getConfigsToInclude = (string x) => {
+        return RebarConfigsToTransform.Where(y => y.GetMetadata("Environment").Equals(x, StringComparison.OrdinalIgnoreCase));
+      };
+
+      var configsToExclude =
+        from env in Environments
+        from config in RebarConfigsToTransform
+        select (ITaskItem) new TaskItem(env.ItemSpec, new Dictionary<string, string>()
+        {
+          { "Environment", env.ItemSpec },
+          { "SkipRules", string.Join(" ", getConfigsToSkip(env.ItemSpec)
+            .Select(x => string.Format("\"-skip:File={0}\"",
+                x.GetMetadata("DestinationRelativePath"))))
+          },
+          { "ReplaceRules", string.Join(" ", getConfigsToInclude(env.ItemSpec)
+            .Select(x => string.Format("\"-replace:match={0},replace={1}\"",
+                x.GetMetadata("DestinationRelativePath"),
+                x.GetMetadata("SourceFile"))))
+          }          
+        });
+      EnvironmentDeployRules = configsToExclude.ToArray();
+    ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+
+  <UsingTask
+    TaskName="JoinItems"
+    TaskFactory="CodeTaskFactory"
+    AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll" >
+    <ParameterGroup>
+      <OuterItems ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+      <OuterProperty Required="false" ParameterType="System.String" />
+      <InnerItems ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+      <InnerProperty Required="false" ParameterType="System.String" />
+      <IgnoreCase Required="false" ParameterType="System.String" />
+      <CopyMetadata Required="false" ParameterType="System.String" />
+      <LeftOuterJoin Required="false" ParameterType="System.String" />
+      <NewTaskItems Required="false" ParameterType="System.String" />
+      <Items ParameterType="Microsoft.Build.Framework.ITaskItem[]" Output="true" />
+    </ParameterGroup>
+    <Task>
+      <Using Namespace="System"/>
+      <Using Namespace="System.Linq"/>
+      <Using Namespace="System.Collections.Generic"/>
+      <Using Namespace="Microsoft.Build.Framework"/>
+
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+              var xComparand = String.IsNullOrWhiteSpace(OuterProperty) ? "Identity" : OuterProperty;
+              var yComparand = String.IsNullOrWhiteSpace(InnerProperty) ? "Identity" : InnerProperty;
+              var comparer = Boolean.Parse( (IgnoreCase ?? "true") ) ? StringComparer.OrdinalIgnoreCase : StringComparer.Ordinal;
+              var shouldCopyMetadata = Boolean.Parse( (CopyMetadata ?? "true") );
+              var performLeftOuterJoin = Boolean.Parse( (LeftOuterJoin ?? "false") );
+              var createNewTaskItems = Boolean.Parse( (NewTaskItems ?? "false") );
+
+              var qryInnerJoin = OuterItems.Join(
+                InnerItems, 
+                x => x.GetMetadata(xComparand), 
+                x => x.GetMetadata(yComparand), 
+                (x, y) => new { Outer=x, Inner=y }, 
+                comparer);
+
+              var qryLeftOuterJoin = OuterItems.GroupJoin(
+                  InnerItems, 
+                  x => x.GetMetadata(xComparand),
+                  x => x.GetMetadata(yComparand),
+                  (x, y) => new { Outer=x, Inner=y }, 
+                  comparer)
+                .SelectMany(
+                  x => x.Inner.DefaultIfEmpty(),
+                  (x,y) => new { Outer=x.Outer, Inner=y });
+
+              var output = new List<ITaskItem>(Math.Max(OuterItems.Length, InnerItems.Length));
+
+              foreach (var joinedItem in (performLeftOuterJoin ? qryLeftOuterJoin : qryInnerJoin))
+              {
+                var newItem = (createNewTaskItems) ? (ITaskItem) new TaskItem(joinedItem.Outer.ItemSpec) : joinedItem.Outer;
+
+                if (shouldCopyMetadata && createNewTaskItems)
+                {
+                  joinedItem.Outer.CopyMetadataTo(newItem);
+                }
+
+                if (shouldCopyMetadata && joinedItem.Inner != null) 
+                {
+                  joinedItem.Inner.CopyMetadataTo(newItem);
+                }
+
+                output.Add(newItem);
+              }
+
+              Items = output.ToArray();
+            ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+
+  <Target Name="CollectRebarSourceConfigsToTransform"
+    DependsOnTargets="$(CollectRebarSourceConfigsToTransformDependsOn)"
+    Returns="@(RebarSourceConfigsToTransform)">
+
+    <ItemGroup>
+      <!-- TODO: Find a better way to parameterize this so it can easily be
+      configured via a property setting, right now the condition
+      needs to be edited by hand to add / remove configs to include
+
+      The major excludes are packages.config
+      and transforms themselves.  The configuraton
+      below does not gurantee all transforms are excluded
+      but it should cover the majority of use cases
+      since most transforms will be included in the project with a
+      dependentupon metadata value.
+
+      if this becomes a problem, see TODO above and think
+      about restircting filename patterns too, i.e. %(filename) == 'web'
+    -->
+      <RebarSourceConfigsToTransform
+        Include="@(Content);@(None)"
+        Exclude="$(RebarConfigsToExclude)"
+        Condition="
+        '%(Extension)' == '.config'
+        and (
+          '%(Content.DependentUpon)' == ''
+          and '%(None.DependentUpon)' == ''
+        )
+        and (
+          '%(Content.Exclude)' != 'True'
+          and '%(None.Exclude)' != 'True'
+        )
+      ">
+        <Exclude>False</Exclude>
+        <FromTarget>CollectRebarSourceConfigsToTransform</FromTarget>
+        <RelativeSourceDir>$([MSBuild]::MakeRelative($(MSBuildProjectDIrectory), %(RootDir)%(Directory)))</RelativeSourceDir>
+      </RebarSourceConfigsToTransform>
+    </ItemGroup>
+  </Target>
+
+  <PropertyGroup>
+    <CollectRebarConfigsToTransformDependsOn>
+      $(CollectRebarConfigsToTransformDependsOn);
+      CollectRebarSourceConfigsToTransform;
+    </CollectRebarConfigsToTransformDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CollectRebarConfigsToTransform"
+    DependsOnTargets="$(CollectRebarConfigsToTransformDependsOn)"
+    Returns="@(RebarConfigsToTransform)">
+
+    <ItemGroup>
+      <!-- Ensure RelativeSourceDir metadata is properly filled in for all items 
+        We use this in place of RecursiveDir metadata since items explicitly defined
+        in the project @(Content);@(None) will not have a recursiveDir metadata value
+        we also cannot overwrite recurivedir since its system level MD.
+        We then use the RelativeSourceDir to find our transforms and define
+        the relative destination path for the items.
+     -->
+      <RebarSourceConfigsToTransform Condition="'%(RelativeSourceDir)' == ''">
+        <RelativeSourceDir>$([MSBuild]::MakeRelative($(MSBuildProjectDIrectory), %(RootDir)%(Directory)))</RelativeSourceDir>
+      </RebarSourceConfigsToTransform>
+    </ItemGroup>
+
+    <ItemGroup>
+      <!-- Create temporary group that joins source configs with environment 
+         This forces all environments to be defined in order for transforms
+         to work.  Just using wildcards is an option but then people
+         can easily get a transform to work without properly defining
+         any other environment parameters
+
+         This also means transforms don't have to be in the project
+         and don't require a dependentupon metadata tag, although the latter
+         two conditions are nice because then slow cheetah preview works.
+    -->
+      <_RebarTransforms Include="@(RebarSourceConfigsToTransform)">
+        <Environment>%(DeploymentEnvironment.Identity)</Environment>
+      </_RebarTransforms>
+    </ItemGroup>
+
+    <ItemGroup>
+      <!-- Create item group of transformation files -->
+      <RebarConfigsToTransform
+        Include="@(_RebarTransforms -> '%(RelativeSourceDir)%(Filename).%(Environment)%(Extension)')">
+        <SourceFilename>%(_RebarTransforms.Filename)</SourceFilename>
+        <FromTarget>CollectRebarConfigsToTransform</FromTarget>
+      </RebarConfigsToTransform>
+
+      <!-- Remove any transforms that do not exist on disk -->
+      <RebarConfigsToTransform Remove="@(RebarConfigsToTransform)"
+        Condition="!Exists(%(FullPath))" />
+
+      <!-- Add Extra Metadata Required for WPP -->
+      <RebarConfigsToTransform>
+        <DestinationRelativePath>%(RelativeSourceDir)%(Filename)%(Extension)</DestinationRelativePath>
+        <SourceFile>%(RelativeSourceDir)%(SourceFilename)%(Extension)</SourceFile>
+        <TransformFile>%(FullPath)</TransformFile>
+        <!-- TODO: Find a better way to get these locations, seems too knowledgable of internals -->
+        <TransformOriginalFolder>$(TransformWebConfigIntermediateLocation)\original</TransformOriginalFolder>
+        <TransformFileFolder>$(TransformWebConfigIntermediateLocation)\assist</TransformFileFolder>
+        <TransformOutputFile>$(TransformWebConfigIntermediateLocation)\transformed\%(RelativeSourceDir)%(Filename)%(Extension)</TransformOutputFile>
+        <TransformScope>$([System.IO.Path]::GetFullPath($(WPPAllFilesInSingleFolder)\%(RelativeSourceDir)%(SourceFilename)%(Extension)))</TransformScope>
+      </RebarConfigsToTransform>
+    </ItemGroup>
+
+  </Target>
+
+  <PropertyGroup>
+    <AddRebarConfigsToTransformToWppDependsOn>
+      $(AddRebarConfigsToTransformToWppDependsOn);
+      PipelineCollectFilesPhase;
+      CollectRebarConfigsToTransform;
+    </AddRebarConfigsToTransformToWppDependsOn>
+  </PropertyGroup>
+
+  <Target Name="AddRebarConfigsToTransformToWpp"
+    DependsOnTargets="$(AddRebarConfigsToTransformToWppDependsOn)"
+    BeforeTargets="CollectWebConfigsToTransform"
+    AfterTargets="PipelineCollectFilesPhase"
+    Returns="@(WebConfigsToTransform)">
+
+    <ItemGroup>
+      <!-- Add the extra transforms to the main WPP transform group
+         When adding ensure the Identity is the Source file name,
+         not the transformation file name which is the identity of RebarConfigsToTransform
+         all required metadata is assumed to be present from prior targets, so just add the items
+     -->
+      <WebConfigsToTransform Include="@(RebarConfigsToTransform -> '%(SourceFile)')">
+      </WebConfigsToTransform>
+    </ItemGroup>
+  </Target>
+
+  <Target Name="CreateRebarEnvironmentRules"
+    DependsOnTargets="AddRebarConfigsToTransformToWpp;RebarFilterInUseEnvironments"
+    Returns="@(RebarEnvironmentDeployRules)">
+
+    <CreateRebarDeployRules
+      Environments="@(ValidDeploymentEnvironment)"
+      RebarConfigsToTransform="@(RebarConfigsToTransform)">
+      <Output TaskParameter="EnvironmentDeployRules" ItemName="RebarEnvironmentDeployRules" />
+    </CreateRebarDeployRules>
+
+  </Target>
+
+  <PropertyGroup>
+    <RebarWriteMSDeployCommandsDependsOn>
+      $(RebarWriteMSDeployCommandsDependsOn);
+      RebarCreateLocalMSDeployCommandLine;
+      RebarCreateRemoteMSDeployCommandLine;
+    </RebarWriteMSDeployCommandsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="RebarWriteMSDeployCommands"
+    DependsOnTargets="$(RebarWriteMSDeployCommandsDependsOn)"
+    AfterTargets="GenerateSampleDeployScript">
+    <PropertyGroup>
+      <StartCommonLines>
+@rem ------------------------------------------------------------------------------------
+@rem Microsoft code for checking if Web Deploy is installed
+@rem ------------------------------------------------------------------------------------
+if "%MSDeployPath%" == "" (
+for /F "usebackq tokens=1,2,*" %%h  in (`reg query "HKLM\SOFTWARE\Microsoft\IIS Extensions\MSDeploy" /s  ^| findstr -i "InstallPath"`) do (
+if /I "%%h" == "InstallPath" (
+if /I "%%i" == "REG_SZ" (
+if not "%%j" == "" (
+if "%%~dpj" == "%%j" (
+set MSDeployPath=%%j))))))
+
+@rem ------------------------------------------------------------------------------------
+@rem check the existence of the package file
+@rem ------------------------------------------------------------------------------------
+if not exist "%_App%.zip" (
+echo Required deployment zip file is not in this directory.
+goto :finished)
+
+@rem ------------------------------------------------------------------------------------
+@rem Stop the site
+@rem ------------------------------------------------------------------------------------
+C:\Windows\System32\inetsrv\appcmd stop site /site.name:"%_SiteToDeploy%"
+
+@rem -------------------------------------------------------------------------------------
+@rem Backup the site. This should only be enabled if MSDeploy Backup has been enabled
+@rem TODO:
+@rem - uncomment the line below if MSDeploy Backup enabled
+@rem ---------------------------------------------------------------------------------
+@rem "C:\Program Files\IIS\Microsoft Web Deploy V3\msdeploy.exe" -verb:sync -source:backupManager -dest:backupManager="%_SiteToDeploy%"
+
+@rem ------------------------------------------------------------------------------------
+@rem Deploy the site
+@rem ------------------------------------------------------------------------------------
+set RootPath=%~dp0
+      </StartCommonLines>
+      <EndLines>
+@rem ---------------------------------------------------------------------------------
+@rem Start the site
+@rem ---------------------------------------------------------------------------------
+C:\Windows\System32\inetsrv\appcmd start site /site.name:"%_SiteToDeploy%"
+
+:finished
+      </EndLines>
+    </PropertyGroup>
+
+    <WriteLinesToFile
+  Condition="'%(RebarLocalWebDeployCommands.CommandFilename)' != '' and '%(RebarLocalWebDeployCommands.CommandLine)' != ''"
+  File="%(RebarLocalWebDeployCommands.CommandFilename)"
+  Lines="
+%(RebarLocalWebDeployCommands.StartLocalLines)
+$(StartCommonLines)
+%(RebarLocalWebDeployCommands.CommandLine)
+$(EndLines)
+"
+  Overwrite="True"
+  Encoding="us-ascii" />
+
+    <WriteLinesToFile
+  Condition="'%(RebarRemoteWebDeployCommands.CommandFilename)' != '' and '%(RebarRemoteWebDeployCommands.CommandLine)' != ''"
+  File="%(RebarRemoteWebDeployCommands.CommandFilename)"
+  Lines="
+%(RebarRemoteWebDeployCommands.StartRemoteLines)
+$(StartCommonLines)
+%(RebarRemoteWebDeployCommands.CommandLine)
+$(EndLines)
+"
+  Overwrite="True"
+  Encoding="us-ascii" />
+
+  </Target>
+
+  <Target Name="RebarCreateLocalMSDeployCommandLine"
+    DependsOnTargets="CreateRebarEnvironmentRules;RebarFilterInUseEnvironments;GenerateSampleDeployScript"
+    Returns="@(RebarLocalWebDeployCommands)">
+    <PropertyGroup>
+      <_SampleCommandFile>$(GenerateSampleDeployScriptLocation)</_SampleCommandFile>
+      <_RebarCommandFileDir>$([System.IO.Path]::GetDirectoryName('$(_SampleCommandFile)'))\</_RebarCommandFileDir>
+      <_WppCommandFileName>$([System.IO.Path]::GetFileName('$(_SampleCommandFile)'))</_WppCommandFileName>
+    </PropertyGroup>
+
+    <!-- Creates a list environments and rules that included in this build
+      any environments defined without any transforms will not get
+      command files generated, 1 environment transform is required
+      to get an output command file
+   -->
+    <JoinItems
+      OuterItems="@(ValidDeploymentEnvironment)"
+      InnerItems="@(RebarEnvironmentDeployRules)"
+    >
+      <Output TaskParameter="Items" ItemName="RebarLocalWebDeployCommands" />
+    </JoinItems>
+
+    <ItemGroup>
+      <!-- Build up the command line so its easier to maintain -->
+      <RebarLocalWebDeployCommands>
+        <CommandFilename>$(_RebarCommandFileDir)%(Environment).Local.$(_WppCommandFileName)</CommandFilename>
+        <CommandLine>&quot;%RootPath%\$(_WppCommandFileName)&quot;</CommandLine>
+      </RebarLocalWebDeployCommands>
+      <RebarLocalWebDeployCommands>
+        <CommandLine>%(CommandLine) /y</CommandLine>
+      </RebarLocalWebDeployCommands>
+      <RebarLocalWebDeployCommands>
+        <CommandLine>%(CommandLine) "-skip:File=PackageTmp\\web\.config" %(SkipRules)</CommandLine>
+      </RebarLocalWebDeployCommands>
+      <RebarLocalWebDeployCommands>
+        <CommandLine>%(CommandLine) %(ReplaceRules)</CommandLine>
+      </RebarLocalWebDeployCommands>
+      <RebarLocalWebDeployCommands>
+        <CommandLine>%(CommandLine) &quot;-setParam:name='IIS Web Application Name',value='%(IISAppPath)'&quot;</CommandLine>
+      </RebarLocalWebDeployCommands>
+      <RebarLocalWebDeployCommands>
+        <StartLocalLines>
+@rem ------------------------------------------------------------------------------------
+@rem This script is used for deploying to an IIS 7.5 or higher environment
+@rem ------------------------------------------------------------------------------------
+@if %_echo%!==! echo off
+
+setlocal
+
+set _SiteToDeploy="%(IISAppPath)"
+set _App="$(_WppCommandFileName.Replace(".deploy.cmd",""))"
+        </StartLocalLines>
+      </RebarLocalWebDeployCommands>
+    </ItemGroup>
+
+  </Target>
+
+  <Target Name="RebarCreateRemoteMSDeployCommandLine"
+    DependsOnTargets="CreateRebarEnvironmentRules;RebarFilterInUseEnvironments;GenerateSampleDeployScript"
+    Returns="@(RebarRemoteWebDeployCommands)">
+
+    <PropertyGroup>
+      <_SampleCommandFile>$(GenerateSampleDeployScriptLocation)</_SampleCommandFile>
+      <_RebarCommandFileDir>$([System.IO.Path]::GetDirectoryName('$(_SampleCommandFile)'))\</_RebarCommandFileDir>
+      <_WppCommandFileName>$([System.IO.Path]::GetFileName('$(_SampleCommandFile)'))</_WppCommandFileName>
+    </PropertyGroup>
+
+    <!-- Creates a list environments and rules that included in this build
+      any environments defined without any transforms will not get
+      command files generated, 1 environment transform is required
+      to get an output command file
+   -->
+    <JoinItems
+      OuterItems="@(ValidDeploymentEnvironment)"
+      InnerItems="@(RebarEnvironmentDeployRules)"
+    >
+      <Output TaskParameter="Items" ItemName="_RemoteEnvironmentRules" />
+    </JoinItems>
+
+    <!-- Creates a list of targets with the merged in environment rules -->
+    <JoinItems
+      OuterItems="@(DeploymentTarget)"
+      OuterProperty="Environment"
+      InnerItems="@(_RemoteEnvironmentRules)"
+    >
+      <Output TaskParameter="Items" ItemName="RebarRemoteWebDeployCommands" />
+    </JoinItems>
+
+    <!-- Set some default values to make building the command line easier -->
+    <ItemGroup>
+      <!-- Default accenture msdeploy port should be 443 -->
+      <RebarRemoteWebDeployCommands Condition="'%(MSDeployPort)' == ''">
+        <MSDeployPort>443</MSDeployPort>
+      </RebarRemoteWebDeployCommands>
+      <RebarRemoteWebDeployCommands Condition="'%(MSDeployPublishMethod)' == ''">
+        <MSDeployPublishMethod>WMSVC</MSDeployPublishMethod>
+      </RebarRemoteWebDeployCommands>
+      <RebarRemoteWebDeployCommands Condition="'%(AllowUntrusted)' == ''">
+        <AllowUntrusted>True</AllowUntrusted>
+      </RebarRemoteWebDeployCommands>
+      <RebarRemoteWebDeployCommands Condition="'%(AuthType)' == ''">
+        <AuthType>NTLM</AuthType>
+      </RebarRemoteWebDeployCommands>
+      <RebarRemoteWebDeployCommands Condition="'%(MSDeployPath)' == '' and '%(MSDeployPublishMethod)' == 'wmsvc'">
+        <MSDeployPath>MSDeploy.axd</MSDeployPath>
+      </RebarRemoteWebDeployCommands>
+      <RebarRemoteWebDeployCommands Condition="'%(MSDeployPath)' == '' and '%(MSDeployPublishMethod)' == 'RemoteAgent'">
+        <MSDeployPath>MsDeployAgentService</MSDeployPath>
+      </RebarRemoteWebDeployCommands>
+      <RebarRemoteWebDeployCommands Condition="'%(MSDeployServiceUrl)' == '' and '%(ComputerName)' != '' and '%(MSDeployBaseDomain)' == ''">
+        <MSDeployServiceUrl>https://%(ComputerName):%(MSDeployPort)/%(MSDeployPath)</MSDeployServiceUrl>
+      </RebarRemoteWebDeployCommands>
+      <RebarRemoteWebDeployCommands Condition="'%(MSDeployServiceUrl)' == '' and '%(ComputerName)' != '' and '%(MSDeployBaseDomain)' != ''">
+        <MSDeployServiceUrl>https://%(ComputerName).%(MSDeployBaseDomain):%(MSDeployPort)/%(MSDeployPath)</MSDeployServiceUrl>
+      </RebarRemoteWebDeployCommands>
+      <RebarRemoteWebDeployCommands Condition="'%(MSDeployServiceUrl)' == '' and '%(MSDeployBaseDomain)' != ''">
+        <MSDeployServiceUrl>https://%(Identity).%(MSDeployBaseDomain):%(MSDeployPort)/%(MSDeployPath)</MSDeployServiceUrl>
+      </RebarRemoteWebDeployCommands>
+      <RebarRemoteWebDeployCommands Condition="'%(MSDeployServiceUrl)' == '' and '%(MSDeployBaseDomain)' == ''">
+        <MSDeployServiceUrl>https://%(Identity):%(MSDeployPort)/%(MSDeployPath)</MSDeployServiceUrl>
+      </RebarRemoteWebDeployCommands>
+    </ItemGroup>
+
+    <ItemGroup>
+      <RebarRemoteWebDeployCommands>
+        <CommandFilename>$(_RebarCommandFileDir)%(Environment).%(Identity).$(_WppCommandFileName)</CommandFilename>
+        <CommandLine>&quot;%RootPath%\$(_WppCommandFileName)&quot; /y</CommandLine>
+      </RebarRemoteWebDeployCommands>
+      <RebarRemoteWebDeployCommands Condition="'%(MSDeployServiceUrl)' != ''">
+        <CommandLine>%(CommandLine) /M:%(MSDeployServiceUrl)</CommandLine>
+      </RebarRemoteWebDeployCommands>
+      <RebarRemoteWebDeployCommands Condition="'%(AuthType)' != ''">
+        <CommandLine>%(CommandLine) /A:%(AuthType)</CommandLine>
+      </RebarRemoteWebDeployCommands>
+      <RebarRemoteWebDeployCommands Condition="'%(UserName)' != ''">
+        <CommandLine>%(CommandLine) /U:%(UserName)</CommandLine>
+      </RebarRemoteWebDeployCommands>
+      <RebarRemoteWebDeployCommands Condition="'%(Password)' != ''">
+        <CommandLine>%(CommandLine) /P:%(Password)</CommandLine>
+      </RebarRemoteWebDeployCommands>
+      <RebarRemoteWebDeployCommands>
+        <CommandLine>%(CommandLine) %(SkipRules)</CommandLine>
+      </RebarRemoteWebDeployCommands>
+      <RebarRemoteWebDeployCommands>
+        <CommandLine>%(CommandLine) %(ReplaceRules)</CommandLine>
+      </RebarRemoteWebDeployCommands>
+      <RebarRemoteWebDeployCommands>
+        <CommandLine>%(CommandLine) &quot;-setParam:name='IIS Web Application Name',value='%(IISAppPath)'&quot;</CommandLine>
+      </RebarRemoteWebDeployCommands>
+      <RebarRemoteWebDeployCommands Condition="'%(AllowUntrusted)' == 'True'">
+        <CommandLine>%(CommandLine) -allowUntrusted</CommandLine>
+      </RebarRemoteWebDeployCommands>
+      <RebarRemoteWebDeployCommands Condition="'%(UseChecksum)' == 'True'">
+        <CommandLine>%(CommandLine) -useChecksum</CommandLine>
+      </RebarRemoteWebDeployCommands>
+      <RebarRemoteWebDeployCommands>
+        <StartRemoteLines>
+@rem ------------------------------------------------------------------------------------
+@rem This script is used for deploying to an IIS 7.5 or higher environment
+@rem ------------------------------------------------------------------------------------
+@if %_echo%!==! echo off
+
+setlocal
+
+set _SiteToDeploy="%(IISAppPath)"
+set _App="$(_WppCommandFileName.Replace(".deploy.cmd",""))"
+        </StartRemoteLines>
+      </RebarRemoteWebDeployCommands>
+    </ItemGroup>
+  </Target>
+</Project>

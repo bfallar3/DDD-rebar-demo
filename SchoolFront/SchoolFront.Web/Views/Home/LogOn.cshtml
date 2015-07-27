@@ -1,0 +1,47 @@
+﻿@using SchoolFront.Web.ViewModels
+@model LogOnModel
+
+@{
+    ViewBag.Title = "Log Into MyTE Lite";
+    Layout = "~/Views/Shared/SchoolFront/_Layout.cshtml";
+}
+
+@Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
+@using (Html.BeginForm()) {
+    <div>
+        <h3>Valid Accounts</h3>
+        <dl>
+            <dt>adam.tybor</dt><dd>adam</dd>
+            <dt>joe.dulay</dt><dd>joe</dd>
+            <dt>aptuser[n] <em> where [n] is a value from 1 to 1000</em></dt><dd>aptuser</dd>
+        </dl>
+
+        <p>You can add more accounts directly in the |App_Data|\Users.xml file.</p>
+
+        <fieldset>
+            <legend>Account Information</legend>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.UserName)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.UserName)
+                @Html.ValidationMessageFor(m => m.UserName)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Password)
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+
+            <p>
+                <input type="submit" value="Log On" />
+            </p>
+        </fieldset>
+    </div>
+}
+
+

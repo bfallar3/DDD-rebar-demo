@@ -1,0 +1,121 @@
+/* Rebar UI Sage Green Theme
+ *
+ */
+.ui-banner {
+  background-color: #b9c7c2;
+  border-bottom-color: #41675a; }
+  .ui-banner a:hover, .ui-banner a:focus, .ui-banner a.ui-state-hover, .ui-banner a.ui-state-focus {
+    background-color: #e8edeb; }
+  .ui-banner a.ui-state-active, .lt-ie9 .ui-banner a.ui-state-active {
+    background-color: #41675a;
+    color: white; }
+
+.ui-left-nav a:hover, .ui-left-nav a:focus, .ui-left-nav a.ui-state-hover, .ui-left-nav a.ui-state-focus {
+  background-color: #e8edeb; }
+.ui-left-nav a.ui-state-active
+, .lt-ie9 .ui-left-nav a.ui-state-active {
+  background-color: #41675a;
+  color: white; }
+
+label, .ui-text-label, .ui-label-color {
+  color: #41675a; }
+
+.ui-fill-darkest {
+  background-color: #41675a; }
+
+.ui-fill-dark {
+  background-color: #c8d3cf; }
+
+.ui-fill-medium {
+  background-color: #d5dedb; }
+
+.ui-fill-light {
+  background-color: #e8edeb; }
+
+.ui-fill-popup {
+  background-color: #dbe2e0; }
+
+.ui-grid-lines th, .ui-grid-lines tr, .ui-grid-lines td {
+  border-left: 1px solid #e1e7e5;
+  border-right: 1px solid #e1e7e5;
+  border-top: 0px;
+  border-bottom: 0px; }
+
+.ui.grid-lines table {
+  border-bottom: 1px solid #e1e7e5; }
+
+.ui-grid-lines-left td {
+  border-left: 1px solid #e1e7e5; }
+
+.ui-grid-lines-right td {
+  border-right: 1px solid #e1e7e5; }
+
+.ui-grey-bar {
+  background-color: #f7f9f8; }
+
+.ui-palette-gradient {
+  /* Start CSS3 Linear Gradient */
+  /* Non CSS3 Browsers */
+  background-color: white;
+  /* IE10 */
+  background-image: -ms-linear-gradient(top, white 0%, #41675a 100%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(top, white 0%, #41675a 100%);
+  /* Opera */
+  background-image: -o-linear-gradient(top, white 0%, #41675a 100%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(1, #41675a));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(top, white 0%, #41675a 100%);
+  /* Proposed W3C Markup */
+  background-image: linear-gradient(top, white 0%, #41675a 100%);
+  /* End CSS3 Linear Gradient */ }
+  .ie9 .ui-palette-gradient {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImcxMTMiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGRkZGRkYiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiM0MTY3NUEiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2cxMTMpIiAvPgo8L3N2Zz4=); }
+
+.ui-palette-gradient-reverse {
+  /* Start CSS3 Linear Gradient */
+  /* Non CSS3 Browsers */
+  background-color: #41675a;
+  /* IE10 */
+  background-image: -ms-linear-gradient(top, #41675a 0%, #d5dedb 100%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(top, #41675a 0%, #d5dedb 100%);
+  /* Opera */
+  background-image: -o-linear-gradient(top, #41675a 0%, #d5dedb 100%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #41675a), color-stop(1, #d5dedb));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(top, #41675a 0%, #d5dedb 100%);
+  /* Proposed W3C Markup */
+  background-image: linear-gradient(top, #41675a 0%, #d5dedb 100%);
+  /* End CSS3 Linear Gradient */ }
+  .ie9 .ui-palette-gradient-reverse {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImczNTAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiM0MTY3NUEiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiNGRkZGRkYiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2czNTApIiAvPgo8L3N2Zz4=); }
+
+.contentHeader {
+  color: #41675a; }
+
+.contentHeaderCodeDisplay {
+  color: #41675a; }
+
+.ui-iggrid {
+  background-color: #c8d3cf; }
+  .ui-iggrid .ui-iggrid-headertable, .ui-iggrid .ui-widget-header {
+    background: #c8d3cf; }
+  .ui-iggrid .ui-iggrid-headertext {
+    color: #41675a; }
+  .ui-iggrid tbody td {
+    border-top: 1px solid #f7f9f8;
+    border-bottom: 1px solid #f7f9f8; }
+  .ui-iggrid tbody tr {
+    background: white; }
+  .ui-iggrid .ui-ig-altrecord {
+    /* graybar-color */
+    background: #f7f9f8; }
+
+.ui-selectlist ul.ui-selectlist-list li.ui-state-active {
+  background-color: #c8d3cf;
+  border-color: #c8d3cf; }
+
+/* End Rebar UI Sage Green Theme */

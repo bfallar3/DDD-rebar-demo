@@ -1,0 +1,1628 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rebar.Telemetry</name>
+    </assembly>
+    <members>
+        <member name="T:Rebar.Telemetry.Data.DataAccessProfiler">
+            <summary>
+            DataAccessProfiler
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.DataAccessProfiler.initialized">
+            <summary>
+            The initialized
+            </summary>
+            <summary>
+            The initialized
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DataAccessProfiler.Initialize">
+            <summary>
+            Initializes this instance.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DataAccessProfiler.Shutdown">
+            <summary>
+            Shutdowns this instance.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DataAccessProfiler.SetupEntityFrameworkIntegration">
+            <summary>
+            Setups the entity framework integration.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DataAccessProfiler.SetupDatabaseDefaultConnectionFactoryIfNeeded">
+            <summary>
+            Setups the database default connection factory if needed.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DataAccessProfiler.RewriteProvidersDefinition">
+            <summary>
+            Rewrites the providers definition.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DataAccessProfiler.GetDbProvidersFactoriesDataTable">
+            <summary> Gets the db providers factories data table. </summary>
+            <returns>DataTable.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DataAccessProfiler.ForceDbProviderFactoriesInitialization">
+            <summary>
+            Forces the db provider factories initialization.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DataAccessProfiler.RenameObjectContextInProfiler(System.Data.Objects.ObjectContext,System.String)">
+            <summary>
+            Renames the object context in profiler.
+            </summary>
+            <param name="objectContext">The object context.</param>
+            <param name="newName">The new name.</param>
+        </member>
+        <member name="T:Rebar.Telemetry.Data.DbReaderWrappingMode">
+            <summary>
+            Enum DbReaderWrappingMode
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.DbReaderWrappingMode.ProfiledDataReader">
+            <summary>
+            The profiled data reader
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.DbReaderWrappingMode.ProxiedSqlDataReader">
+            <summary>
+            The proxied SQL data reader
+            </summary>
+        </member>
+        <member name="T:Rebar.Telemetry.Data.DebugDbAppender">
+            <summary>
+            Class DebugDbAppender
+            </summary>
+        </member>
+        <member name="T:Rebar.Telemetry.Data.IDbAppender">
+            <summary>
+            Interface IDbAppender
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.IDbAppender.ConnectionStarted(System.Guid)">
+            <summary>
+            Connections the started.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.IDbAppender.ConnectionDisposed(System.Guid)">
+            <summary>
+            Connections the disposed.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.IDbAppender.StatementExecuted(System.Guid,System.Guid,System.String)">
+            <summary>
+            Statements the executed.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+            <param name="statementId">The statement id.</param>
+            <param name="statement">The statement.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.IDbAppender.CommandDurationAndRowCount(System.Guid,System.Int64,System.Nullable{System.Int32})">
+            <summary>
+            Commands the duration and row count.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+            <param name="milliseconds">The milliseconds.</param>
+            <param name="rowCount">The row count.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.IDbAppender.StatementError(System.Guid,System.Exception)">
+            <summary>
+            Statements the error.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.IDbAppender.StatementRowCount(System.Guid,System.Guid,System.Int32)">
+            <summary>
+            Statements the row count.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+            <param name="statementId">The statement id.</param>
+            <param name="rowCount">The row count.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.IDbAppender.TransactionBegan(System.Guid,System.Data.IsolationLevel)">
+            <summary>
+            Transactions the began.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+            <param name="isolationLevel">The isolation level.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.IDbAppender.TransactionCommit(System.Guid)">
+            <summary>
+            Transactions the commit.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.IDbAppender.TransactionRolledBack(System.Guid)">
+            <summary>
+            Transactions the rolled back.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.IDbAppender.TransactionDisposed(System.Guid)">
+            <summary>
+            Transactions the disposed.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.IDbAppender.DtcTransactionEnlisted(System.Guid,System.Transactions.IsolationLevel)">
+            <summary>
+            DTCs the transaction enlisted.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+            <param name="isolationLevel">The isolation level.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.IDbAppender.DtcTransactionCompleted(System.Guid,System.Transactions.TransactionStatus)">
+            <summary>
+            DTCs the transaction completed.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+            <param name="status">The status.</param>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.IDbAppender.ReportStatementSql">
+            <summary>
+            Gets a value indicating whether [report statement SQL].
+            </summary>
+            <value><c>true</c> if [report statement SQL]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.IDbAppender.ReportConnectionDispose">
+            <summary>
+            Gets a value indicating whether [report connection dispose].
+            </summary>
+            <value><c>true</c> if [report connection dispose]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.IDbAppender.ReportConnectionOnOpen">
+            <summary>
+            Gets a value indicating whether [report connection on open].
+            </summary>
+            <value><c>true</c> if [report connection on open]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DebugDbAppender.ConnectionStarted(System.Guid)">
+            <summary>
+            Connections the started.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DebugDbAppender.ConnectionDisposed(System.Guid)">
+            <summary>
+            Connections the disposed.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DebugDbAppender.StatementExecuted(System.Guid,System.Guid,System.String)">
+            <summary>
+            Statements the executed.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+            <param name="statementId">The statement id.</param>
+            <param name="statement">The statement.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DebugDbAppender.CommandDurationAndRowCount(System.Guid,System.Int64,System.Nullable{System.Int32})">
+            <summary>
+            Commands the duration and row count.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+            <param name="milliseconds">The milliseconds.</param>
+            <param name="rowCount">The row count.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DebugDbAppender.StatementError(System.Guid,System.Exception)">
+            <summary>
+            Statements the error.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DebugDbAppender.StatementRowCount(System.Guid,System.Guid,System.Int32)">
+            <summary>
+            Statements the row count.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+            <param name="statementId">The statement id.</param>
+            <param name="rowCount">The row count.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DebugDbAppender.TransactionBegan(System.Guid,System.Data.IsolationLevel)">
+            <summary>
+            Transactions the began.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+            <param name="isolationLevel">The isolation level.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DebugDbAppender.TransactionCommit(System.Guid)">
+            <summary>
+            Transactions the commit.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DebugDbAppender.TransactionRolledBack(System.Guid)">
+            <summary>
+            Transactions the rolled back.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DebugDbAppender.TransactionDisposed(System.Guid)">
+            <summary>
+            Transactions the disposed.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DebugDbAppender.DtcTransactionEnlisted(System.Guid,System.Transactions.IsolationLevel)">
+            <summary>
+            DTCs the transaction enlisted.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+            <param name="isolationLevel">The isolation level.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.DebugDbAppender.DtcTransactionCompleted(System.Guid,System.Transactions.TransactionStatus)">
+            <summary>
+            DTCs the transaction completed.
+            </summary>
+            <param name="connectionId">The connection id.</param>
+            <param name="status">The status.</param>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.DebugDbAppender.ReportStatementSql">
+            <summary>
+            Gets a value indicating whether [report statement SQL].
+            </summary>
+            <value><c>true</c> if [report statement SQL]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.DebugDbAppender.ReportConnectionDispose">
+            <summary>
+            Gets a value indicating whether [report connection dispose].
+            </summary>
+            <value><c>true</c> if [report connection dispose]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.DebugDbAppender.ReportConnectionOnOpen">
+            <summary>
+            Gets a value indicating whether [report connection on open].
+            </summary>
+            <value><c>true</c> if [report connection on open]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Rebar.Telemetry.Data.GenerateAssembly">
+            <summary>
+            Class GenerateAssembly
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.GenerateAssembly.AddAssemblyResolve(System.Reflection.Assembly)">
+            <summary>
+            Adds the assembly resolve.
+            </summary>
+            <param name="assembly">The assembly.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.GenerateAssembly.Compile(System.String,System.String[],System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Compiles the specified file name.
+            </summary>
+            <param name="fileName">Name of the file.</param>
+            <param name="sources">The sources.</param>
+            <param name="assembliesToReference">The assemblies to reference.</param>
+            <returns>Assembly.</returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.GenerateAssembly.CompileAssembly(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            Compiles the assembly.
+            </summary>
+            <param name="sourcesResources">The sources resources.</param>
+            <param name="assembliesToReference">The assemblies to reference.</param>
+            <param name="assemblyName">Name of the assembly.</param>
+            <returns>Assembly.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.GenerateAssembly.GetResource(System.String)">
+            <summary>
+            Gets the resource.
+            </summary>
+            <param name="sourcesResource">The sources resource.</param>
+            <returns>System.String.</returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.GenerateAssembly.GetResources(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Gets the resources.
+            </summary>
+            <param name="sourcesResources">The sources resources.</param>
+            <returns>List{System.String}.</returns>
+        </member>
+        <member name="T:Rebar.Telemetry.Data.ProxiedDataReader">
+            <summary>
+            Class ProxiedDataReader
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.ProxiedDataReader.dataReader">
+            <summary>
+            The data reader
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.ProxiedDataReader.connectionId">
+            <summary>
+            The connection id
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.ProxiedDataReader.statementId">
+            <summary>
+            The statement id
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.ProxiedDataReader.appender">
+            <summary>
+            The appender
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.ProxiedDataReader.rowCount">
+            <summary>
+            The row count
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.ProxiedDataReader.#ctor(System.Data.Common.DbDataReader,System.Guid,System.Guid,Rebar.Telemetry.Data.IDbAppender)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Telemetry.Data.ProxiedDataReader"/> class.
+            </summary>
+            <param name="dataReader">The data reader.</param>
+            <param name="connectionId">The connection id.</param>
+            <param name="statementId">The statement id.</param>
+            <param name="appender">The appender.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.ProxiedDataReader.Invoke(System.Runtime.Remoting.Messaging.IMessage)">
+            <summary>
+            When overridden in a derived class, invokes the method that is specified in the provided <see cref="T:System.Runtime.Remoting.Messaging.IMessage" /> on the remote object that is represented by the current instance.
+            </summary>
+            <param name="msg">A <see cref="T:System.Runtime.Remoting.Messaging.IMessage" /> that contains a <see cref="T:System.Collections.IDictionary" /> of information about the method call.</param>
+            <returns>The message returned by the invoked method, containing the return value and any out or ref parameters.</returns>
+            <PermissionSet>
+            <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="Infrastructure" />
+            </PermissionSet>
+        </member>
+        <member name="T:Rebar.Telemetry.Data.WrappedConnection">
+            <summary>
+            Class WrappedConnection
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedConnection.connectionId">
+            <summary>
+            The connection id
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedConnection.inner">
+            <summary>
+            The inner
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedConnection.appender">
+            <summary>
+            The appender
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedConnection.wrapReaders">
+            <summary>
+            The wrap readers
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedConnection.providerFactory">
+            <summary>
+            The provider factory
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedConnection.reportedStart">
+            <summary>
+            The reported start
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedConnection.#ctor(System.Data.Common.DbConnection,Rebar.Telemetry.Data.IDbAppender,Rebar.Telemetry.Data.DbReaderWrappingMode,System.Guid,System.Data.Common.DbProviderFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Telemetry.Data.WrappedConnection"/> class.
+            </summary>
+            <param name="inner">The inner.</param>
+            <param name="appender">The appender.</param>
+            <param name="wrapReaders">The wrap readers.</param>
+            <param name="connectionId">The connection id.</param>
+            <param name="providerFactory">The provider factory.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedConnection.SetInner(System.Data.Common.DbConnection)">
+            <summary>
+            Sets the inner.
+            </summary>
+            <param name="dbConnection">The db connection.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedConnection.BeginDbTransaction(System.Data.IsolationLevel)">
+            <summary>
+            Starts a database transaction.
+            </summary>
+            <param name="isolationLevel">Specifies the isolation level for the transaction.</param>
+            <returns>An object representing the new transaction.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedConnection.Close">
+            <summary>
+            Closes the connection to the database. This is the preferred method of closing any open connection.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedConnection.ChangeDatabase(System.String)">
+            <summary>
+            Changes the current database for an open connection.
+            </summary>
+            <param name="databaseName">Specifies the name of the database for the connection to use.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedConnection.CreateDbCommand">
+            <summary>
+            Creates and returns a <see cref="T:System.Data.Common.DbCommand" /> object associated with the current connection.
+            </summary>
+            <returns>A <see cref="T:System.Data.Common.DbCommand" /> object.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedConnection.EnlistTransaction(System.Transactions.Transaction)">
+            <summary>
+            Enlists in the specified transaction.
+            </summary>
+            <param name="transaction">A reference to an existing <see cref="T:System.Transactions.Transaction" /> in which to enlist.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedConnection.OnDtcTransactionCompleted(System.Object,System.Transactions.TransactionEventArgs)">
+            <summary>
+            Called when [DTC transaction completed].
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="args">The <see cref="T:System.Transactions.TransactionEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedConnection.GetSchema">
+            <summary>
+            Returns schema information for the data source of this <see cref="T:System.Data.Common.DbConnection" />.
+            </summary>
+            <returns>A <see cref="T:System.Data.DataTable" /> that contains schema information.</returns>
+            <PermissionSet>
+            <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" PathDiscovery="*AllFiles*" />
+            </PermissionSet>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedConnection.GetSchema(System.String)">
+            <summary>
+            Returns schema information for the data source of this <see cref="T:System.Data.Common.DbConnection" /> using the specified string for the schema name.
+            </summary>
+            <param name="collectionName">Specifies the name of the schema to return.</param>
+            <returns>A <see cref="T:System.Data.DataTable" /> that contains schema information.</returns>
+            <PermissionSet>
+            <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" PathDiscovery="*AllFiles*" />
+            </PermissionSet>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedConnection.GetSchema(System.String,System.String[])">
+            <summary>
+            Returns schema information for the data source of this <see cref="T:System.Data.Common.DbConnection" /> using the specified string for the schema name and the specified string array for the restriction values.
+            </summary>
+            <param name="collectionName">Specifies the name of the schema to return.</param>
+            <param name="restrictionValues">Specifies a set of restriction values for the requested schema.</param>
+            <returns>A <see cref="T:System.Data.DataTable" /> that contains schema information.</returns>
+            <PermissionSet>
+              <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" PathDiscovery="*AllFiles*" />
+              </PermissionSet>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedConnection.Open">
+            <summary>
+            Opens a database connection with the settings specified by the <see cref="P:System.Data.Common.DbConnection.ConnectionString" />.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedConnection.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources used by the <see cref="T:System.ComponentModel.Component" /> and optionally releases the managed resources.
+            </summary>
+            <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedConnection.NotifyClosing">
+            <summary>
+            Notifies the closing.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedConnection.GetService(System.Type)">
+            <summary>
+            Returns an object that represents a service provided by the <see cref="T:System.ComponentModel.Component" /> or by its <see cref="T:System.ComponentModel.Container" />.
+            </summary>
+            <param name="service">A service provided by the <see cref="T:System.ComponentModel.Component" />.</param>
+            <returns>An <see cref="T:System.Object" /> that represents a service provided by the <see cref="T:System.ComponentModel.Component" />, or null if the <see cref="T:System.ComponentModel.Component" /> does not provide the specified service.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedConnection.Site">
+            <summary>
+            Gets or sets the <see cref="T:System.ComponentModel.ISite" /> of the <see cref="T:System.ComponentModel.Component" />.
+            </summary>
+            <value>The site.</value>
+            <returns>The <see cref="T:System.ComponentModel.ISite" /> associated with the <see cref="T:System.ComponentModel.Component" />, or null if the <see cref="T:System.ComponentModel.Component" /> is not encapsulated in an <see cref="T:System.ComponentModel.IContainer" />, the <see cref="T:System.ComponentModel.Component" /> does not have an <see cref="T:System.ComponentModel.ISite" /> associated with it, or the <see cref="T:System.ComponentModel.Component" /> is removed from its <see cref="T:System.ComponentModel.IContainer" />.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedConnection.ConnectionString">
+            <summary>
+            Gets or sets the string used to open the connection.
+            </summary>
+            <value>The connection string.</value>
+            <returns>The connection string used to establish the initial connection. The exact contents of the connection string depend on the specific data source for this connection. The default value is an empty string.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedConnection.ConnectionTimeout">
+            <summary>
+            Gets the time to wait while establishing a connection before terminating the attempt and generating an error.
+            </summary>
+            <value>The connection timeout.</value>
+            <returns>The time (in seconds) to wait for a connection to open. The default value is determined by the specific type of connection that you are using.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedConnection.Database">
+            <summary>
+            Gets the name of the current database after a connection is opened, or the database name specified in the connection string before the connection is opened.
+            </summary>
+            <value>The database.</value>
+            <returns>The name of the current database or the name of the database to be used after a connection is opened. The default value is an empty string.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedConnection.DataSource">
+            <summary>
+            Gets the name of the database server to which to connect.
+            </summary>
+            <value>The data source.</value>
+            <returns>The name of the database server to which to connect. The default value is an empty string.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedConnection.ServerVersion">
+            <summary>
+            Gets a string that represents the version of the server to which the object is connected.
+            </summary>
+            <value>The server version.</value>
+            <returns>The version of the database. The format of the string returned depends on the specific type of connection you are using.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedConnection.State">
+            <summary>
+            Gets a string that describes the state of the connection.
+            </summary>
+            <value>The state.</value>
+            <returns>The state of the connection. The format of the string returned depends on the specific type of connection you are using.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedConnection.Inner">
+            <summary>
+            Gets the inner.
+            </summary>
+            <value>The inner.</value>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedConnection.ConnectionId">
+            <summary>
+            Gets the connection id.
+            </summary>
+            <value>The connection id.</value>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedConnection.DbProviderFactory">
+            <summary>
+            Gets the <see cref="T:System.Data.Common.DbProviderFactory" /> for this <see cref="T:System.Data.Common.DbConnection" />.
+            </summary>
+            <value>The db provider factory.</value>
+            <returns>A set of methods for creating instances of a provider's implementation of the data source classes.</returns>
+        </member>
+        <member name="E:Rebar.Telemetry.Data.WrappedConnection.StateChange">
+            <summary>
+            Occurs when the state of the event changes.
+            </summary>
+        </member>
+        <member name="T:Rebar.Telemetry.Data.WrappedDataReader">
+            <summary>
+            Class WrappedDataReader
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedDataReader.appender">
+            <summary>
+            The appender
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedDataReader.command">
+            <summary>
+            The command
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedDataReader.connectionId">
+            <summary>
+            The connection id
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedDataReader.inner">
+            <summary>
+            The inner
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedDataReader.statementGuid">
+            <summary>
+            The statement GUID
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedDataReader.disposed">
+            <summary>
+            The disposed
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedDataReader.rowCount">
+            <summary>
+            The row count
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.#ctor(System.Data.Common.DbDataReader,System.Data.Common.DbCommand,System.Guid,System.Guid,Rebar.Telemetry.Data.IDbAppender)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Telemetry.Data.WrappedDataReader"/> class.
+            </summary>
+            <param name="inner">The inner.</param>
+            <param name="command">The command.</param>
+            <param name="connectionId">The connection id.</param>
+            <param name="statementId">The statement id.</param>
+            <param name="appender">The appender.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.Close">
+            <summary>
+            Closes the <see cref="T:System.Data.Common.DbDataReader" /> object.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetBoolean(System.Int32)">
+            <summary>
+            Gets the value of the specified column as a Boolean.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <returns>The value of the specified column.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetByte(System.Int32)">
+            <summary>
+            Gets the value of the specified column as a byte.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <returns>The value of the specified column.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetBytes(System.Int32,System.Int64,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Reads a stream of bytes from the specified column, starting at location indicated by <paramref name="dataOffset" />, into the buffer, starting at the location indicated by <paramref name="bufferOffset" />.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <param name="dataOffset">The index within the row from which to begin the read operation.</param>
+            <param name="buffer">The buffer into which to copy the data.</param>
+            <param name="bufferOffset">The index with the buffer to which the data will be copied.</param>
+            <param name="length">The maximum number of characters to read.</param>
+            <returns>The actual number of bytes read.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetChar(System.Int32)">
+            <summary>
+            Gets the value of the specified column as a single character.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <returns>The value of the specified column.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetChars(System.Int32,System.Int64,System.Char[],System.Int32,System.Int32)">
+            <summary>
+            Reads a stream of characters from the specified column, starting at location indicated by <paramref name="dataOffset" />, into the buffer, starting at the location indicated by <paramref name="bufferOffset" />.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <param name="dataOffset">The index within the row from which to begin the read operation.</param>
+            <param name="buffer">The buffer into which to copy the data.</param>
+            <param name="bufferOffset">The index with the buffer to which the data will be copied.</param>
+            <param name="length">The maximum number of characters to read.</param>
+            <returns>The actual number of characters read.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetDataTypeName(System.Int32)">
+            <summary>
+            Gets name of the data type of the specified column.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <returns>A string representing the name of the data type.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetDateTime(System.Int32)">
+            <summary>
+            Gets the value of the specified column as a <see cref="T:System.DateTime" /> object.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <returns>The value of the specified column.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetDecimal(System.Int32)">
+            <summary>
+            Gets the value of the specified column as a <see cref="T:System.Decimal" /> object.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <returns>The value of the specified column.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetDouble(System.Int32)">
+            <summary>
+            Gets the value of the specified column as a double-precision floating point number.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <returns>The value of the specified column.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetEnumerator">
+            <summary>
+            Returns an <see cref="T:System.Collections.IEnumerator" /> that can be used to iterate through the rows in the data reader.
+            </summary>
+            <returns>An <see cref="T:System.Collections.IEnumerator" /> that can be used to iterate through the rows in the data reader.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetFieldType(System.Int32)">
+            <summary>
+            Gets the data type of the specified column.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <returns>The data type of the specified column.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetFloat(System.Int32)">
+            <summary>
+            Gets the value of the specified column as a single-precision floating point number.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <returns>The value of the specified column.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetGuid(System.Int32)">
+            <summary>
+            Gets the value of the specified column as a globally-unique identifier (GUID).
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <returns>The value of the specified column.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetInt16(System.Int32)">
+            <summary>
+            Gets the value of the specified column as a 16-bit signed integer.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <returns>The value of the specified column.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetInt32(System.Int32)">
+            <summary>
+            Gets the value of the specified column as a 32-bit signed integer.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <returns>The value of the specified column.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetInt64(System.Int32)">
+            <summary>
+            Gets the value of the specified column as a 64-bit signed integer.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <returns>The value of the specified column.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetName(System.Int32)">
+            <summary>
+            Gets the name of the column, given the zero-based column ordinal.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <returns>The name of the specified column.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetOrdinal(System.String)">
+            <summary>
+            Gets the column ordinal given the name of the column.
+            </summary>
+            <param name="name">The name of the column.</param>
+            <returns>The zero-based column ordinal.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetProviderSpecificFieldType(System.Int32)">
+            <summary>
+            Returns the provider-specific field type of the specified column.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <returns>The <see cref="T:System.Type" /> object that describes the data type of the specified column.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetProviderSpecificValue(System.Int32)">
+            <summary>
+            Gets the value of the specified column as an instance of <see cref="T:System.Object" />.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <returns>The value of the specified column.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetProviderSpecificValues(System.Object[])">
+            <summary>
+            Gets all provider-specific attribute columns in the collection for the current row.
+            </summary>
+            <param name="values">An array of <see cref="T:System.Object" /> into which to copy the attribute columns.</param>
+            <returns>The number of instances of <see cref="T:System.Object" /> in the array.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetSchemaTable">
+            <summary>
+            Returns a <see cref="T:System.Data.DataTable" /> that describes the column metadata of the <see cref="T:System.Data.Common.DbDataReader" />.
+            </summary>
+            <returns>A <see cref="T:System.Data.DataTable" /> that describes the column metadata.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetString(System.Int32)">
+            <summary>
+            Gets the value of the specified column as an instance of <see cref="T:System.String" />.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <returns>The value of the specified column.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetValue(System.Int32)">
+            <summary>
+            Gets the value of the specified column as an instance of <see cref="T:System.Object" />.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <returns>The value of the specified column.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.GetValues(System.Object[])">
+            <summary>
+            Populates an array of objects with the column values of the current row.
+            </summary>
+            <param name="values">An array of <see cref="T:System.Object" /> into which to copy the attribute columns.</param>
+            <returns>The number of instances of <see cref="T:System.Object" /> in the array.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.IsDBNull(System.Int32)">
+            <summary>
+            Gets a value that indicates whether the column contains nonexistent or missing values.
+            </summary>
+            <param name="ordinal">The zero-based column ordinal.</param>
+            <returns>true if the specified column is equivalent to <see cref="T:System.DBNull" />; otherwise false.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.NextResult">
+            <summary>
+            Advances the reader to the next result when reading the results of a batch of statements.
+            </summary>
+            <returns>true if there are more result sets; otherwise false.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.Read">
+            <summary>
+            Advances the reader to the next record in a result set.
+            </summary>
+            <returns>true if there are more rows; otherwise false.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDataReader.Dispose(System.Boolean)">
+            <summary>
+            Releases the managed resources used by the <see cref="T:System.Data.Common.DbDataReader" /> and optionally releases the unmanaged resources.
+            </summary>
+            <param name="disposing">true to release managed and unmanaged resources; false to release only unmanaged resources.</param>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDataReader.Inner">
+            <summary>
+            The inner
+            </summary>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDataReader.Depth">
+            <summary>
+            Gets a value indicating the depth of nesting for the current row.
+            </summary>
+            <value>The depth.</value>
+            <returns>The depth of nesting for the current row.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDataReader.FieldCount">
+            <summary>
+            Gets the number of columns in the current row.
+            </summary>
+            <value>The field count.</value>
+            <returns>The number of columns in the current row.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDataReader.HasRows">
+            <summary>
+            Gets a value that indicates whether this <see cref="T:System.Data.Common.DbDataReader" /> contains one or more rows.
+            </summary>
+            <value><c>true</c> if this instance has rows; otherwise, <c>false</c>.</value>
+            <returns>true if the <see cref="T:System.Data.Common.DbDataReader" /> contains one or more rows; otherwise false.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDataReader.IsClosed">
+            <summary>
+            Gets a value indicating whether the <see cref="T:System.Data.Common.DbDataReader" /> is closed.
+            </summary>
+            <value><c>true</c> if this instance is closed; otherwise, <c>false</c>.</value>
+            <returns>true if the <see cref="T:System.Data.Common.DbDataReader" /> is closed; otherwise false.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDataReader.RecordsAffected">
+            <summary>
+            Gets the number of rows changed, inserted, or deleted by execution of the SQL statement.
+            </summary>
+            <value>The records affected.</value>
+            <returns>The number of rows changed, inserted, or deleted. -1 for SELECT statements; 0 if no rows were affected or the statement failed.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDataReader.VisibleFieldCount">
+            <summary>
+            Gets the number of fields in the <see cref="T:System.Data.Common.DbDataReader" /> that are not hidden.
+            </summary>
+            <value>The visible field count.</value>
+            <returns>The number of fields that are not hidden.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDataReader.Item(System.Int32)">
+            <summary>
+            Gets the value of the specified column as an instance of <see cref="T:System.Object" />.
+            </summary>
+            <param name="ordinal">The ordinal.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDataReader.Item(System.String)">
+            <summary>
+            Gets the value of the specified column as an instance of <see cref="T:System.Object" />.
+            </summary>
+            <param name="name">The name.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="T:Rebar.Telemetry.Data.WrappedDbCommand">
+            <summary>
+            Class WrappedDbCommand
+            Implements ICloneable interface because EF6 expects it to be cloneable
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedDbCommand.inner">
+            <summary>
+            The inner
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedDbCommand.appender">
+            <summary>
+            The appender
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedDbCommand.wrapReaders">
+            <summary>
+            The wrap readers
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedDbCommand.connection">
+            <summary>
+            The connection
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbCommand.#ctor(System.Data.Common.DbCommand,Rebar.Telemetry.Data.WrappedConnection,Rebar.Telemetry.Data.IDbAppender,Rebar.Telemetry.Data.DbReaderWrappingMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Telemetry.Data.WrappedDbCommand"/> class.
+            </summary>
+            <param name="inner">The inner.</param>
+            <param name="connection">The connection.</param>
+            <param name="appender">The appender.</param>
+            <param name="wrapReaders">The wrap readers.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbCommand.#ctor(System.Data.Common.DbCommand,Rebar.Telemetry.Data.IDbAppender,Rebar.Telemetry.Data.DbReaderWrappingMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Telemetry.Data.WrappedDbCommand"/> class.
+            </summary>
+            <param name="inner">The inner.</param>
+            <param name="appender">The appender.</param>
+            <param name="wrapReaders">The wrap readers.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbCommand.Cancel">
+            <summary>
+            Attempts to cancels the execution of a <see cref="T:System.Data.Common.DbCommand" />.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbCommand.CreateDbParameter">
+            <summary>
+            Creates a new instance of a <see cref="T:System.Data.Common.DbParameter" /> object.
+            </summary>
+            <returns>A <see cref="T:System.Data.Common.DbParameter" /> object.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbCommand.ExecuteDbDataReader(System.Data.CommandBehavior)">
+            <summary>
+            Executes the command text against the connection.
+            </summary>
+            <param name="behavior">An instance of <see cref="T:System.Data.CommandBehavior"/>.</param>
+            <returns>A task representing the operation.</returns>
+            <exception cref="T:System.ComponentModel.InvalidEnumArgumentException"></exception>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbCommand.CreateProxiedDataReader(System.Guid,System.Data.Common.DbDataReader)">
+            <summary>
+            Creates the proxied data reader.
+            </summary>
+            <param name="statementId">The statement id.</param>
+            <param name="reader">The reader.</param>
+            <returns>DbDataReader.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbCommand.LogCommand(System.Guid)">
+            <summary>
+            Logs the command.
+            </summary>
+            <param name="statementId">The statement id.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbCommand.GetParameterValue(System.Data.IDataParameter)">
+            <summary>
+            Gets the parameter value.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbCommand.ExecuteNonQuery">
+            <summary>
+            Executes a SQL statement against a connection object.
+            </summary>
+            <returns>The number of rows affected.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbCommand.ExecuteScalar">
+            <summary>
+            Executes the query and returns the first column of the first row in the result set returned by the query. All other columns and rows are ignored.
+            </summary>
+            <returns>The first column of the first row in the result set.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbCommand.TraceCommand">
+            <summary>
+            Traces the command.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbCommand.Prepare">
+            <summary>
+            Creates a prepared (or compiled) version of the command on the data source.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbCommand.Clone">
+            <summary>
+            Clones a new instance of WrappedDBCommand object
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDbCommand.Inner">
+            <summary>
+            Gets the inner.
+            </summary>
+            <value>The inner.</value>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDbCommand.Site">
+            <summary>
+            Gets or sets the <see cref="T:System.ComponentModel.ISite" /> of the <see cref="T:System.ComponentModel.Component" />.
+            </summary>
+            <value>The site.</value>
+            <returns>The <see cref="T:System.ComponentModel.ISite" /> associated with the <see cref="T:System.ComponentModel.Component" />, or null if the <see cref="T:System.ComponentModel.Component" /> is not encapsulated in an <see cref="T:System.ComponentModel.IContainer" />, the <see cref="T:System.ComponentModel.Component" /> does not have an <see cref="T:System.ComponentModel.ISite" /> associated with it, or the <see cref="T:System.ComponentModel.Component" /> is removed from its <see cref="T:System.ComponentModel.IContainer" />.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDbCommand.CommandText">
+            <summary>
+            Gets or sets the text command to run against the data source.
+            </summary>
+            <value>The command text.</value>
+            <returns>The text command to execute. The default value is an empty string ("").</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDbCommand.CommandTimeout">
+            <summary>
+            Gets or sets the wait time before terminating the attempt to execute a command and generating an error.
+            </summary>
+            <value>The command timeout.</value>
+            <returns>The time in seconds to wait for the command to execute.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDbCommand.CommandType">
+            <summary>
+            Indicates or specifies how the <see cref="P:System.Data.Common.DbCommand.CommandText" /> property is interpreted.
+            </summary>
+            <value>The type of the command.</value>
+            <returns>One of the <see cref="T:System.Data.CommandType" /> values. The default is Text.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDbCommand.DbConnection">
+            <summary>
+            Gets or sets the <see cref="T:System.Data.Common.DbConnection"/> used by this <see cref="T:System.Data.Common.DbCommand"/>.
+            </summary>
+            <value>The db connection.</value>
+            <exception cref="T:System.InvalidOperationException">Got unexpected type of  + value.GetType().FullName +  instead of a Profiled Connection</exception>
+            <returns>The connection to the data source.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDbCommand.DbParameterCollection">
+            <summary>
+            Gets the collection of <see cref="T:System.Data.Common.DbParameter" /> objects.
+            </summary>
+            <value>The db parameter collection.</value>
+            <returns>The parameters of the SQL statement or stored procedure.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDbCommand.DbTransaction">
+            <summary>
+            Gets or sets the <see cref="P:System.Data.Common.DbCommand.DbTransaction" /> within which this <see cref="T:System.Data.Common.DbCommand" /> object executes.
+            </summary>
+            <value>The db transaction.</value>
+            <returns>The transaction within which a Command object of a .NET Framework data provider executes. The default value is a null reference (Nothing in Visual Basic).</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDbCommand.DesignTimeVisible">
+            <summary>
+            Gets or sets a value indicating whether the command object should be visible in a customized interface control.
+            </summary>
+            <value><c>true</c> if [design time visible]; otherwise, <c>false</c>.</value>
+            <returns>true, if the command object should be visible in a control; otherwise false. The default is true.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDbCommand.UpdatedRowSource">
+            <summary>
+            Gets or sets how command results are applied to the <see cref="T:System.Data.DataRow" /> when used by the Update method of a <see cref="T:System.Data.Common.DbDataAdapter" />.
+            </summary>
+            <value>The updated row source.</value>
+            <returns>One of the <see cref="T:System.Data.UpdateRowSource" /> values. The default is Both unless the command is automatically generated. Then the default is None.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDbCommand.BindByName">
+            <summary>
+            Set a value to bind command parameters by name; Used for Oracle
+            </summary>
+            <value><c>true</c> if [bind by name]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Rebar.Telemetry.Data.WrappedDbCommandDefinition">
+            <summary>
+            Class WrappedDbCommandDefinition
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedDbCommandDefinition.inner">
+            <summary>
+            The inner
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedDbCommandDefinition.appender">
+            <summary>
+            The appender
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbCommandDefinition.#ctor(System.Data.Common.DbCommandDefinition,Rebar.Telemetry.Data.IDbAppender)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Telemetry.Data.WrappedDbCommandDefinition"/> class.
+            </summary>
+            <param name="inner">The inner.</param>
+            <param name="appender">The appender.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbCommandDefinition.CreateCommand">
+            <summary>
+            Creates and returns a <see cref="T:System.Data.Common.DbCommand" /> object that can be executed.
+            </summary>
+            <returns>The command for database.</returns>
+        </member>
+        <member name="T:Rebar.Telemetry.Data.WrappedDbDataAdapter">
+            <summary>
+            Class WrappedDbDataAdapter
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedDbDataAdapter.inner">
+            <summary>
+            The inner
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbDataAdapter.#ctor(System.Data.Common.DbDataAdapter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Telemetry.Data.WrappedDbDataAdapter"/> class.
+            </summary>
+            <param name="inner">The inner.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbDataAdapter.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources used by the <see cref="T:System.Data.Common.DbDataAdapter" /> and optionally releases the managed resources.
+            </summary>
+            <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbDataAdapter.Fill(System.Data.DataSet)">
+            <summary>
+            Adds or refreshes rows in the <see cref="T:System.Data.DataSet" />.
+            </summary>
+            <param name="dataSet">A <see cref="T:System.Data.DataSet" /> to fill with records and, if necessary, schema.</param>
+            <returns>The number of rows successfully added to or refreshed in the <see cref="T:System.Data.DataSet" />. This does not include rows affected by statements that do not return rows.</returns>
+            <PermissionSet>
+              <IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+              <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+              <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="ControlEvidence" />
+              </PermissionSet>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbDataAdapter.FillSchema(System.Data.DataSet,System.Data.SchemaType)">
+            <summary>
+            Adds a <see cref="T:System.Data.DataTable" /> named "Table" to the specified <see cref="T:System.Data.DataSet" /> and configures the schema to match that in the data source based on the specified <see cref="T:System.Data.SchemaType" />.
+            </summary>
+            <param name="dataSet">A <see cref="T:System.Data.DataSet" /> to insert the schema in.</param>
+            <param name="schemaType">One of the <see cref="T:System.Data.SchemaType" /> values that specify how to insert the schema.</param>
+            <returns>A reference to a collection of <see cref="T:System.Data.DataTable" /> objects that were added to the <see cref="T:System.Data.DataSet" />.</returns>
+            <PermissionSet>
+              <IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+              <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+              <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="ControlEvidence" />
+              </PermissionSet>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbDataAdapter.GetFillParameters">
+            <summary>
+            Gets the parameters set by the user when executing an SQL SELECT statement.
+            </summary>
+            <returns>An array of <see cref="T:System.Data.IDataParameter" /> objects that contains the parameters set by the user.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbDataAdapter.ShouldSerializeAcceptChangesDuringFill">
+            <summary>
+            Determines whether the <see cref="P:System.Data.Common.DataAdapter.AcceptChangesDuringFill" /> property should be persisted.
+            </summary>
+            <returns>true if the <see cref="P:System.Data.Common.DataAdapter.AcceptChangesDuringFill" /> property is persisted; otherwise false.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbDataAdapter.ShouldSerializeFillLoadOption">
+            <summary>
+            Determines whether the <see cref="P:System.Data.Common.DataAdapter.FillLoadOption" /> property should be persisted.
+            </summary>
+            <returns>true if the <see cref="P:System.Data.Common.DataAdapter.FillLoadOption" /> property is persisted; otherwise false.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbDataAdapter.Update(System.Data.DataSet)">
+            <summary>
+            Calls the respective INSERT, UPDATE, or DELETE statements for each inserted, updated, or deleted row in the specified <see cref="T:System.Data.DataSet" />.
+            </summary>
+            <param name="dataSet">The <see cref="T:System.Data.DataSet" /> used to update the data source.</param>
+            <returns>The number of rows successfully updated from the <see cref="T:System.Data.DataSet" />.</returns>
+            <PermissionSet>
+              <IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+              <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+              <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="ControlEvidence" />
+              </PermissionSet>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbDataAdapter.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents this instance.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDbDataAdapter.ReturnProviderSpecificTypes">
+            <summary>
+            Gets or sets whether the Fill method should return provider-specific values or common CLS-compliant values.
+            </summary>
+            <value><c>true</c> if [return provider specific types]; otherwise, <c>false</c>.</value>
+            <returns>true if the Fill method should return provider-specific values; otherwise false to return common CLS-compliant values.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDbDataAdapter.UpdateBatchSize">
+            <summary>
+            Gets or sets a value that enables or disables batch processing support, and specifies the number of commands that can be executed in a batch.
+            </summary>
+            <value>The size of the update batch.</value>
+            <returns>The number of rows to process per batch. Value isEffect0There is no limit on the batch size.1Disables batch updating.&gt; 1Changes are sent using batches of <see cref="P:System.Data.Common.DbDataAdapter.UpdateBatchSize" /> operations at a time.When setting this to a value other than 1 ,all the commands associated with the <see cref="T:System.Data.Common.DbDataAdapter" /> must have their <see cref="P:System.Data.IDbCommand.UpdatedRowSource" /> property set to None or OutputParameters. An exception will be thrown otherwise. </returns>
+              <PermissionSet>
+              <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" PathDiscovery="*AllFiles*" />
+              </PermissionSet>
+        </member>
+        <member name="T:Rebar.Telemetry.Data.WrappedDbProviderFactory`1">
+            <summary>
+            Class WrappedDbProviderFactory
+            </summary>
+            <typeparam name="TConnectionFactory">The type of the T connection factory.</typeparam>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedDbProviderFactory`1.Appender">
+            <summary>
+            The appender
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedDbProviderFactory`1.Instance">
+            <summary>
+            The instance
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedDbProviderFactory`1.inner">
+            <summary>
+            The inner
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbProviderFactory`1.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:Rebar.Telemetry.Data.WrappedDbProviderFactory`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbProviderFactory`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Telemetry.Data.WrappedDbProviderFactory`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbProviderFactory`1.CreateCommandBuilder">
+            <summary>
+            Returns a new instance of the provider's class that implements the <see cref="T:System.Data.Common.DbCommandBuilder" /> class.
+            </summary>
+            <returns>A new instance of <see cref="T:System.Data.Common.DbCommandBuilder" />.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbProviderFactory`1.CreateCommand">
+            <summary>
+            Returns a new instance of the provider's class that implements the <see cref="T:System.Data.Common.DbCommand" /> class.
+            </summary>
+            <returns>A new instance of <see cref="T:System.Data.Common.DbCommand" />.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbProviderFactory`1.CreateConnectionStringBuilder">
+            <summary>
+            Returns a new instance of the provider's class that implements the <see cref="T:System.Data.Common.DbConnectionStringBuilder" /> class.
+            </summary>
+            <returns>A new instance of <see cref="T:System.Data.Common.DbConnectionStringBuilder" />.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbProviderFactory`1.CreateDataAdapter">
+            <summary>
+            Returns a new instance of the provider's class that implements the <see cref="T:System.Data.Common.DbDataAdapter" /> class.
+            </summary>
+            <returns>A new instance of <see cref="T:System.Data.Common.DbDataAdapter" />.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbProviderFactory`1.CreateDataSourceEnumerator">
+            <summary>
+            Returns a new instance of the provider's class that implements the <see cref="T:System.Data.Common.DbDataSourceEnumerator" /> class.
+            </summary>
+            <returns>A new instance of <see cref="T:System.Data.Common.DbDataSourceEnumerator" />.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbProviderFactory`1.CreateParameter">
+            <summary>
+            Returns a new instance of the provider's class that implements the <see cref="T:System.Data.Common.DbParameter" /> class.
+            </summary>
+            <returns>A new instance of <see cref="T:System.Data.Common.DbParameter" />.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbProviderFactory`1.CreateConnection">
+            <summary>
+            Returns a new instance of the provider's class that implements the <see cref="T:System.Data.Common.DbConnection" /> class.
+            </summary>
+            <returns>A new instance of <see cref="T:System.Data.Common.DbConnection" />.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbProviderFactory`1.GetService(System.Type)">
+            <summary>
+            Gets the service object of the specified type.
+            </summary>
+            <param name="serviceType">An object that specifies the type of service object to get.</param>
+            <returns>A service object of type <paramref name="serviceType" />.-or- null if there is no service object of type <paramref name="serviceType" />.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedDbProviderFactory`1.CanCreateDataSourceEnumerator">
+            <summary>
+            Specifies whether the specific <see cref="T:System.Data.Common.DbProviderFactory" /> supports the <see cref="T:System.Data.Common.DbDataSourceEnumerator" /> class.
+            </summary>
+            <value><c>true</c> if this instance can create data source enumerator; otherwise, <c>false</c>.</value>
+            <returns>true if the instance of the <see cref="T:System.Data.Common.DbProviderFactory" /> supports the <see cref="T:System.Data.Common.DbDataSourceEnumerator" /> class; otherwise false.</returns>
+        </member>
+        <member name="T:Rebar.Telemetry.Data.WrappedDbProviderServices">
+            <summary>
+            Class WrappedDbProviderServices
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedDbProviderServices.inner">
+            <summary>
+            The inner
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedDbProviderServices.appender">
+            <summary>
+            The appender
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbProviderServices.#ctor(System.Data.Common.DbProviderServices,Rebar.Telemetry.Data.IDbAppender)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Telemetry.Data.WrappedDbProviderServices"/> class.
+            </summary>
+            <param name="inner">The inner.</param>
+            <param name="appender">The appender.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbProviderServices.DbDatabaseExists(System.Data.Common.DbConnection,System.Nullable{System.Int32},System.Data.Metadata.Edm.StoreItemCollection)">
+            <summary>
+            Returns a value indicating whether a given database exists on the server and whether schema objects contained in the storeItemCollection have been created.
+            </summary>
+            <param name="connection">Connection to a database whose existence is verified by this method.</param>
+            <param name="commandTimeout">Execution timeout for any commands needed to determine the existence of the database.</param>
+            <param name="storeItemCollection">The structure of the database whose existence is determined by this method.</param>
+            <returns>True if the database indicated by the connection and the storeItemCollection parameter exists; otherwise, false.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbProviderServices.DbCreateDatabase(System.Data.Common.DbConnection,System.Nullable{System.Int32},System.Data.Metadata.Edm.StoreItemCollection)">
+            <summary>
+            Creates a database indicated by connection and creates schema objects (tables, primary keys, foreign keys) based on the contents of a StoreItemCollection.
+            </summary>
+            <param name="connection">Connection to a non-existent database that needs to be created and populated with the store objects indicated with the storeItemCollection parameter.</param>
+            <param name="commandTimeout">Execution timeout for any commands needed to create the database.</param>
+            <param name="storeItemCollection">The collection of all store items based on which the script should be created.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbProviderServices.DbCreateDatabaseScript(System.String,System.Data.Metadata.Edm.StoreItemCollection)">
+            <summary>
+            Generates a data definition langauge (DDL script that creates schema objects (tables, primary keys, foreign keys) based on the contents of the StoreItemCollection parameter and targeted for the version of the database corresponding to the provider manifest token.
+            </summary>
+            <param name="providerManifestToken">The provider manifest token identifying the target version.</param>
+            <param name="storeItemCollection">The structure of the database.</param>
+            <returns>A DDL script that creates schema objects based on the contents of the StoreItemCollection parameter and targeted for the version of the database corresponding to the provider manifest token.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbProviderServices.DbDeleteDatabase(System.Data.Common.DbConnection,System.Nullable{System.Int32},System.Data.Metadata.Edm.StoreItemCollection)">
+            <summary>
+            Deletes all store objects specified in the store item collection from the database and the database itself.
+            </summary>
+            <param name="connection">Connection to an existing database that needs to be deleted.</param>
+            <param name="commandTimeout">Execution timeout for any commands needed to delete the database.</param>
+            <param name="storeItemCollection">The structure of the database to be deleted.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbProviderServices.CreateDbCommandDefinition(System.Data.Common.DbProviderManifest,System.Data.Common.CommandTrees.DbCommandTree)">
+            <summary>
+            Creates a command definition object for the specified provider manifest and command tree.
+            </summary>
+            <param name="providerManifest">Provider manifest previously retrieved from the store provider.</param>
+            <param name="commandTree">Command tree for the statement.</param>
+            <returns>An executable command definition object.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbProviderServices.GetDbProviderManifestToken(System.Data.Common.DbConnection)">
+            <summary>
+            Returns provider manifest token given a connection.
+            </summary>
+            <param name="connection">Connection to provider.</param>
+            <returns>The provider manifest token for the specified connection.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbProviderServices.GetDbProviderManifest(System.String)">
+            <summary>
+            When overridden in a derived class, returns an instance of a class that derives from the DbProviderManifest.
+            </summary>
+            <param name="manifestToken">The token information associated with the provider manifest.</param>
+            <returns>A DbProviderManifest object that represents the provider manifest.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedDbProviderServices.CreateCommandDefinition(System.Data.Common.DbCommand)">
+            <summary>
+            Creates a command definition that uses a specified command.
+            </summary>
+            <param name="prototype">The command used to create command definition.</param>
+            <returns>The created command definition that uses a specified command.</returns>
+        </member>
+        <member name="T:Rebar.Telemetry.Data.WrappedTransaction">
+            <summary>
+            Class WrappedTransaction
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedTransaction.inner">
+            <summary>
+            The inner
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedTransaction.appender">
+            <summary>
+            The appender
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedTransaction.wrapReaders">
+            <summary>
+            The wrap readers
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.Data.WrappedTransaction.connection">
+            <summary>
+            The connection
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedTransaction.#ctor(System.Data.Common.DbTransaction,Rebar.Telemetry.Data.IDbAppender,Rebar.Telemetry.Data.DbReaderWrappingMode,Rebar.Telemetry.Data.WrappedConnection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Telemetry.Data.WrappedTransaction"/> class.
+            </summary>
+            <param name="inner">The inner.</param>
+            <param name="appender">The appender.</param>
+            <param name="wrapReaders">The wrap readers.</param>
+            <param name="connection">The connection.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedTransaction.Commit">
+            <summary>
+            Commits the database transaction.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedTransaction.Rollback">
+            <summary>
+            Rolls back a transaction from a pending state.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedTransaction.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources used by the <see cref="T:System.Data.Common.DbTransaction" /> and optionally releases the managed resources.
+            </summary>
+            <param name="disposing">If true, this method releases all resources held by any managed objects that this <see cref="T:System.Data.Common.DbTransaction" /> references.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedTransaction.Save(System.String)">
+            <summary>
+            Saves the specified name.
+            </summary>
+            <param name="name">The name.</param>
+            <exception cref="T:System.NotSupportedException">Save(name) isn't supported by  + (object)this.inner</exception>
+        </member>
+        <member name="M:Rebar.Telemetry.Data.WrappedTransaction.Rollback(System.String)">
+            <summary>
+            Rollbacks the specified name.
+            </summary>
+            <param name="name">The name.</param>
+            <exception cref="T:System.NotSupportedException">Rollback(name) isn't supported by  + (object)this.inner</exception>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedTransaction.DbConnection">
+            <summary>
+            Specifies the <see cref="T:System.Data.Common.DbConnection" /> object associated with the transaction.
+            </summary>
+            <value>The db connection.</value>
+            <returns>The <see cref="T:System.Data.Common.DbConnection" /> object associated with the transaction.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedTransaction.IsolationLevel">
+            <summary>
+            Specifies the <see cref="T:System.Data.IsolationLevel" /> for this transaction.
+            </summary>
+            <value>The isolation level.</value>
+            <returns>The <see cref="T:System.Data.IsolationLevel" /> for this transaction.</returns>
+        </member>
+        <member name="P:Rebar.Telemetry.Data.WrappedTransaction.Inner">
+            <summary>
+            Gets the inner.
+            </summary>
+            <value>The inner.</value>
+        </member>
+        <member name="M:Rebar.Telemetry.Internal.ILocalData.Clear">
+            <summary>
+            Clears this instance.
+            </summary>
+        </member>
+        <member name="P:Rebar.Telemetry.Internal.ILocalData.Item(System.Object)">
+            <summary>
+            Gets or sets the <see cref="T:System.Object"/> with the specified key.
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:Rebar.Telemetry.Internal.Local">
+            <summary>
+            This class is key for handling local data, data that is private
+            to the current context, be it the current thread, the current web 
+            request, etc.
+            </summary>
+        </member>
+        <member name="P:Rebar.Telemetry.Internal.Local.Data">
+            <summary>
+            Gets the current data
+            </summary>
+            <value>The data.</value>
+        </member>
+        <member name="P:Rebar.Telemetry.Internal.Local.RunningInWeb">
+            <summary>
+            Gets a value indicating whether running in the web context
+            </summary>
+            <value><c>true</c> if [running in web]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Rebar.Telemetry.TelemetryEvent">
+            <summary>
+            Class TelemetryEvent
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.TelemetryEvent.#ctor(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},Rebar.Telemetry.TelemetryManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Telemetry.TelemetryEvent"/> class.
+            </summary>
+            <param name="eventSource">
+            The event source.
+            </param>
+            <param name="contextItems">
+            The context items.
+            </param>
+            <param name="telemetryManager">
+            The telemetry manager.
+            </param>
+        </member>
+        <member name="M:Rebar.Telemetry.TelemetryEvent.Finalize">
+            <summary>
+            Finalizes an instance of the <see cref="T:Rebar.Telemetry.TelemetryEvent"/> class.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.TelemetryEvent.HandleDeserialized(System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Handles the deserialized.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.TelemetryEvent.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.TelemetryEvent.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="P:Rebar.Telemetry.TelemetryEvent.Items">
+            <summary>
+            Gets or sets the items.
+            </summary>
+            <value>The items.</value>
+        </member>
+        <member name="T:Rebar.Telemetry.TelemetryManager">
+            <summary>
+            Handles capturing and logging timing and telemetry information for applications and services.
+            </summary>
+        </member>
+        <member name="F:Rebar.Telemetry.TelemetryManager.TelemetryManagerKey">
+            <summary>The key used to store the current telemetry manager in <see cref="P:Rebar.Telemetry.Internal.Local.Data"/>.</summary>
+        </member>
+        <member name="M:Rebar.Telemetry.TelemetryManager.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Telemetry.TelemetryManager"/> class.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.TelemetryManager.#ctor(System.Action{System.Collections.Generic.IDictionary{System.String,System.Object}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rebar.Telemetry.TelemetryManager"/> class.
+            </summary>
+            <param name="loggerDelegate">The logger delegate.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.TelemetryManager.Start">
+            <summary>
+            Starts this instance.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.TelemetryManager.AddEvent(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Adds the event.
+            </summary>
+            <param name="eventItems">The event items.</param>
+        </member>
+        <member name="M:Rebar.Telemetry.TelemetryManager.Step(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Steps the specified event source.
+            </summary>
+            <param name="eventSource">The event source.</param>
+            <param name="contextItems">The context items.</param>
+            <returns>A new telemetry event.</returns>
+        </member>
+        <member name="M:Rebar.Telemetry.TelemetryManager.End">
+            <summary>
+            Ends this instance.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.TelemetryManager.IgnoreLastStep">
+            <summary>
+            Ignores the last step.
+            </summary>
+        </member>
+        <member name="M:Rebar.Telemetry.TelemetryManager.SetLogger(System.Action{System.Collections.Generic.IDictionary{System.String,System.Object}})">
+            <summary>
+            Sets the logger.
+            </summary>
+            <param name="action">The action.</param>
+        </member>
+        <member name="P:Rebar.Telemetry.TelemetryManager.Current">
+            <summary>Gets the current executing telemetry manager or creates a new one and starts it if it does not yet exist.</summary>
+            <value>The current.</value>
+        </member>
+        <member name="P:Rebar.Telemetry.TelemetryManager.CurrentStep">
+            <summary>
+            Gets the current step.
+            </summary>
+            <value>The current step.</value>
+        </member>
+    </members>
+</doc>

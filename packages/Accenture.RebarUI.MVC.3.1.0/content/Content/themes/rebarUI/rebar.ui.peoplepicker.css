@@ -1,0 +1,42 @@
+.ui-picker-container {
+  position: absolute;
+  right: 100px;
+  top: 20px;
+  border: 1px solid #afafaf;
+  background-color: #fff;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 20px;
+  z-index: 100; }
+
+.ui-person-item {
+  width: auto;
+  position: relative;
+  min-height: 48px;
+  margin: 8px 0;
+  background-color: #fff;
+  word-wrap: break-word;
+  cursor: pointer;
+  z-index: 110; }
+
+.ui-person-img {
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  position: absolute;
+  left: 10px; }
+
+.ui-person-img img {
+  width: 100%; }
+
+.ui-person-info {
+  min-width: 100px;
+  position: absolute;
+  left: 80px; }
+
+.ui-person-desc {
+  font: 1em Arial;
+  color: #808080; }
+
+.hidden {
+  display: none; }

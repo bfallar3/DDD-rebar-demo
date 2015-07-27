@@ -1,0 +1,121 @@
+/* Rebar UI Violet Theme
+ *
+ */
+.ui-banner {
+  background-color: #d9b4d9;
+  border-bottom-color: #993399; }
+  .ui-banner a:hover, .ui-banner a:focus, .ui-banner a.ui-state-hover, .ui-banner a.ui-state-focus {
+    background-color: #f3e7f3; }
+  .ui-banner a.ui-state-active, .lt-ie9 .ui-banner a.ui-state-active {
+    background-color: #993399;
+    color: white; }
+
+.ui-left-nav a:hover, .ui-left-nav a:focus, .ui-left-nav a.ui-state-hover, .ui-left-nav a.ui-state-focus {
+  background-color: #f3e7f3; }
+.ui-left-nav a.ui-state-active
+, .lt-ie9 .ui-left-nav a.ui-state-active {
+  background-color: #993399;
+  color: white; }
+
+label, .ui-text-label, .ui-label-color {
+  color: #993399; }
+
+.ui-fill-darkest {
+  background-color: #993399; }
+
+.ui-fill-dark {
+  background-color: #e1c4e1; }
+
+.ui-fill-medium {
+  background-color: #e9d2e9; }
+
+.ui-fill-light {
+  background-color: #f3e7f3; }
+
+.ui-fill-popup {
+  background-color: #ecd8ec; }
+
+.ui-grid-lines th, .ui-grid-lines tr, .ui-grid-lines td {
+  border-left: 1px solid #efdeef;
+  border-right: 1px solid #efdeef;
+  border-top: 0px;
+  border-bottom: 0px; }
+
+.ui.grid-lines table {
+  border-bottom: 1px solid #efdeef; }
+
+.ui-grid-lines-left td {
+  border-left: 1px solid #efdeef; }
+
+.ui-grid-lines-right td {
+  border-right: 1px solid #efdeef; }
+
+.ui-grey-bar {
+  background-color: #fbf7fb; }
+
+.ui-palette-gradient {
+  /* Start CSS3 Linear Gradient */
+  /* Non CSS3 Browsers */
+  background-color: white;
+  /* IE10 */
+  background-image: -ms-linear-gradient(top, white 0%, #993399 100%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(top, white 0%, #993399 100%);
+  /* Opera */
+  background-image: -o-linear-gradient(top, white 0%, #993399 100%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(1, #993399));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(top, white 0%, #993399 100%);
+  /* Proposed W3C Markup */
+  background-image: linear-gradient(top, white 0%, #993399 100%);
+  /* End CSS3 Linear Gradient */ }
+  .ie9 .ui-palette-gradient {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9Imc2NjgiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGRkZGRkYiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiM5OTMzOTkiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2c2NjgpIiAvPgo8L3N2Zz4=); }
+
+.ui-palette-gradient-reverse {
+  /* Start CSS3 Linear Gradient */
+  /* Non CSS3 Browsers */
+  background-color: #993399;
+  /* IE10 */
+  background-image: -ms-linear-gradient(top, #993399 0%, #e9d2e9 100%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(top, #993399 0%, #e9d2e9 100%);
+  /* Opera */
+  background-image: -o-linear-gradient(top, #993399 0%, #e9d2e9 100%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #993399), color-stop(1, #e9d2e9));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(top, #993399 0%, #e9d2e9 100%);
+  /* Proposed W3C Markup */
+  background-image: linear-gradient(top, #993399 0%, #e9d2e9 100%);
+  /* End CSS3 Linear Gradient */ }
+  .ie9 .ui-palette-gradient-reverse {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9Imc4MjciIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiM5OTMzOTkiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiNGRkZGRkYiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2c4MjcpIiAvPgo8L3N2Zz4=); }
+
+.contentHeader {
+  color: #993399; }
+
+.contentHeaderCodeDisplay {
+  color: #993399; }
+
+.ui-iggrid {
+  background-color: #e1c4e1; }
+  .ui-iggrid .ui-iggrid-headertable, .ui-iggrid .ui-widget-header {
+    background: #e1c4e1; }
+  .ui-iggrid .ui-iggrid-headertext {
+    color: #993399; }
+  .ui-iggrid tbody td {
+    border-top: 1px solid #fbf7fb;
+    border-bottom: 1px solid #fbf7fb; }
+  .ui-iggrid tbody tr {
+    background: white; }
+  .ui-iggrid .ui-ig-altrecord {
+    /* graybar-color */
+    background: #fbf7fb; }
+
+.ui-selectlist ul.ui-selectlist-list li.ui-state-active {
+  background-color: #e1c4e1;
+  border-color: #e1c4e1; }
+
+/* End Rebar UI Violet Theme */

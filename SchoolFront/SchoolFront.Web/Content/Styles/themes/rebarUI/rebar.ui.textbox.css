@@ -1,0 +1,8 @@
+input[type="text"] {
+  border: 2px solid;
+  border-bottom-color: #EEE;
+  border-right-color: #EEE;
+  border-left-color: #9a9a9a;
+  border-top-color: #9a9a9a;
+  padding-left: 3px;
+  padding-right: 3px; }

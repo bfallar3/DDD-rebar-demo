@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+         ToolsVersion="4.0"
+         DefaultTargets="StdPackage">
+    <PropertyGroup>
+      <SolutionFile></SolutionFile>
+      <BaseDir>$(MSBuildProjectDirectory)\..</BaseDir>
+      <NuGetApp>$(BaseDir)\tools\NuGet\NuGet.exe</NuGetApp>
+      <NuSpecFile>$(BaseDir)\tools\Packages\Rebar.Soa.CacheAdapter\Rebar.Soa.CacheAdapter.nuspec</NuSpecFile>
+      <NuGetLib>$(BaseDir)\tools\Packages\Rebar.Soa.CacheAdapter\lib\net40\</NuGetLib>
+      <OutDir>$(MSBuildProjectDirectory)\Rebar.Soa.CacheAdapter\Rebar.Soa.CacheAdapter\bin\$(Configuration)\</OutDir>
+    </PropertyGroup>
+    <PropertyGroup Condition="$(TeamBuildOutDir) != '' ">
+        <OutDir>$(TeamBuildOutDir)\$(Configuration)\</OutDir>
+    </PropertyGroup>
+
+    <Target Name = "Compile">
+        <MSBuild Project="$(SolutionFile)" Properties="Configuration=Release" />
+    </Target>
+
+    <Target Name = "Package">
+    <!-- You could use the MSBuild Copy task here to move the compiled code into
+           a structure that fits your desired package format -->
+      <Exec Command="&quot;$(NuGetApp)&quot; pack $(NuSpecFile)" />
+    </Target>
+
+  <Target Name="StdPackage">
+    <Exec WorkingDirectory="$(OutDir)"
+          Command="$(NuGetApp) pack $(NuSpecFile) -Verbose -Prop Configuration=Release" />
+  </Target>
+</Project>

@@ -1,0 +1,7 @@
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\Build\NET45\Debug\People.Service.dll.config
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\Build\NET45\Debug\People.Service.xml
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\Build\NET45\Debug\People.Service.dll
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\Build\NET45\Debug\People.Service.pdb
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\Build\obj\People.Service\NET45\Debug\People.Service.csprojResolveAssemblyReference.cache
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\Build\obj\People.Service\NET45\Debug\People.Service.dll
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\Build\obj\People.Service\NET45\Debug\People.Service.pdb

@@ -1,0 +1,39 @@
+﻿@model HandleErrorInfo           
+@{
+     ViewBag.Title = "HTTP 404 Error";
+ }
+
+    <h2>
+        WARNING: A fatal system error has occurred (HTTP 404).
+    </h2>
+
+    <p>
+        Please contact the CIO Help Desk and provide the ID below. We apologize for any
+        inconvenience.
+    </p>
+    <p>
+        Error Message :
+    </p>
+        <pre>@Model.Exception.Message</pre>
+    <p>
+        Error&nbsp; Id :
+    </p>
+        <pre>@Model.Exception.InnerException.Data["Exception.InstanceId"].ToString()</pre>
+
+@if (Model != null)
+{
+    <p>@Model.Exception.GetType().Name<br />
+        thrown in @Model.ControllerName @Model.ActionName</p>
+    <p>
+        Controller: @Model.ControllerName
+    </p>
+    <p>
+        Action: @Model.ActionName
+    </p>
+    <p>
+        Message: @Model.Exception.Message
+    </p>
+    <p>
+        Stack Trace:</p> 
+        <pre>@Model.Exception.StackTrace</pre>
+}

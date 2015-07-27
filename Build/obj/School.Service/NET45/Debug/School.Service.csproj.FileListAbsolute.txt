@@ -1,0 +1,7 @@
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\Build\NET45\Debug\School.Service.dll.config
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\Build\NET45\Debug\School.Service.xml
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\Build\NET45\Debug\School.Service.dll
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\Build\NET45\Debug\School.Service.pdb
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\Build\obj\School.Service\NET45\Debug\School.Service.csprojResolveAssemblyReference.cache
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\Build\obj\School.Service\NET45\Debug\School.Service.dll
+C:\Users\Benjamin\Documents\Visual Studio 2013\Projects\DDD-rebar-demo\Build\obj\School.Service\NET45\Debug\School.Service.pdb
